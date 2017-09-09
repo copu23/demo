@@ -4,20 +4,7 @@ class ProjectsController < ApplicationController
 		@projects= Project.all
 	end
 
-	def new
-		@project= Project.new
-	end
-
-	def create
-		@project = Project.new(project_params)
-		if @project.save
-		flash[:notice] = "Du an duoc tao thanh cong."
-		redirect_to @project
-		else
-			flash.now[:alert] = "Project has not been created."
-			render "new"
-		end
-	end
+	
 
 	def show
 	
@@ -39,12 +26,7 @@ class ProjectsController < ApplicationController
 		end
 	end
 
-	def destroy
-		@project = Project.find(params[:id])
-		@project.destroy
-		flash[:notice] = "Project has been deleted."
-		redirect_to projects_path
-end
+	
 
 	private
 		def project_params
