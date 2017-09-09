@@ -5,7 +5,11 @@ Rails.application.routes.draw do
     get 'application/index'
     resources :loaihangs, only: [:new, :create, :destroy]
     
-    resources :users
+    resources :users do
+	    member do
+		patch :archive
+		end
+	end
   end
 
   root "home#index"

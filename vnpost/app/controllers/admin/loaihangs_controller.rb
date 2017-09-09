@@ -27,5 +27,11 @@ private
 		def loaihang_params
 			params.require(:loaihang).permit(:tenlh, :mota)
 		end
-
+		
+		def set_loaihang
+			@loaihang = Loaihang.find(params[:id])
+			rescue ActiveRecord::RecordNotFound
+			flash[:alert] = "The loaihang you were looking for could not be found."
+			redirect_to loaihangs_path
+		end
 end

@@ -1,6 +1,23 @@
 <%= simple_form_for [:admin, user] do |f| %>
 <%= f.input :email %>
 <%= f.input :password %>
+<header>
+<h2>Roles</h2>
+</header>
+<table class="roles">
+<% loaihangs.each do |loaihang| %>
+<tr>
+<th><%= label_tag dom_id(loaihang), loaihang.tenlh %></th>
+<td>
+<%= select_tag dom_id(loaihang), options_for_select(roles,
+user.role_on(loaihang)), name: "roles[#{loaihang.id}]",
+include_blank: true %>
+</td>
+</tr>
+<% end %>
+</table>
 <%= f.input :admin, label: "Is an admin?" %>
 <%= f.button :submit, class: "btn btn-primary" %>
+<%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                admin_users_path, class: "cancel" %>
 <% end %>

@@ -2,34 +2,34 @@ class LoaihangsController < ApplicationController
 
 	 before_action :set_loaihang, only: [:show, :edit, :update, :destroy]
 	def index
-		@loaihangs= Loaihang.all
+	@loaihangs = policy_scope(Loaihang)
 	end
 
-	
 
-	def show
-	
+		
+	def show?
+
 	end
 
 	
 
 	def edit
-		@loaihang = Loaihang.find(params[:id])
-		
+		authorize @loaihang, :update?
 	end
 
+
 	def update
-		@loaihang = Loaihang.find(params[:id])
+		authorize @loaihang, :update?
 		if @loaihang.update(loaihang_params)
-		flash[:notice] = "Cập nhật thành công."
+		flash[:notice] = "loaihang has been updated."
 		redirect_to @loaihang
 		else
-			flash.now[:alert] = "Cập nhật không thành công."
-			render "edit"
+		flash.now[:alert] = "loaihang has not been updated."
+		render "edit"
 		end
 	end
 
-	
+		
 	
 
 	private

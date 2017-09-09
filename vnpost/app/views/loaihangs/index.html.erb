@@ -34,11 +34,11 @@
 <td><%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_loaihang_path(loaihang), class: "edit" %></td>
 
-
+<td>
 <% admins_only do %>
 
-<li><%= link_to "Delete", admin_loaihang_path(@loaihang),method: :delete,data: { confirm: "Are you sure you want to delete this loaihang?" },class: "delete" %></li>
-<% end %>
+<td><%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      loaihang_path(loaihang), class: "delete" %></td><% end %>
 </td>
 </tr>
 <% end %>
