@@ -6,7 +6,7 @@ class Admin::TablesController < Admin::ApplicationController
 	def create
 		@table = Table.new(table_params)
 		if @table.save
-		flash[:notice] = "Du an duoc tao thanh cong."
+		flash[:notice] = "bang duoc tao thanh cong."
 		redirect_to @table
 		else
 			flash.now[:alert] = "table has not been created."

@@ -4,10 +4,12 @@
 <h1><%= @loaihang.tenlh %></h1>
 <%= @loaihang.mota %>
 <ul class="actions">
-<li><%= link_to "Edit", edit_table_path(@table),
+<li><%= link_to "Edit loaihang", edit_loaihang_path(@loaihang),
 class: "edit" %></li>
 <% admins_only do %>
 <li><%= link_to "Delete", admin_loaihang_path(@loaihang),method: :delete,data: { confirm: "Are you sure you want to delete this loaihang?" },class: "delete" %></li>
+<li><%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                loaihangs_path, class: "cancel" %></li>
 <% end %>
 </ul>
 </header>

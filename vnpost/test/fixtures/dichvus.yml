@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tendv: MyString
+  mota: MyText
+  tylegiatri: 1.5
+
+two:
+  tendv: MyString
+  mota: MyText
+  tylegiatri: 1.5

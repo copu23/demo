@@ -1,0 +1,15 @@
+<header>
+
+<h1><%= @vung.tenvung %></h1>
+
+
+<ul class="actions">
+<li><%= link_to "Chỉnh sửa", edit_vung_path(@vung),
+class: "edit" %></li>
+<% admins_only do %>
+<li><%= link_to "Xóa", admin_vung_path(@vung),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %></li>
+<li><%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                vungs_path, class: "cancel" %></li>
+<% end %>
+</ul>
+</header>

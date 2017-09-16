@@ -1,0 +1,53 @@
+
+<head>
+  <title>Bảng mức cước</title>
+</head>
+<header>
+<h1>Bảng mức cước</h1>
+<ul class="actions">
+<% admins_only do %>
+<ul class="actions">
+<li>
+<%= link_to "Thêm mới", new_admin_cuoccpn_path, class: "new" %>
+</li>
+</ul>
+<% end %>
+</ul>
+</header>
+<div>
+<table class="table-responsive"">
+  <thead>
+    <tr>
+      <th>Dịch vụ</th>
+      <th>Nấc khối lượng</th>
+      <th> Vùng</th>
+      <th> Mức cước</th>
+      <th></th>
+      <th></th>
+       <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @cuoccpns.each do |cuoccpn| %>
+<tr>
+<td><%= cuoccpn.dichvu_id %></td>
+<td><%=  cuoccpn.nackhoiluong_id %></td>
+<td><%= cuoccpn.vung_id %></td>
+<td><%= cuoccpn.muccuoc %></td>
+<td>
+<%= link_to t('.show', :default => t("helpers.links.show")),
+                      cuoccpn_path(cuoccpn), class: "show" %></td>
+<td><%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_cuoccpn_path(cuoccpn), class: "edit" %></td>
+
+<td>
+<% admins_only do %>
+
+<td><%= link_to "Xóa", admin_cuoccpn_path(cuoccpn),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %></td>
+<% end %>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+</div>

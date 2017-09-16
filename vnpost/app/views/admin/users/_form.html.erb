@@ -2,21 +2,21 @@
 <%= f.input :email %>
 <%= f.input :password %>
 <header>
-<h2>Roles</h2>
+<h2>Phân quyền</h2>
 </header>
 <table class="roles">
-<% loaihangs.each do |loaihang| %>
+<% @tables.each do |table| %>
 <tr>
-<th><%= label_tag dom_id(loaihang), loaihang.tenlh %></th>
+<th><%= label_tag dom_id(table), table.name %></th>
 <td>
-<%= select_tag dom_id(loaihang), options_for_select(roles,
-user.role_on(loaihang)), name: "roles[#{loaihang.id}]",
+<%= select_tag dom_id(table), options_for_select(roles,
+user.role_on(table)), name: "roles[#{table.id}]",
 include_blank: true %>
 </td>
 </tr>
 <% end %>
 </table>
-<%= f.input :admin, label: "Is an admin?" %>
+<%= f.input :admin, label: "Admin?" %>
 <%= f.button :submit, class: "btn btn-primary" %>
 <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 admin_users_path, class: "cancel" %>

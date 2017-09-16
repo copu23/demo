@@ -1,0 +1,24 @@
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+}
+</style>
+<%= simple_form_for([:admin, tinh]) do |f| %>
+ 
+<%= f.input :tentinh,label: "Tên tỉnh" %>
+<%= f.input :vung_id  ,label: "Vùng" do %>
+
+<%= f.collection_select :vung_id,Vung.all,:id,:tenvung, {:prompt=> "---Vùng---"} %>
+<% end %>
+<ul id="action">
+<li><%= f.button :submit, class: "btn-primary" %></li>
+<li><%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                tinhs_path, class: "cancel" %></li>
+</ul>
+<% end %>

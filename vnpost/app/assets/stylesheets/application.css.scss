@@ -25,6 +25,7 @@
 @import "responsive";
 
 
+
 .page-header {
 position: relative;
 padding-bottom: 0px;
@@ -34,6 +35,7 @@ margin-top: 20px;
 h1, h2, h3, h4, h5, h6 {
 max-width: 55%;
 }
+
 }
 ul.actions {
 @extend .list-unstyled;
@@ -108,6 +110,7 @@ margin-top: 20px;
 @extend .alert-danger;
 }
 form {
+
 max-width: 500px;
 }
 body {
@@ -139,3 +142,19 @@ color: #a83030;
 padding-left: 15px;
 }
 
+#attributes {
+@extend .table;
+@extend .table-condensed;
+width: 65%;
+th {
+width: 35%;
+}
+tr:first-child {
+td, th {
+border-top: 0px;
+}
+}
+td, th {
+line-height: 24px !important;
+}
+}

@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
 before_action :set_user, only: [:show, :edit, :update, :archive]
-before_action :set_loaihangs, only: [:new, :create, :edit, :update]
+before_action :set_tables, only: [:new, :create, :edit, :update]
 
  def index
 		@users = User.excluding_archived.order(:email)
@@ -23,10 +23,10 @@ end
 		@user = User.new(user_params)
 		build_roles_for(@user)
 		if @user.save
-		flash[:notice] = "User has been created."
+		flash[:notice] = "Tạo người dùng thành công."
 		redirect_to admin_users_path
 		else
-		flash.now[:alert] = "User has not been created."
+		flash.now[:alert] = "Tạo người dùng không thành công."
 		render "new"
 		end
 	end
@@ -38,16 +38,16 @@ def update
 	@user.roles.clear
 	build_roles_for(@user)
 	role_data = params.fetch(:roles, [])
-	role_data.each do |loaihang_id, role_name|
+	role_data.each do |table_id, role_name|
 	if role_name.present?
-	@user.roles.build(loaihang_id: loaihang_id, role: role_name)
+	@user.roles.build(table_id: table_id, role: role_name)
 	end
 	end
 	if @user.update(user_params)
-	flash[:notice] = "User has been updated."
+	flash[:notice] = "Cập nhật thành công."
 	redirect_to admin_users_path
 	else
-	flash.now[:alert] = "User has not been updated."
+	flash.now[:alert] = "Cập nhật không thành công."
 	render "edit"
 	raise ActiveRecord::Rollback
 	end
@@ -56,10 +56,10 @@ end
 
 def archive
 if @user == current_user
-flash[:alert] = "You cannot archive yourself!"
+flash[:alert] = "Không thể vô hiệu hóa chính bạn!"
 else
 @user.archive
-flash[:notice] = "User has been archived."
+flash[:notice] = "Tài khoản đã bị vô hiệu hóa"
 end
 redirect_to admin_users_path
 end
@@ -67,9 +67,9 @@ end
 private
 	def build_roles_for(user)
 		role_data = params.fetch(:roles, [])
-		role_data.each do |loaihang_id, role_name|
+		role_data.each do |table_id, role_name|
 		if role_name.present?
-		user.roles.build(loaihang_id: loaihang_id, role: role_name)
+		user.roles.build(table_id: table_id, role: role_name)
 		end
 		end
 	end
@@ -81,7 +81,7 @@ private
 		@user = User.find(params[:id])
 	end
 
-	def set_loaihangs
-		@loaihangs = Loaihang.order(:tenlh)
+	def set_tables
+		@tables = Table.order(:name)
 	end
 end

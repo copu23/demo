@@ -1,0 +1,51 @@
+
+<head>
+  <title>Dịch vụ</title>
+</head>
+<header>
+<h1>Dịch vụ</h1>
+<ul class="actions">
+<% admins_only do %>
+<ul class="actions">
+<li>
+<%= link_to "Thêm mới", new_admin_dichvu_path, class: "new" %>
+</li>
+</ul>
+<% end %>
+</ul>
+</header>
+<div>
+<table class="table-responsive"">
+  <thead>
+    <tr>
+      <th>Dịch vụ</th>
+      <th>Mô tả </th>
+      <th> Tỷ lệ gía trị</th>
+      <th> </th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @dichvus.each do |dichvu| %>
+<tr>
+<td><%= link_to dichvu.tendv, dichvu %></td>
+<td><%= dichvu.mota %></td>
+<td><%= dichvu.tylegiatri %></td>
+<td>
+<%= link_to t('.show', :default => t("helpers.links.show")),
+                      dichvu_path(dichvu), class: "show" %></td>
+<td><%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_dichvu_path(dichvu), class: "edit" %></td>
+
+<td>
+<% admins_only do %>
+
+<td><%= link_to "Xóa", admin_dichvu_path(dichvu),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %></td>
+<% end %>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+</div>

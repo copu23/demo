@@ -1,0 +1,2 @@
+module KhachhangsHelper
+end

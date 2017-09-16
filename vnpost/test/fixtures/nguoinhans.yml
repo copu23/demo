@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hotennn: MyString
+  sodtnn: MyString
+  address: 
+  city: MyString
+  province: MyString
+  sub_state: MyString
+  longitude: MyString
+  latitude: MyString
+
+two:
+  hotennn: MyString
+  sodtnn: MyString
+  address: 
+  city: MyString
+  province: MyString
+  sub_state: MyString
+  longitude: MyString
+  latitude: MyString

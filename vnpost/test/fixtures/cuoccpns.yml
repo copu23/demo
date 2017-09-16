@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  muccuoc: 1
+  vung: one
+  dichvu: one
+  nackhoiluong: one
+
+two:
+  muccuoc: 1
+  vung: two
+  dichvu: two
+  nackhoiluong: two

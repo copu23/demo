@@ -2,24 +2,25 @@ class LoaihangsController < ApplicationController
 
 	 before_action :set_loaihang, only: [:show, :edit, :update, :destroy]
 	def index
-	@loaihangs = policy_scope(Loaihang)
+	@loaihangs = Loaihang.all
 	end
 
 
 		
-	def show?
+	def show
 
 	end
 
 	
 
 	def edit
-		authorize @loaihang, :update?
+		@table = Table.find(params[:id])
+		
 	end
 
 
 	def update
-		authorize @loaihang, :update?
+		
 		if @loaihang.update(loaihang_params)
 		flash[:notice] = "loaihang has been updated."
 		redirect_to @loaihang

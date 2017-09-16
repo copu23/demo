@@ -1,0 +1,15 @@
+<header>
+
+<h1><%= @dichvu.tendv %></h1>
+<%= @dichvu.mota %>
+<%= @dichvu.tylegiatri %>
+<ul class="actions">
+<li><%= link_to "Chỉnh sửa", edit_dichvu_path(@dichvu),
+class: "edit" %></li>
+<% admins_only do %>
+<li><%= link_to "Xóa", admin_dichvu_path(@dichvu),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %></li>
+<li><%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                dichvus_path, class: "cancel" %></li>
+<% end %>
+</ul>
+</header>

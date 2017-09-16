@@ -1,7 +1,30 @@
 class TablesController < ApplicationController
 	 before_action :set_table, only: [:show, :edit, :update, :destroy]
+
+		def new
+		@table= Table.new
+	end
+
+	def create
+		@table = Table.new(table_params)
+		if @table.save
+		flash[:notice] = "Vận đơn tạo thành công."
+		redirect_to @table
+		else
+			flash.now[:alert] = "Vận đơn tạo không thành công."
+			render "new"
+		end
+	end
+
+	def destroy
+		@table = Table.find(params[:id])
+		@table.destroy
+		flash[:notice] = "Xóa vận đơn thành công"
+		redirect_to tables_path
+	end
+	
 	def index
-		@tables= Table.all
+		@tables = policy_scope(Table)
 	end
 
 	
@@ -11,12 +34,12 @@ class TablesController < ApplicationController
 	end
 
 	def edit
-		@table = Table.find(params[:id])
-		
+		authorize @table, :update?
 	end
 
 	def update
-		@table = Table.find(params[:id])
+		authorize @table, :update?
+		@table = table.find(params[:id])
 		if @table.update(table_params)
 		flash[:notice] = "table has been updated."
 		redirect_to @table

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  text: MyText
+  hanghoa: one
+  nguoilap: one
+
+two:
+  text: MyText
+  hanghoa: two
+  nguoilap: two

@@ -1,0 +1,11 @@
+<%= simple_form_for([vandon, nguoinhan]) do |f| %>
+<%= f.input :hotennn, label:"Họ tên người nhận" %>
+<%= f.input :sodtnn, label: "SĐT" %>
+<%= f.input :address, label: "Địa chỉ" %>
+<%= f.input :tinh_id  ,label: "Tỉnh/TP" do %>
+
+<%= f.collection_select :tinh_id,Tinh.all,:id,:tentinh, {:prompt=> "---Tỉnh---"} %>
+<% end %>
+<%= f.button :submit, class: "btn-primary" %>
+<%= cancel_link %>
+<% end %>

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  trongluongtinh: 1.5
+  trongluongquydoi: 1.5
+  chieudai: 1.5
+  chieucao: 1.5
+  chieurong: 1.5
+  motachitiet: MyText
+  cuocchinh: 1
+  cuocphu: 1
+  tongcuoc: 1
+
+two:
+  trongluongtinh: 1.5
+  trongluongquydoi: 1.5
+  chieudai: 1.5
+  chieucao: 1.5
+  chieurong: 1.5
+  motachitiet: MyText
+  cuocchinh: 1
+  cuocphu: 1
+  tongcuoc: 1

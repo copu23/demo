@@ -1,0 +1,7 @@
+<%= simple_form_for([vandon, khachhang]) do |f| %>
+<%= f.input :hotenkh, label:"Họ tên KH" %>
+<%= f.input :sodt, label: "SĐT" %>
+<%= f.input :address, label: "Địa chỉ" %>
+<%= f.button :submit, class: "btn-primary" %>
+<%= cancel_link %>
+<% end %>

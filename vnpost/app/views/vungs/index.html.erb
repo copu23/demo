@@ -1,0 +1,49 @@
+
+<head>
+  <title>Vùng</title>
+</head>
+<header>
+<h1>Vùng</h1>
+<ul class="actions">
+<% admins_only do %>
+<ul class="actions">
+<li>
+<%= link_to "Thêm mới", new_admin_vung_path, class: "new" %>
+</li>
+</ul>
+<% end %>
+</ul>
+</header>
+<div>
+<table class="table-responsive"">
+  <thead>
+    <tr>
+      <th>Vùng</th>
+      
+      <th> </th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @vungs.each do |vung| %>
+<tr>
+<td><%= link_to vung.tenvung, vung %></td>
+
+<td>
+<%= link_to t('.show', :default => t("helpers.links.show")),
+                      vung_path(vung), class: "show" %></td>
+<td><%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_vung_path(vung), class: "edit" %></td>
+
+<td>
+<% admins_only do %>
+
+<td><%= link_to "Xóa", admin_vung_path(vung),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %></td>
+<% end %>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+</div>

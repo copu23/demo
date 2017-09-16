@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hotenkh: MyString
+  sodt: MyString
+  diachi: MyString
+  quanhuyen: MyString
+  thanhpho: MyString
+  tinh: MyString
+
+two:
+  hotenkh: MyString
+  sodt: MyString
+  diachi: MyString
+  quanhuyen: MyString
+  thanhpho: MyString
+  tinh: MyString

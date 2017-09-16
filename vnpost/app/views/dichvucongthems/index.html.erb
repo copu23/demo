@@ -1,0 +1,51 @@
+
+<head>
+  <title>Dịch vụ cộng thêm</title>
+</head>
+<header>
+<h1>Dịch vụ cộng thêm </h1>
+<ul class="actions">
+<% admins_only do %>
+<ul class="actions">
+<li>
+<%= link_to "Thêm mới", new_admin_dichvucongthem_path, class: "new" %>
+</li>
+</ul>
+<% end %>
+</ul>
+</header>
+<div>
+<table class="table-responsive"">
+  <thead>
+    <tr>
+      <th>Dịch vụ</th>
+      <th>Mô tả </th>
+      <th> Mức cước</th>
+      <th> </th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @dichvucongthems.each do |dichvucongthem| %>
+<tr>
+<td><%= link_to dichvucongthem.tendvct, dichvucongthem %></td>
+<td><%= dichvucongthem.mota %></td>
+<td><%= dichvucongthem.mcdvct %></td>
+<td>
+<%= link_to t('.show', :default => t("helpers.links.show")),
+                      dichvucongthem_path(dichvucongthem), class: "show" %></td>
+<td><%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_dichvucongthem_path(dichvucongthem), class: "edit" %></td>
+
+<td>
+<% admins_only do %>
+
+<td><%= link_to "Xóa", admin_dichvucongthem_path(dichvucongthem),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %></td>
+<% end %>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+</div>

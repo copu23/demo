@@ -1,0 +1,39 @@
+<div id="hanghoa">
+<header>
+<h1><%= @vandon.id %></h1>
+</header>
+<header>
+<h2>Trọng lượng tịnh: <%= @hanghoa.trongluongtinh %></h2>
+</header>
+
+<ul class="actions">
+<li><%= link_to "Edit", [:edit, @vandon, @hanghoa],
+class: "edit" %></li>
+
+<li><%= link_to "Delete", [@vandon, @hanghoa], method: :delete,
+data: { confirm: "Bạn có chắc chắn xóa không"},
+class: "delete" %></li>
+<li> <%= cancel_link %> </li>
+</ul>
+</div>
+<header>
+<h3> Ghi chú</h3>
+</header>
+<div id="comments">
+<% if @hanghoa.comments.persisted.any? %>
+<%= render @hanghoa.comments.persisted %>
+<% else %>
+<p>Không có ghi chú nào.</p>
+<% end %>
+</div>
+<table>
+<% if @hanghoa.state.present? %>
+<tr>
+<th>Trạng thái:</th>
+<td><%= render @hanghoa.state %></td>
+</tr>
+<% end %>
+</table>
+<% if policy(@comment).create? %>
+<%= render "comments/form",  hanghoa: @hanghoa, comment: @comment %>
+<% end %>

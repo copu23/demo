@@ -1,0 +1,14 @@
+<header>
+
+<h1><%= @cuoccpn.id %></h1>
+<%= @cuoccpn.muccuoc %>
+<ul class="actions">
+<li><%= link_to "Chỉnh sửa", edit_cuoccpn_path(@cuoccpn),
+class: "edit" %></li>
+<% admins_only do %>
+<li><%= link_to "Xóa", admin_cuoccpn_path(@cuoccpn),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %></li>
+<li><%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                cuoccpns_path, class: "cancel" %></li>
+<% end %>
+</ul>
+</header>

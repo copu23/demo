@@ -1,0 +1,2 @@
+module Admin::HanghoasHelper
+end

@@ -1,0 +1,23 @@
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+}
+</style>
+<%= simple_form_for(@tinh) do |f| %>
+<%= f.input :tentinh,label: "Tên vùng" %>
+
+
+ <%=f.input :vung_id, collection: @continents, as: :grouped_select, group_method: :tinhs %>
+
+<ul id="action">
+<li><%= f.button :submit, class: "btn-primary" %></li>
+<li><%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                tinhs_path, class: "cancel" %></li>
+</ul>
+<% end %>

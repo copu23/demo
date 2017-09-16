@@ -1,0 +1,21 @@
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+}
+</style>
+<%= simple_form_for([:admin, dichvucongthem]) do |f| %>
+<%= f.input :tendvct,label: "Tên dịch vụ cộng thêm" %>
+<%= f.input :mota, label: "Mô tả" %>
+<%= f.input :mcdvct, label: "Mức cước" %>
+<ul id="action">
+<li><%= f.button :submit, class: "btn-primary" %></li>
+<li><%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                dichvucongthems_path, class: "cancel" %></li>
+</ul>
+<% end %>

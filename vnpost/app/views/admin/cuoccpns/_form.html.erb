@@ -1,0 +1,31 @@
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+}
+</style>
+<%= simple_form_for([:admin, cuoccpn]) do |f| %>
+<%= f.input :dichvu_id  ,label: "Dịch vụ" do %>
+
+<%= f.collection_select :dichvu_id,Dichvu.all,:id,:tendv, {:prompt=> "---Dịch vụ---"} %>
+<% end %>
+<%= f.input :vung_id  ,label: "Vùng" do %>
+
+<%= f.collection_select :vung_id,Vung.all,:id,:tenvung, {:prompt=> "---Vùng---"} %>
+<% end %>
+<%= f.input :nackhoiluong_id  ,label: "Nấc khối lượng" do %>
+
+<%= f.collection_select :nackhoiluong_id,Nackhoiluong.all,:id,:tennkl, {:prompt=> "---Nấc khối lượng---"}%>
+<% end %>
+<%= f.input :muccuoc, label: "Mức cước" %>
+<ul id="action">
+<li><%= f.button :submit, class: "btn-primary" %></li>
+<li><%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                cuoccpns_path, class: "cancel" %></li>
+</ul>
+<% end %>

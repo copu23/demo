@@ -1,0 +1,2 @@
+class Nackhoiluong < ApplicationRecord
+end

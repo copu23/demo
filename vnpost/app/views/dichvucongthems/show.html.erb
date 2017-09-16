@@ -1,0 +1,15 @@
+<header>
+
+<h1><%= @dichvucongthem.tendvct %></h1>
+<%= @dichvucongthem.mota %>
+<%= @dichvucongthem.mcdvct %>
+<ul class="actions">
+<li><%= link_to "Chỉnh sửa", edit_dichvucongthem_path(@dichvucongthem),
+class: "edit" %></li>
+<% admins_only do %>
+<li><%= link_to "Xóa", admin_dichvucongthem_path(@dichvucongthem),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %></li>
+<li><%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                dichvucongthems_path, class: "cancel" %></li>
+<% end %>
+</ul>
+</header>

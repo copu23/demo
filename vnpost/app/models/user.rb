@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 	scope :excluding_archived, lambda { where(archived_at: nil) }
   	 def to_s
-	"#{email} (#{admin? ? "Admin" : "User"})"
+	"#{email} (#{admin? ? "Admin" : "Người dùng"})"
 	end
 
 	def archive
@@ -23,8 +23,8 @@ class User < ApplicationRecord
 		archived_at.nil? ? super : :archived
 	end
 
-	def role_on(loaihang)
-		roles.find_by(loaihang_id: loaihang).try(:tenlh)
+	def role_on(table)
+		roles.find_by(table_id: table).try(:name)
 	end
 
 

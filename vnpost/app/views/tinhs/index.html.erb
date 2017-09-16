@@ -1,0 +1,52 @@
+
+<head>
+  <title>Tỉnh</title>
+</head>
+<header>
+<h1>Tỉnh</h1>
+<ul class="actions">
+<% admins_only do %>
+<ul class="actions">
+<li>
+<%= link_to "Thêm mới", new_admin_tinh_path, class: "new" %>
+</li>
+</ul>
+<% end %>
+</ul>
+</header>
+<div>
+<table class="table-responsive"">
+  <thead>
+    <tr>
+      <th>tỉnh</th>
+       <th>Vùng</th>
+      
+      <th> </th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @tinhs.each do |tinh| %>
+<tr>
+<td><%= link_to tinh.tentinh, tinh %></td>
+<td><%=  tinh.vung_id %></td>
+
+<td>
+<%= link_to t('.show', :default => t("helpers.links.show")),
+                      tinh_path(tinh), class: "show" %></td>
+<td><%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_tinh_path(tinh), class: "edit" %></td>
+
+<td>
+<% admins_only do %>
+
+<td><%= link_to "Xóa", admin_tinh_path(tinh),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %></td>
+<% end %>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+</div>
+

@@ -1,0 +1,2 @@
+module VungsHelper
+end

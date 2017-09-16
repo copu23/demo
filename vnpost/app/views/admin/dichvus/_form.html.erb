@@ -1,0 +1,32 @@
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+}
+</style>
+<%= simple_form_for([:admin, dichvu]) do |f| %>
+ <% if dichvu.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(dichvu.errors.count, "error") %> prohibited this dichvu from being saved:</h2>
+
+      <ul>
+      <% dichvu.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%= f.input :tendv,label: "Tên dịch vụ" %>
+<%= f.input :mota, label: "Mô tả" %>
+<%= f.input :tylegiatri, label: "Tỷ lệ gía trị" %>
+<ul id="action">
+<li><%= f.button :submit, class: "btn-primary" %></li>
+<li><%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                dichvus_path, class: "cancel" %></li>
+</ul>
+<% end %>

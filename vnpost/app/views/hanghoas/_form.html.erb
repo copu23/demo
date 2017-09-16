@@ -1,0 +1,32 @@
+<%= simple_form_for([vandon, hanghoa]) do |f| %>
+ <% if hanghoa.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(hanghoa.errors.count, "error") %> prohibited this hanghoa from being saved:</h2>
+
+      <ul>
+      <% hanghoa.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%= f.input :trongluongtinh, label:"Trọng lượng tịnh" %>
+<%= f.input :trongluongquydoi, label: "Trọng lượng quy đổi" %>
+<%= f.input :chieudai, label: "Chiều dài" %>
+<%= f.input :chieucao, label: "Chiều cao" %>
+<%= f.input :chieurong, label: "Chiều rộng" %>
+<%= f.input :dichvu_id  ,label: "Dịch vụ" do %>
+
+<%= f.collection_select :dichvu_id,Dichvu.all,:id,:tendv, {:prompt=> "---Dịch vụ---"} %>
+<% end %>
+<%= f.input :dichvucongthem_id  ,label: "Dịch vụ cộng thêm" do %>
+
+<%= f.collection_select :dichvucongthem_id,Dichvucongthem.all,:id,:tendvct, {:prompt=> "---Dịch vụ cộng thêm---"} %>
+<% end %>
+<%= f.input :cuocchinh, label: "Cước chính" %>
+<%= f.input :cuocphu, label: "Cước phụ " %>
+<%= f.input :tongcuoc, label: "Tổng cước" %>
+<%= f.input :motachitiet, label: "motachitiet" %>
+<%= f.button :submit, class: "btn-primary" %>
+
+<% end %>

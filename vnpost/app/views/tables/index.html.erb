@@ -34,12 +34,13 @@
 <td><%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_table_path(table), class: "edit" %></td>
 
-<td>
+
 <% admins_only do %>
 
 <td><%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      table_path(table), class: "delete" %></td><% end %>
-</td>
+                      table_path(table), class: "delete" %></td>
+<% end %>
+
 </tr>
 <% end %>
 </tbody>
