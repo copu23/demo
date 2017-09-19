@@ -17,6 +17,7 @@ class: "delete" %></li>
 </ul>
 </div>
 <header>
+
 <h3> Ghi chú</h3>
 </header>
 <div id="comments">
@@ -29,7 +30,7 @@ class: "delete" %></li>
 <table>
 <% if @hanghoa.state.present? %>
 <tr>
-<th>Trạng thái:</th>
+<th>Trạng thái: </th>
 <td><%= render @hanghoa.state %></td>
 </tr>
 <% end %>

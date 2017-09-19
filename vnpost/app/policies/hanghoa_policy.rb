@@ -4,9 +4,11 @@ class HanghoaPolicy < ApplicationPolicy
       scope
     end
   end
-  def create?
-user.try(:admin?) || record.project.has_manager?(user) ||
-record.hanghoa.has_editor?(user)
+ 
+
+def create?
+user.try(:admin?) || record.vandon.has_manager?(user) ||
+record.vandon.has_editor?(user)
 end
   def show?
 user.try(:admin?) || record.vandon.roles.exists?(user_id: user)

@@ -4,10 +4,8 @@ class CommentPolicy < ApplicationPolicy
       scope
     end
   end
-
-
   def create?
-	user.try(:admin?) || record.vandon.has_manager?(user) ||
-	record.vandon.has_editor?(user)
-  end
+user.try(:admin?) || record.vandon.has_manager?(user) ||
+record.vandon.has_editor?(user)
+end
 end

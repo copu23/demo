@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170916055720) do
+ActiveRecord::Schema.define(version: 20170916163517) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "text",        limit: 65535
+    t.integer  "hanghoa_id"
     t.integer  "nguoilap_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "state_id"
-    t.integer  "hanghoa_id"
     t.index ["hanghoa_id"], name: "index_comments_on_hanghoa_id", using: :btree
     t.index ["nguoilap_id"], name: "index_comments_on_nguoilap_id", using: :btree
     t.index ["state_id"], name: "index_comments_on_state_id", using: :btree
@@ -46,13 +46,11 @@ ActiveRecord::Schema.define(version: 20170916055720) do
 
   create_table "dichvus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "tendv"
-    t.text     "mota",        limit: 65535
-    t.float    "tylegiatri",  limit: 24,    default: 1.0
-    t.integer  "loaihang_id"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.text     "mota",       limit: 65535
+    t.float    "tylegiatri", limit: 24,    default: 1.0
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.integer  "table_id"
-    t.index ["loaihang_id"], name: "index_dichvus_on_loaihang_id", using: :btree
     t.index ["table_id"], name: "index_dichvus_on_table_id", using: :btree
   end
 
@@ -129,10 +127,10 @@ ActiveRecord::Schema.define(version: 20170916055720) do
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.string   "role"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "table_id"
-    t.index ["table_id"], name: "index_roles_on_table_id", using: :btree
+    t.integer  "loaihang_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["loaihang_id"], name: "index_roles_on_loaihang_id", using: :btree
     t.index ["user_id"], name: "index_roles_on_user_id", using: :btree
   end
 
@@ -176,12 +174,10 @@ ActiveRecord::Schema.define(version: 20170916055720) do
   end
 
   create_table "vandons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "mota"
     t.integer  "nguoilap_id"
-    t.integer  "khachhang_id"
-    t.index ["khachhang_id"], name: "index_vandons_on_khachhang_id", using: :btree
     t.index ["nguoilap_id"], name: "index_vandons_on_nguoilap_id", using: :btree
   end
 
@@ -197,7 +193,6 @@ ActiveRecord::Schema.define(version: 20170916055720) do
   add_foreign_key "cuoccpns", "dichvus"
   add_foreign_key "cuoccpns", "nackhoiluongs"
   add_foreign_key "cuoccpns", "vungs"
-  add_foreign_key "dichvus", "loaihangs"
   add_foreign_key "dichvus", "tables"
   add_foreign_key "hanghoas", "dichvucongthems"
   add_foreign_key "hanghoas", "dichvus"
@@ -206,7 +201,7 @@ ActiveRecord::Schema.define(version: 20170916055720) do
   add_foreign_key "khachhangs", "vandons"
   add_foreign_key "nguoinhans", "tinhs"
   add_foreign_key "nguoinhans", "vandons"
-  add_foreign_key "roles", "tables"
+  add_foreign_key "roles", "loaihangs"
   add_foreign_key "roles", "users"
   add_foreign_key "tinhs", "vungs"
   add_foreign_key "vandons", "users", column: "nguoilap_id"
