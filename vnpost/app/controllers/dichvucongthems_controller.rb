@@ -9,6 +9,19 @@ def show
 	
 	end
 
+def get_id
+	dvct = params[:dichvucongthem_id] 
+	
+	@dichvucongthems = Dichvucongthem.all
+   	@dichvucongthems.each do |dichvucongthem|
+ 	if dichvucongthem.id == dvct 
+		 return dichvucongthem.vung_id
+		render json:dichvucongthem.vung_id	
+	end 
+	end
+end
+
+
 def edit
 	@dichvucongthem = Dichvucongthem.find(params[:id])
 		

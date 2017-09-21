@@ -30,3 +30,56 @@
 <%= f.button :submit, class: "btn-primary" %>
 
 <% end %>
+
+<script type="text/javascript">
+
+	$("#hanghoa_trongluongtinh").on('change', function(){
+	    $.ajax({
+	    	url: "/nackhoiluongs/get_id", 
+	    	data:{
+	    		trongluongtinh : $("#hanghoa_trongluongtinh").val()
+	    	},
+	    	success: function(data){ 
+
+	        	alert(data);
+	    	},
+	    	error: function (ajaxContext) {
+		        alert(ajaxContext.responseText)
+		    }
+		});
+	});
+	$("#hanghoa_dichvu_id").on('change', function(){
+	    $.ajax({
+	    	url: "/dichvus/get_id", 
+	    	data:{
+	    		dichvu_id : $("#hanghoa_dichvu_id").val()
+	    	},
+	    	success: function(result){ 
+	        	alert(result);
+	    	},
+	    	error: function (ajaxContext) {
+		        alert(ajaxContext.responseText)
+		    }
+		});
+	});
+
+	$("#hanghoa_dichvucongthem_id").on('change', function(){
+	    $.ajax({
+	    	url: "/dichvucongthems/get_id", 
+	    	data:{
+	    		dichvucongthem_id : $("#hanghoa_dichvucongthem_id").val()
+	    	},
+	    	success: function(result){ 
+	    	
+	        	alert(result);
+	    	},
+	    	error: function (ajaxContext) {
+		        alert(ajaxContext.responseText)
+		    }
+		});
+	});
+
+
+
+	
+</script>

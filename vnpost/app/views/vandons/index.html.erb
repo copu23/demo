@@ -3,6 +3,12 @@
 </head>
 <header>
 <h1>Vận đơn</h1>
+<div>
+<%= form_tag(vandons_path, method: :get) do %>
+  <%= text_field_tag :term, params[:term] %>
+  <%= submit_tag 'Search', name: nil %>
+<% end %>
+</div>
 <ul class="actions">
 <li>
 <%= link_to "Thêm mới", new_vandon_path, class: "new" %>

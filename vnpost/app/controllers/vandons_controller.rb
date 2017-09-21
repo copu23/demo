@@ -1,6 +1,7 @@
 class VandonsController < ApplicationController
    before_action :set_vandon, only: [:show, :edit, :update, :destroy]
-	
+    layout 'admin'
+	# before_action :set_hanghoa, only: [:show, :edit, :update, :destroy]
 		def new
 		@vandon= Vandon.new
 	end
@@ -8,7 +9,9 @@ class VandonsController < ApplicationController
 	def create
 		@vandon = Vandon.new(vandon_params)
 		@vandon.nguoilap = current_user
+
 		if @vandon.save
+
 		flash[:notice] = "Vận đơn tạo thành công."
 		redirect_to @vandon
 		else
@@ -18,6 +21,12 @@ class VandonsController < ApplicationController
 	end
 	def index
 		@vandons = policy_scope(Vandon)
+		 @vandons = Vandon.search(params[:term])
+		@vandons = if params[:term]
+    Vandon.where('id LIKE ?', "%#{params[:term]}%")
+  else
+    Vandon.all
+  end
 	end
 
 	
@@ -54,7 +63,7 @@ class VandonsController < ApplicationController
 
 	private
 		def vandon_params
-			params.require(:vandon).permit(:mota, :hanghoa_id)
+			params.require(:vandon).permit(:mota, :hanghoa_id, :term)
 		end
 
 		def set_vandon

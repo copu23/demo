@@ -10,17 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170916163517) do
+ActiveRecord::Schema.define(version: 20170919024801) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "text",        limit: 65535
+    t.text     "text",              limit: 65535
     t.integer  "hanghoa_id"
     t.integer  "nguoilap_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "state_id"
+    t.integer  "previous_state_id"
     t.index ["hanghoa_id"], name: "index_comments_on_hanghoa_id", using: :btree
     t.index ["nguoilap_id"], name: "index_comments_on_nguoilap_id", using: :btree
+    t.index ["previous_state_id"], name: "index_comments_on_previous_state_id", using: :btree
     t.index ["state_id"], name: "index_comments_on_state_id", using: :btree
   end
 
@@ -189,6 +191,7 @@ ActiveRecord::Schema.define(version: 20170916163517) do
 
   add_foreign_key "comments", "hanghoas"
   add_foreign_key "comments", "states"
+  add_foreign_key "comments", "states", column: "previous_state_id"
   add_foreign_key "comments", "users", column: "nguoilap_id"
   add_foreign_key "cuoccpns", "dichvus"
   add_foreign_key "cuoccpns", "nackhoiluongs"

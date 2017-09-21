@@ -15,7 +15,10 @@ def edit
 		
 end
 
-
+def get_id
+	khoiluong = params[:dichvu_id] 
+	render json:khoiluong
+end
 
 def update
 	if @dichvu.update(dichvu_params)

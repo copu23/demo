@@ -1,4 +1,5 @@
 class KhachhangsController < ApplicationController
+	layout "admin"
 	before_action :set_vandon	
 
 	before_action :set_khachhang, only: [:show, :edit, :update, :destroy]

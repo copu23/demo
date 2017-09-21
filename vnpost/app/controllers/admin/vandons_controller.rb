@@ -1,5 +1,6 @@
 class Admin::VandonsController < Admin::ApplicationController
 	 before_action :set_vandon, only: [:show, :edit, :update, :destroy]
+ 
 	def index
 		@vandons = policy_scope(Vandon)
 	end
@@ -30,7 +31,7 @@ class Admin::VandonsController < Admin::ApplicationController
 
 	private
 		def vandon_params
-			params.require(:vandon).permit(:name, :mota)
+			params.require(:vandon).permit(:name, :mota, :term)
 		end
 
 		def set_vandon

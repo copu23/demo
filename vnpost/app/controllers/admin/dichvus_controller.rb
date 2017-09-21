@@ -1,5 +1,6 @@
 class Admin::DichvusController < Admin::ApplicationController
 	 before_action :set_dichvu, only: [:show, :edit, :update, :destroy]
+	 layout 'admin'
 	def new
 		@dichvu = Dichvu.new
 		

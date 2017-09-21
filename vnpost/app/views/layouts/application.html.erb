@@ -13,6 +13,11 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style><% State.all.each do |state| %>.state-<%= state.name.parameterize %> {
+background-color: <%= state.color %>;
+}
+<% end %>
+</style>
   </head>
 
   <body>
@@ -36,6 +41,7 @@
     <li class="<%= "active" if current_page?("/") %>">
     <li> <%= link_to "Home", root_path %>
     </li>
+     <li><a <%= link_to "Van don", vandons_path %></li>
      <li><a <%= link_to "Loai hang", loaihangs_path %></li> <li><a <%= link_to "Table", tables_path %></li>
     <% admins_only do %>
     <li>

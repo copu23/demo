@@ -26,6 +26,20 @@ def update
 	end
 
 end
+	def get_id
+	khoiluong = (params[:trongluongtinh]).to_f
+
+	@nackhoiluongs = Nackhoiluong.all
+   	@nackhoiluongs.each do |nackhoiluong|
+ 	 if khoiluong >= nackhoiluong.khoiluongbd and khoiluong <= nackhoiluong.khoiluongkt
+		 return nackhoiluong.id
+			render json:nackhoiluong.id	
+			
+	end 
+	end
+
+	end
+
 
 
 private
@@ -33,7 +47,7 @@ private
 def set_nackhoiluong
 			@nackhoiluong = Nackhoiluong.find(params[:id])
 			rescue ActiveRecord::RecordNotFound
-			flash[:alert] = "Không tìm thấy dịch vụ bạn cần tìm."
+			flash[:alert] = "Không tìm thấy khoi luong bạn cần tìm."
 			redirect_to nackhoiluongs_path
 		end
 

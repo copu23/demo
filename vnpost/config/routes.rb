@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
  
-
+get 'nackhoiluongs/get_id'
+get 'dichvus/get_id'
+get 'dichvucongthems/get_id'
   namespace :admin do
     get 'application/index'
     resources :loaihangs, only: [:new, :create, :destroy]

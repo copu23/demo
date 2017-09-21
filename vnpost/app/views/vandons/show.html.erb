@@ -1,9 +1,4 @@
-
-<header>
-
-
 <h1>Mã vận đơn: <%= @vandon.id %></h1>
-
 <table id="attributes">
 <tr>
 <th>Người lập:</th>
@@ -14,6 +9,7 @@
 <td><%= @vandon.created_at %> </td>
 </tr>
 </table>
+<div>
 <ul class="actions">
 <li><%= link_to "Edit", edit_vandon_path(@vandon),
 class: "edit" %></li>
@@ -22,8 +18,64 @@ class: "edit" %></li>
 <li><%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 vandons_path, class: "cancel" %></li>
 </ul>
-</header>
+</div>
+<div class= "row bg-red"> 
+<div class= "col-md-8 col-lg-8">
+<div class="row">
+<div class ="col-md-6">
+<p class="m-t-md m-b-md">
+<strong>1. Thông tin người nhận</strong>
+<div><%= link_to "Tạo người nhận", new_vandon_nguoinhan_path(@vandon), class: "new" %></div>
+
+<% @vandon.nguoinhans.each do |nguoinhan| %>
+<div> Họ tên người nhận: <%= link_to nguoinhan.hotennn, [@vandon, nguoinhan] %></div>
+<div>SĐT: <%= nguoinhan.sodtnn %></div>
+<div>Địa chỉ: <%= nguoinhan.address %></div>
+<div>Thành phố: <%= nguoinhan.sub_state %><%= nguoinhan.province %>
+<div>
+<%= link_to "Edit", [:edit, @vandon, @nguoinhan],
+class: "edit" %>
+  <% admins_only do %>
+<%= link_to "Delete", [@vandon, @nguoinhan], method: :delete,
+dât: { confirm: "Bạn có chắc chắn xóa không"},
+class: "delete" %>
+</div>
+  <% end %>
+</div>
+
+
+
+<% end %>
+
+<p class="m-t-md m-b-md">
+<strong>2. Thông tin khách hàng</strong>
+<DIV>
+<%= link_to "Tạo khách hàng", new_vandon_khachhang_path(@vandon), class: "new" %></li>
+</DIV>
+
+<div>
+<% @vandon.khachhangs.each do |khachhang| %>
+<%= link_to khachhang.hotenkh, [@vandon, khachhang] %>
+<%= khachhang.sodt %>
+<%= khachhang.address %>
+<%= khachhang.sub_state %>
+<%= khachhang.province %>
+<%= link_to "Edit", [:edit, @vandon, @khachhang],
+class: "edit" %></li></td>
+
+
+<% admins_only do %>
+<%= link_to "Delete", [@vandon, @khachhang], method: :delete,
+data: { confirm: "Bạn có chắc chắn xóa không"},
+class: "delete" %></td>
+                      <% end %>
+
+<% end %>
+
+
+
 <header>
+<div>
 <h2>Hàng hóa</h2>
 <ul class="actions">
 <li><%= link_to "Thêm mới hàng hóa", new_vandon_hanghoa_path(@vandon), class: "new" %></li>
@@ -31,10 +83,11 @@ class: "edit" %></li>
 </header>
 
 <div>
-<table class="table-responsive"">
+<table class="table-responsive">
   <thead>
     <tr>
       <th>Hàng hóa</th>
+      <th> Trạng thái </th>
       <th>Trọng lượng quy đổi </th> 
        <th>Cước chính </th>
          <th>Cước phụ</th>
@@ -48,6 +101,9 @@ class: "edit" %></li>
 <% @vandon.hanghoas.each do |hanghoa| %>
 <tr>
 <td><%= link_to hanghoa.id, [@vandon, hanghoa] %></td>
+<td>
+<%= render hanghoa.state if hanghoa.state %>
+</td>
 <td><%= hanghoa.trongluongtinh %></td>
 <td><%= hanghoa.cuocchinh %></td>
 <td><%= hanghoa.cuocphu %></td>
@@ -65,91 +121,3 @@ class: "edit" %></li>
 </table>
 </div>
 
-<header>
-<h2>Khách hàng</h2>
-<ul class="actions">
-<li><%= link_to "Tạo khách hàng", new_vandon_khachhang_path(@vandon), class: "new" %></li>
-</ul>
-</header>
-
-<div>
-
-<table class="table-responsive"">
-  <thead>
-    <tr>
-      <th>Khách hàng</th>
-       <th>SĐT </th>
-      <th> Địa chỉ</th>
-      <th>Quận huyên</th>
-      <th>Thành phố</th>
-       <th> </th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<% @vandon.khachhangs.each do |khachhang| %>
-<tr>
-<td><%= link_to khachhang.hotenkh, [@vandon, khachhang] %></td>
-<td><%= khachhang.sodt %></td>
-<td><%= khachhang.address %></td>
-<td><%= khachhang.sub_state %></td>
-<td><%= khachhang.province %></td>
-<td><%= link_to "Edit", [:edit, @vandon, @khachhang],
-class: "edit" %></li></td>
-
-<td>
-<% admins_only do %>
-<td><%= link_to "Delete", [@vandon, @khachhang], method: :delete,
-data: { confirm: "Bạn có chắc chắn xóa không"},
-class: "delete" %></td>
-                      <% end %>
-</td>
-</tr>
-<% end %>
-</tbody>
-</table>
-<header>
-<h2>Người nhận</h2>
-<ul class="actions">
-<li><%= link_to "Tạo người nhận", new_vandon_nguoinhan_path(@vandon), class: "new" %></li>
-</ul>
-</header>
-
-<div>
-
-<table class="table-responsive"">
-  <thead>
-    <tr>
-      <th>Người nhận</th>
-       <th>SĐT </th>
-      <th> Địa chỉ</th>
-      <th>Quận huyên</th>
-      <th>Thành phố</th>
-       <th> </th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<% @vandon.nguoinhans.each do |nguoinhan| %>
-<tr>
-<td><%= link_to nguoinhan.hotennn, [@vandon, nguoinhan] %></td>
-<td><%= nguoinhan.sodtnn %></td>
-<td><%= nguoinhan.address %></td>
-<td><%= nguoinhan.sub_state %></td>
-<td><%= nguoinhan.province %></td>
-<td><%= link_to "Edit", [:edit, @vandon, @nguoinhan],
-class: "edit" %></li></td>
-
-<td>
-<% admins_only do %>
-<td><%= link_to "Delete", [@vandon, @nguoinhan], method: :delete,
-dât: { confirm: "Bạn có chắc chắn xóa không"},
-class: "delete" %></td>
-                      <% end %>
-</td>
-</tr>
-<% end %>
-</tbody>
-</table>

@@ -1,4 +1,5 @@
 class NguoinhansController < ApplicationController
+	layout "admin"
 		before_action :set_vandon	
 
 	before_action :set_nguoinhan, only: [:show, :edit, :update, :destroy]
