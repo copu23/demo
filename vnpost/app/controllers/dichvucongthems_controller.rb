@@ -12,13 +12,17 @@ def show
 def get_id
 	dvct = params[:dichvucongthem_id] 
 	
-	@dichvucongthems = Dichvucongthem.all
-   	@dichvucongthems.each do |dichvucongthem|
- 	if dichvucongthem.id == dvct 
-		 return dichvucongthem.vung_id
-		render json:dichvucongthem.vung_id	
-	end 
-	end
+	# @dichvucongthems = Dichvucongthem.all
+ #   	@dichvucongthems.each do |dichvucongthem|
+ # 	if dichvucongthem.id == dvct 
+	# 	 return dichvucongthem.vung_id
+	# 	render json:dichvucongthem.vung_id	
+	# end 
+	# end
+	# dichvucongthem = Dichvucongthem.where("dichvucongthems. < ? AND nackhoiluongs.khoiluongkt >= ?", khoiluong, khoiluong).take
+	# 		render json:{id: nackhoiluong ? nackhoiluong.id : nil}	
+render json:dvct
+
 end
 
 

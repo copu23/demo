@@ -14,7 +14,16 @@ def edit
 		
 end
 
+def getvung_id
+		tinhtp = params[:tinh_id]
 
+	
+
+		tinh = Tinh.where("tinhs.id = ?", tinhtp).take
+			render json:{id: tinh ? tinh.vung_id : nil}	
+
+		
+	end
 
 def update
 	if @tinh.update(tinh_params)

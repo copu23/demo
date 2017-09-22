@@ -16,7 +16,7 @@ li {
 <% end %>
 <%= f.input :vung_id  ,label: "Vùng" do %>
 
-<%= f.collection_select :vung_id,Vung.all,:id,:tenvung, Ơ:prompt=> "---Vùng---"Ư %>
+<%= f.collection_select :vung_id,Vung.all,:id,:tenvung, {:prompt=> "---Vùng---"} %>
 <% end %>
 <%= f.input :nackhoiluong_id  ,label: "Nấc khối lượng" do %>
 

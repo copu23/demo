@@ -28,6 +28,8 @@ class NguoinhansController < ApplicationController
 			
 	end
 
+	
+
 	def update
 		if @nguoinhan.update(nguoinhan_params)
 		flash[:notice] = "Cập nhật thành công."

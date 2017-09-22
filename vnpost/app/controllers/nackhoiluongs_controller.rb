@@ -1,4 +1,5 @@
 class NackhoiluongsController < ApplicationController
+	layout "admin"
 	before_action :set_nackhoiluong, only: [:show, :edit, :update, :destroy]
 
 def index
@@ -27,16 +28,10 @@ def update
 
 end
 	def get_id
-	khoiluong = (params[:trongluongtinh]).to_f
+		khoiluong = params[:trongluongtinh]
 
-	@nackhoiluongs = Nackhoiluong.all
-   	@nackhoiluongs.each do |nackhoiluong|
- 	 if khoiluong >= nackhoiluong.khoiluongbd and khoiluong <= nackhoiluong.khoiluongkt
-		 return nackhoiluong.id
-			render json:nackhoiluong.id	
-			
-	end 
-	end
+		nackhoiluong = Nackhoiluong.where("nackhoiluongs.khoiluongbd < ? AND nackhoiluongs.khoiluongkt >= ?", khoiluong, khoiluong).take
+			render json:{id: nackhoiluong ? nackhoiluong.id : nil}	
 
 	end
 

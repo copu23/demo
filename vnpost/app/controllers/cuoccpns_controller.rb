@@ -1,5 +1,5 @@
 class CuoccpnsController < ApplicationController
-
+layout "admin"
 before_action :set_cuoccpn, only: [:show, :edit, :update, :destroy]
 
 def index
@@ -25,6 +25,25 @@ def update
 	flash.now[:alert] = "Cập nhật không thành công."
 	render "edit"
 	end
+
+end
+
+def getcuocphi
+	nackl = params[:nackhoiluong_id]
+	dv = params[:dichvu_id] 
+	vandonid = params[:vandon_id]
+	
+	tinh = Nguoinhan.select("tinh_id").where("nguoinhans.vandon_id = ? ",vandonid)
+	vung = Tinh.select("vung_id").where("tinhs.id = ? ",tinh)
+
+	
+
+
+	muccuoc = Cuoccpn.select("muccuoc").where("cuoccpns.dichvu_id = ? 
+				AND cuoccpns.nackhoiluong_id = ?
+	 			AND cuoccpns.vung_id = ? ", dv, nackl, vung)
+			
+	render json:muccuoc
 
 end
 

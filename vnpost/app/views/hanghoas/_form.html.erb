@@ -23,6 +23,7 @@
 
 <%= f.collection_select :dichvucongthem_id,Dichvucongthem.all,:id,:tendvct, {:prompt=> "---Dịch vụ cộng thêm---"} %>
 <% end %>
+
 <%= f.input :cuocchinh, label: "Cước chính" %>
 <%= f.input :cuocphu, label: "Cước phụ " %>
 <%= f.input :tongcuoc, label: "Tổng cước" %>
@@ -32,7 +33,8 @@
 <% end %>
 
 <script type="text/javascript">
-
+	var nackhoiluong_id
+	var vandon_id=<%= @vandon.id %>
 	$("#hanghoa_trongluongtinh").on('change', function(){
 	    $.ajax({
 	    	url: "/nackhoiluongs/get_id", 
@@ -41,7 +43,7 @@
 	    	},
 	    	success: function(data){ 
 
-	        	alert(data);
+	        	nackhoiluong_id =data.id;
 	    	},
 	    	error: function (ajaxContext) {
 		        alert(ajaxContext.responseText)
@@ -55,6 +57,22 @@
 	    		dichvu_id : $("#hanghoa_dichvu_id").val()
 	    	},
 	    	success: function(result){ 
+	    		$.ajax({
+			    	url: "/cuoccpns/getcuocphi", 
+			    	data:{
+			    		dichvu_id: result,
+			    		nackhoiluong_id : nackhoiluong_id,
+			    		vandon_id: vandon_id
+			    		
+			    	},
+			    	success: function(data){ 
+			    	
+			        	$('#hanghoa_cuocchinh').val(data.id)
+			    	},
+			    	error: function (ajaxContext) {
+				        alert(ajaxContext.responseText)
+				    }
+				});
 	        	alert(result);
 	    	},
 	    	error: function (ajaxContext) {
@@ -77,6 +95,10 @@
 		        alert(ajaxContext.responseText)
 		    }
 		});
+	});
+
+		$("#hanghoa_cuocchinh").on('change', function(){
+	    
 	});
 
 

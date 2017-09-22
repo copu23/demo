@@ -45,7 +45,7 @@ background-color: <%= state.color %>;
      <li><a <%= link_to "Loai hang", loaihangs_path %></li> <li><a <%= link_to "Table", tables_path %></li>
     <% admins_only do %>
     <li>
-    <%= link_to "Admin", admin_application_index_path %>
+    <%= link_to "Admin", admin_root_path %>
     </li>
     <% end %>
     <% unless user_signed_in? %>

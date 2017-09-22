@@ -3,8 +3,11 @@ Rails.application.routes.draw do
 get 'nackhoiluongs/get_id'
 get 'dichvus/get_id'
 get 'dichvucongthems/get_id'
+get 'tinhs/getvung_id'
+get 'cuoccpns/getcuocphi'
+
   namespace :admin do
-    get 'application/index'
+    root 'application#index'
     resources :loaihangs, only: [:new, :create, :destroy]
     resources :tables , only: [:new, :create, :destroy]
      
