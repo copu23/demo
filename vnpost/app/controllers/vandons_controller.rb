@@ -21,11 +21,17 @@ class VandonsController < ApplicationController
 	end
 	def index
 		@vandons = policy_scope(Vandon)
-		 @vandons = Vandon.search(params[:term])
-		@vandons = if params[:term]
-    Vandon.where('id LIKE ?', "%#{params[:term]}%")
+		#  @vandons = Vandon.search(params[:term])
+		# @vandons = if params[:term]
+  #   Vandon.where('id LIKE ?', "%#{params[:term]}%")
+  # else
+  #   Vandon.all
+  # end
+
+  if params[:search]
+    @vandons = Vandon.search(params[:search]).order("created_at DESC")
   else
-    Vandon.all
+    @vandons = Vandon.all.order('created_at DESC')
   end
 	end
 

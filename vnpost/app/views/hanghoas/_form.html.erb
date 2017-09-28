@@ -1,5 +1,7 @@
+
 <%= simple_form_for([vandon, hanghoa]) do |f| %>
- <% if hanghoa.errors.any? %>
+
+<!--  <% if hanghoa.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(hanghoa.errors.count, "error") %> prohibited this hanghoa from being saved:</h2>
 
@@ -9,32 +11,93 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
-<%= f.input :trongluongtinh, label:"Trọng lượng tịnh" %>
-<%= f.input :trongluongquydoi, label: "Trọng lượng quy đổi" %>
-<%= f.input :chieudai, label: "Chiều dài" %>
-<%= f.input :chieucao, label: "Chiều cao" %>
-<%= f.input :chieurong, label: "Chiều rộng" %>
-<%= f.input :dichvu_id  ,label: "Dịch vụ" do %>
+  <% end %> -->
 
-<%= f.collection_select :dichvu_id,Dichvu.all,:id,:tendv, {:prompt=> "---Dịch vụ---"} %>
-<% end %>
-<%= f.input :dichvucongthem_id  ,label: "Dịch vụ cộng thêm" do %>
+<div id="theone" class="row"> 
 
-<%= f.collection_select :dichvucongthem_id,Dichvucongthem.all,:id,:tendvct, {:prompt=> "---Dịch vụ cộng thêm---"} %>
-<% end %>
+ <div class ="col-md-4">
+ 	<p class="m-t-md m-b-md">
+ 		<strong>1. Thông tin hàng hóa</strong>
+ 	</p>
+ 		<div>
+ 			<%= f.input :trongluongtinh,label:"Trọng lượng tịnh" %>
+		</div>
+				
+ 		<div >
+ 			<%= f.input :chieucao, label:"Chiều cao" %></div>
+				
+ 		<div >
+ 			<%= f.input :chieudai,label: "Chiều dài" %></div>
+				
+ 		<div >
+ 			<%= f.input :chieurong, label:"Chiều rộng" %></div>
+		<div>
+ 			<%= f.input :trongluongquydoi, label: "Trọng lượng quy đổi" %></div>
+ 	</div>
+		
+ <div class ="col-md-4">
+		<div class="row">
+			<p class="m-t-md m-b-md">
+	 			<strong>2. Thông tin dịch vụ</strong>
+	 		</p>
 
-<%= f.input :cuocchinh, label: "Cước chính" %>
-<%= f.input :cuocphu, label: "Cước phụ " %>
-<%= f.input :tongcuoc, label: "Tổng cước" %>
-<%= f.input :motachitiet, label: "motachitiet" %>
-<%= f.button :submit, class: "btn-primary" %>
+			<div class="col-lg-12 col-md-12">
+				<%= f.input :dichvu_id, label: "Dịch vu"  do %>
+				<%= f.collection_select :dichvu_id,Dichvu.all,:id,:tendv, {:prompt=> "---Dịch vụ---"} %>
+				<% end %>
+	 		</div>
+	 	
+ 			
+			
+			<p class="m-t-md m-b-md">
+					<strong>3. Dịch vụ cộng thêm</strong>
+			</p>
+			<div class="col-md-12 m-t-md m-b-md">
+			<%= f.input :dichvucongthem_id  ,label: "Dịch vụ cộng thêm" do %>
+			<%= f.collection_select :dichvucongthem_id,Dichvucongthem.all,:id,:tendvct, {:prompt=> "---Dịch vụ cộng thêm---"} %>
+			<% end %>
+				
+			
+			<p  class="m-t-md m-b-md">
+	 			<strong>4. Mô tả chi tiết</strong>
+	 		</p>
+			<div class="col-md-12 m-t-md m-b-md">
+				<%= f.input :motachitiet, label: "motachitiet" %></div>
+			
+			
+		
+	</div>
+	</div>
+	</div>
+			
+	 <div class ="col-md-4">
+		<p  class="m-t-md m-b-md">
+	 		<strong>5. Cước phí</strong>
+	 	</p>
 
-<% end %>
+		<div class="col-md-12 m-t-md m-b-md">
+
+			<%= f.input :cuocchinh, label: "Cước chính" %>
+		</div>
+		<div class="col-md-12 m-t-md m-b-md">
+			<%= f.input :cuocphu, label: "Cước phụ " %></div>
+		<div class="col-md-12 m-t-md m-b-md">
+			<%= f.input :tongcuoc, label: "Tổng cước" %></div>
+
+		<div class="col-md-12 m-t-md m-b-md"><%= f.button :submit, class: "btn-primary" %></div>
+				
+		
+	</div>
+	
+</div>
+
+<% end %>	
 
 <script type="text/javascript">
 	var nackhoiluong_id
 	var vandon_id=<%= @vandon.id %>
+	var cuocchinh
+	var cuocphu
 	$("#hanghoa_trongluongtinh").on('change', function(){
 	    $.ajax({
 	    	url: "/nackhoiluongs/get_id", 
@@ -68,17 +131,23 @@
 			    	success: function(data){ 
 			    	
 			        	$('#hanghoa_cuocchinh').val(data.id)
+			        	$('#hanghoa_cuocchinh').trigger('change')
 			    	},
 			    	error: function (ajaxContext) {
 				        alert(ajaxContext.responseText)
 				    }
 				});
-	        	alert(result);
+	        
 	    	},
 	    	error: function (ajaxContext) {
 		        alert(ajaxContext.responseText)
 		    }
 		});
+
+		$("#hanghoa_cuocchinh").on('change', function(){
+	    
+	});
+
 	});
 
 	$("#hanghoa_dichvucongthem_id").on('change', function(){
@@ -89,17 +158,45 @@
 	    	},
 	    	success: function(result){ 
 	    	
-	        	alert(result);
+	        	$.ajax({
+			    	url: "/dichvucongthems/get_muccuoc", 
+			    	data:{
+			    		dichvucongthem_id: result
+			    	},
+			    	success: function(data){ 
+			    	
+			        	$('#hanghoa_cuocphu').val(data.id)
+			        	$('#hanghoa_cuocphu').trigger('change')
+
+
+			    	},
+			    	error: function (ajaxContext) {
+				        alert(ajaxContext.responseText)
+				    }
+				});
+	        
 	    	},
+	    	
 	    	error: function (ajaxContext) {
 		        alert(ajaxContext.responseText)
 		    }
 		});
+	
 	});
 
-		$("#hanghoa_cuocchinh").on('change', function(){
+	$("#hanghoa_cuocphu").on('change', function(){
+		$('#hanghoa_tongcuoc').val( parseInt($("#hanghoa_cuocphu").val()) + parseInt($("#hanghoa_cuocchinh").val()))
 	    
+	    });
+
+	$("#hanghoa_cuocchinh").on('change', function(){
+
+		$('#hanghoa_tongcuoc').val( parseInt($("#hanghoa_cuocphu").val()) + parseInt($("#hanghoa_cuocchinh").val()))
+	
 	});
+
+	
+	    	
 
 
 

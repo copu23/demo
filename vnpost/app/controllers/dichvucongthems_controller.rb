@@ -1,4 +1,5 @@
 class DichvucongthemsController < ApplicationController
+	layout "admin"
 	before_action :set_dichvucongthem, only: [:show, :edit, :update, :destroy]
 
 def index
@@ -12,18 +13,19 @@ def show
 def get_id
 	dvct = params[:dichvucongthem_id] 
 	
-	# @dichvucongthems = Dichvucongthem.all
- #   	@dichvucongthems.each do |dichvucongthem|
- # 	if dichvucongthem.id == dvct 
-	# 	 return dichvucongthem.vung_id
-	# 	render json:dichvucongthem.vung_id	
-	# end 
-	# end
 	# dichvucongthem = Dichvucongthem.where("dichvucongthems. < ? AND nackhoiluongs.khoiluongkt >= ?", khoiluong, khoiluong).take
 	# 		render json:{id: nackhoiluong ? nackhoiluong.id : nil}	
-render json:dvct
+	render json:dvct
 
 end
+def get_muccuoc
+	dvct = params[:dichvucongthem_id] 
+	
+	muccuoc = Dichvucongthem.where("dichvucongthems.id = ?", dvct).take
+	render json:{id: muccuoc ? muccuoc.mcdvct : nil }
+	
+end
+
 
 
 def edit

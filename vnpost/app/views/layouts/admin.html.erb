@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,9 +19,9 @@
 
 </head>
 
-<body>
+<body id="one">
 
-    <div id="wrapper">
+    <div id="wrapp">
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -32,6 +33,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand"<%= link_to "Admin", admin_root_path %></a>
+
             </div>
             <!-- /.navbar-header -->
 
@@ -39,40 +41,36 @@
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
+                    <ul class="nav" id="side">
+                   
                             <!-- /input-group -->
-                        </li>
+                     
+
                         <li>
                              <a <%= link_to "Quản lí vận đơn", vandons_path %></a>
                         </li>
                         <li>
                             <a <%= link_to "Quản lí người dùng", admin_users_path %> </a>
-                            <ul class="nav nav-second-level">
+                           <!--  <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">Flot Charts</a>
+                                    <a href="flot.html">Flot Chát</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Morris.js Charts</a>
+                                    <a href="mói.html">Mói.js Chát</a>
                                 </li>
-                            </ul>
+                            </ul> -->
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a <%= link_to "Định mức cước", cuoccpns_path %>
+                            <a <%= link_to "Định mức cước", cuoccpns_path %></a>
                         </li>
                         <li>
-                           <a <%= link_to "Nấc khối lượng", nackhoiluongs_path %>
+                           <a <%= link_to "Nấc khối lượng", nackhoiluongs_path %></a>
                         </li>
-                        <li>
+                         <li>
+                           <a <%= link_to "Dịch vụ cộng thêm", dichvucongthems_path %></a>
+                        </li>
+                       <!--  <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -95,7 +93,7 @@
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
-                        </li>
+                       <!--  </li>
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -122,20 +120,19 @@
                                         </li>
                                     </ul>
                                     <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
+                                <!-- </li>
+                            </ul> --> 
                             <!-- /.nav-second-level -->
-                        </li>
+                      <!--   </li> --> 
                         <li class="active">
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
+                            
+                           
                                 <li>
-                                    <a class="active" href="blank.html">Blank Page</a>
+                                    <%= link_to "Đăng xuất", destroy_user_session_path,
+        method: :delete %>
+        
                                 </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
-                                </li>
-                            </ul>
+
                             <!-- /.nav-second-level -->
                         </li>
                     </ul>
@@ -147,7 +144,7 @@
 
         <!-- Page Content -->
         <div id="page-wrapper">
-           <div class="container">
+           <div class="container" id="contain">
             <% flash.each do |key, message| %>
         <div class="alert alert-<%= key %>">
             <%= message %>

@@ -10,8 +10,7 @@
       <th>Khách hàng</th>
        <th>SĐT </th>
       <th> Địa chỉ</th>
-      <th>Quận huyên</th>
-      <th>Thành phố</th>
+      
        <th> </th>
       <th></th>
       <th></th>
@@ -23,8 +22,7 @@
 <td><%= link_to khachhang.hotenkh, [@vandon, khachhang] %></td>
 <td><%= khachhang.sodt %></td>
 <td><%= khachhang.address %></td>
-<td><%= khachhang.sub_state %></td>
-<td><%= khachhang.province %></td>
+
 <td><%= link_to "Edit", [:edit, @vandon, @khachhang],
 class: "edit" %></li></td>
 
@@ -39,4 +37,5 @@ class: "delete" %>
 <% end %>
 </tbody>
 </table>
+
 

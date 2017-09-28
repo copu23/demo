@@ -12,7 +12,7 @@ class Admin::VandonsController < Admin::ApplicationController
 	end
 
 	def edit
-		authorize @vandon, :update?
+		# authorize @vandon, :update?
 	end
 
 	def update

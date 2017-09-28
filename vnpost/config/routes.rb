@@ -5,6 +5,8 @@ get 'dichvus/get_id'
 get 'dichvucongthems/get_id'
 get 'tinhs/getvung_id'
 get 'cuoccpns/getcuocphi'
+get 'dichvucongthems/get_muccuoc'
+get 'cuoccpns/tong_cuoc'
 
   namespace :admin do
     root 'application#index'

@@ -6,20 +6,22 @@ def create
 	@comment.nguoilap = current_user
 	authorize @comment, :create?
 		if @comment.save
-	flash[:notice] = "Comment has been created."
+	flash[:notice] = " Tạo ghi chú thành công"
 	redirect_to [@hanghoa.vandon, @hanghoa]
 		else
-	flash.now[:alert] = "Comment has not been created."
+	flash.now[:alert] = "Tạo ghi chú không thành công."
 	@vandon = @hanghoa.vandon
 	render "hanghoas/show"
 	end
 end
 
 private
-def set_hanghoa
-@hanghoa = Hanghoa.find(params[:hanghoa_id])
-end
-def comment_params
-params.require(:comment).permit(:text, :state_id)
-end
+
+	def set_hanghoa
+		@hanghoa = Hanghoa.find(params[:hanghoa_id])
+	end
+
+	def comment_params
+		params.require(:comment).permit(:text, :state_id)
+	end
 end

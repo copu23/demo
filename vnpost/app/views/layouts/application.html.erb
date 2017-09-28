@@ -1,6 +1,8 @@
+
 <!DOCTYPE html>
 <html>
   <head>
+  
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>
   <% if content_for?(:title) %>
@@ -17,10 +19,12 @@
 background-color: <%= state.color %>;
 }
 <% end %>
+
 </style>
+
   </head>
 
-  <body>
+  <body >
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 <div class="container">
 
@@ -39,10 +43,10 @@ background-color: <%= state.color %>;
   <ul class="nav navbar-nav">
   
     <li class="<%= "active" if current_page?("/") %>">
-    <li> <%= link_to "Home", root_path %>
-    </li>
-     <li><a <%= link_to "Van don", vandons_path %></li>
-     <li><a <%= link_to "Loai hang", loaihangs_path %></li> <li><a <%= link_to "Table", tables_path %></li>
+   <!--  <li> <%= link_to "Home", root_path %>
+    </li> -->
+    <!--  <li><a <%= link_to "Vận đơn", vandons_path %></li>
+     <li><a <%= link_to "Loại hàng", loaihangs_path %></li> <li> -->
     <% admins_only do %>
     <li>
     <%= link_to "Admin", admin_root_path %>
@@ -50,10 +54,10 @@ background-color: <%= state.color %>;
     <% end %>
     <% unless user_signed_in? %>
     <li class="<%= "active" if current_page?("/users/sign_up") %>">
-    <%= link_to "Sign up", new_user_registration_path %>
+    <%= link_to "Đăng ký", new_user_registration_path %>
     </li>
     <li class="<%= "active" if current_page?("/users/sign_in") %>">
-    <%= link_to "Sign in", new_user_session_path %>
+    <%= link_to "Đăng nhập", new_user_session_path %>
     </li>
     <% end %>
 
@@ -63,7 +67,7 @@ background-color: <%= state.color %>;
         Signed in as <%= current_user.email %>
         </p>
         <ul class="nav navbar-nav">
-        <li><%= link_to "Sign out", destroy_user_session_path,
+        <li><%= link_to "Đăng xuất", destroy_user_session_path,
         method: :delete %>
         </li>
 

@@ -3,11 +3,22 @@
 </head>
 <header>
 <h1>Vận đơn</h1>
-<div>
+<!-- <div>
 <%= form_tag(vandons_path, method: :get) do %>
   <%= text_field_tag :term, params[:term] %>
-  <%= submit_tag 'Search', name: nil %>
+  <%= submit_tag 'Tìm kiếm', name: nil %>
 <% end %>
+</div> -->
+
+<div>
+  
+
+<%= form_tag(vandons_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Tìm kiếm theo mã vận đơn" %>
+<%= submit_tag "Tìm kiếm" %>
+<% end %>
+
+
 </div>
 <ul class="actions">
 <li>

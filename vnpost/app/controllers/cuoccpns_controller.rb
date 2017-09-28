@@ -33,18 +33,24 @@ def getcuocphi
 	dv = params[:dichvu_id] 
 	vandonid = params[:vandon_id]
 	
-	tinh = Nguoinhan.select("tinh_id").where("nguoinhans.vandon_id = ? ",vandonid)
-	vung = Tinh.select("vung_id").where("tinhs.id = ? ",tinh)
+	tinh = Nguoinhan.where("nguoinhans.vandon_id = ? ",vandonid).take
+	vung = Tinh.where("tinhs.id = ? ",tinh.tinh_id).take
+	vung = vung.vung_id
 
-	
 
-
-	muccuoc = Cuoccpn.select("muccuoc").where("cuoccpns.dichvu_id = ? 
+	muccuoc = Cuoccpn.where("cuoccpns.dichvu_id = ? 
 				AND cuoccpns.nackhoiluong_id = ?
-	 			AND cuoccpns.vung_id = ? ", dv, nackl, vung)
+	 			AND cuoccpns.vung_id = ? ", dv, nackl, vung).take
 			
-	render json:muccuoc
+	render json:{id: muccuoc ? muccuoc.muccuoc : nil}
 
+end
+
+def tong_cuoc
+	cuocchinh = params[:cuocchinh] 
+	cuocphu = params[:cuocphu] 
+	# total_price = cuocchinh.sum(cuocphu)
+	render json:{id: cuocphu}
 end
 
 

@@ -56,11 +56,11 @@ private
 	end
 
 	def set_vandon
-	@vandon = Vandon.find(params[:vandon_id])
+		@vandon = Vandon.find(params[:vandon_id])
 	end
 
 	def hanghoa_params
-	params.require(:hanghoa).permit(:trongluongtinh, :trongluongquydoi, :chieudai, :chieucao, :chieurong, :cuocchinh, :cuocphu, :tongcuoc, :motachitiet, :dichvu_id, :dichvucongthem_id, :state_id)
+		params.require(:hanghoa).permit(:trongluongtinh, :trongluongquydoi, :chieudai, :chieucao, :chieurong, :cuocchinh, :cuocphu, :tongcuoc, :motachitiet, :dichvu_id, :dichvucongthem_id, :state_id)
 	end
 
 
