@@ -37,8 +37,8 @@ class VandonsController < ApplicationController
 
 	
 
-	def show?
-	
+	def show
+		
 	end
 
 	def edit

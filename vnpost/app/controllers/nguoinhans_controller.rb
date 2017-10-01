@@ -8,7 +8,7 @@ class NguoinhansController < ApplicationController
 		@nguoinhan = @vandon.nguoinhans.build(nguoinhan_params)
 		if @nguoinhan.save
 		flash[:notice] = "Tạo thành công."
-		redirect_to [@vandon, @nguoinhan]
+		redirect_to @vandon
 		else
 		flash.now[:alert] = "Tạo không thành công."
 		render "new"

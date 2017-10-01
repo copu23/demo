@@ -89,27 +89,26 @@ class: "edit" %></li>
 
   <div class="col-md-4">
     <p class="m-b-md-m-b-md">
-    <strong>3. Hàng hóa </strong></p>
+    <strong>3. Thông tin hàng hóa </strong></p>
     <div><%= link_to "Thêm mới hàng hóa", new_vandon_hanghoa_path(@vandon), class: "new" %>
     </div>
-
-
-
     <div>
 
       <% @vandon.hanghoas.each do |hanghoa| %>
-      <div><label> Id: </label></div>
-      <div><%= link_to hanghoa.id, [@vandon, hanghoa] %> </div>
-      <div><label> Trạng thái: </label></div>
-      <div><%= render hanghoa.state if hanghoa.state %></div>
-      <div><label> Trọng lượng tịnh: </label></div>
-      <div><%= hanghoa.trongluongtinh %></div>
-      <div><label> Cước chính: </label></div>
-      <div><div><%= hanghoa.cuocchinh %></div>
-      <div><label> Cước phụ: </label></div>
-      <div><%= hanghoa.cuocphu %></div></div>
-      <div><label> Tổng cước: </label></div>
-      <div><%= hanghoa.tongcuoc %></div>
+      <div><label> Id: </label><%= link_to hanghoa.id, [@vandon, hanghoa] %></div>
+
+      <div><label> Trạng thái: </label>
+     
+      <%= hanghoa.state_id if hanghoa.state_id %></div>
+    
+      <div><label> Trọng lượng tịnh: </label><%= hanghoa.trongluongtinh %></div>
+     
+      <div><label> Cước chính: </label><%= hanghoa.cuocchinh %></div>
+     
+      <div><label> Cước phụ: </label><%= hanghoa.cuocphu %></div></div>
+
+      <div><label> Tổng cước: </label><%= hanghoa.tongcuoc %></div>
+
 
 
       <%= link_to t('.edit', :default => t("helpers.links.edit")),

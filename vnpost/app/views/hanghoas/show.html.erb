@@ -3,9 +3,25 @@
 <h1><%= @vandon.id %></h1>
 </header>
 <header>
-<h2>Trọng lượng tịnh: <%= @hanghoa.trongluongtinh %></h2>
+<!-- <h2>Trọng lượng tịnh: <%= @hanghoa.trongluongtinh %></h2> -->
 </header>
 
+      <% @vandon.hanghoas.each do |hanghoa| %>
+      <div><label> Id: </label><%= link_to hanghoa.id, [@vandon, hanghoa] %></div>
+
+      <div><label> Trạng thái: </label>
+     
+      <%= hanghoa.state_id if hanghoa.state_id %></div>
+    
+      <div><label> Trọng lượng tịnh: </label><%= hanghoa.trongluongtinh %></div>
+     
+      <div><label> Cước chính: </label><%= hanghoa.cuocchinh %></div>
+     
+      <div><label> Cước phụ: </label><%= hanghoa.cuocphu %></div></div>
+
+      <div><label> Tổng cước: </label><%= hanghoa.tongcuoc %></div>
+
+<% end %>
 <ul class="actions">
 <li><%= link_to "Edit", [:edit, @vandon, @hanghoa],
 class: "edit" %></li>
@@ -28,12 +44,13 @@ class: "delete" %></li>
 <% end %>
 </div>
 <table>
-<% if @hanghoa.state.present? %>
-<tr>
-<th>Trạng thái: </th>
-<td><%= render @hanghoa.state %></td>
-</tr>
+
+<% if @hanghoa.state_id.present? %>
+
+<tr>Trạng thái: 
+<th> <%= @comment.state.name %></th>
 <% end %>
+</tr>
 </table>
 <% if policy(@comment).create? %>
 <%= render "comments/form",  hanghoa: @hanghoa, comment: @comment %>

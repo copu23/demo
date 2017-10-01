@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
    belongs_to :hanghoa
-  belongs_to :nguoilap, class_name: "User"
+    belongs_to :nguoilap, class_name: "User"
      belongs_to :state
   # belongs_to :previous_state, class_name: "State"
 
@@ -13,7 +13,7 @@ class Comment < ApplicationRecord
   private
 
 	def set_hanghoa_state
-  	hanghoa.state = state
+  	hanghoa.state_id = state_id
   	hanghoa.save!
 	end
 
