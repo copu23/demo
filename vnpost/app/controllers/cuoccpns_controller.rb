@@ -46,12 +46,12 @@ def getcuocphi
 
 end
 
-def tong_cuoc
-	cuocchinh = params[:cuocchinh] 
-	cuocphu = params[:cuocphu] 
-	# total_price = cuocchinh.sum(cuocphu)
-	render json:{id: cuocphu}
-end
+# def tong_cuoc
+# 	cuocchinh = params[:cuocchinh] 
+# 	cuocphu = params[:cuocphu] 
+# 	# total_price = cuocchinh.sum(cuocphu)
+# 	render json:{id: cuocphu}
+# end
 
 
 private

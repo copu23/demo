@@ -1,6 +1,7 @@
 <div id="hanghoa">
 <header>
 <h1><%= @vandon.id %></h1>
+
 </header>
 <header>
 <!-- <h2>Trọng lượng tịnh: <%= @hanghoa.trongluongtinh %></h2> -->
@@ -34,13 +35,13 @@ class: "delete" %></li>
 </div>
 <header>
 
-<h3> Ghi chú</h3>
+<h3> Thông tin trạng thái</h3>
 </header>
 <div id="comments">
 <% if @hanghoa.comments.persisted.any? %>
 <%= render @hanghoa.comments.persisted %>
 <% else %>
-<p>Không có ghi chú nào.</p>
+<p>Không có thông tin nào.</p>
 <% end %>
 </div>
 <table>
@@ -49,9 +50,29 @@ class: "delete" %></li>
 
 <tr>Trạng thái: 
 <th> <%= @comment.state.name %></th>
+
 <% end %>
 </tr>
 </table>
 <% if policy(@comment).create? %>
 <%= render "comments/form",  hanghoa: @hanghoa, comment: @comment %>
 <% end %>
+<script type="text/javascript">
+var hanghoa_id=<%= @hanghoa.id %>
+		$("#comment_state_id").on('change', function(){
+	    $.ajax({
+	    	url: "/home/guiSMS", 
+	    	data:{
+	    		hanghoa_id : hanghoa_id,
+	    		 state_id : $("#comment_state_id").val()
+	    	},
+	    	success: function(data){ 
+
+	        	alert(data.id)
+	    	},
+	    	error: function (ajaxContext) {
+		        alert(ajaxContext.responseText)
+		    }
+		});
+	});
+</script>

@@ -1,6 +1,6 @@
 
 <header>
-<h3>Thêm ghi chú</h3>
+<h3>Thêm Thông tin trạng thái</h3>
 </header>
 <%= simple_form_for [hanghoa, comment] do |f| %>
  <% if comment.errors.any? %>
@@ -14,10 +14,11 @@
       </ul>
     </div>
   <% end %>
-<%= f.input :text %>
-<%= f.association :state %>
+<%= f.input :text, label: "Mô tả" %>
+<%= f.association :state, label: "Trạng thái" %>
 <%= f.submit class: "btn btn-primary" %>
 <% end %>
+
 <!-- <select class="select optional form-control" name="comment[state_id]"
 id="comment_state_id">
 <option value="1" selected="selected">New</option>

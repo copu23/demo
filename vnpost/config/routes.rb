@@ -6,15 +6,18 @@ get 'dichvucongthems/get_id'
 get 'tinhs/getvung_id'
 get 'cuoccpns/getcuocphi'
 get 'dichvucongthems/get_muccuoc'
-get 'cuoccpns/tong_cuoc'
+# get 'comments/getid'
+get 'home/guiSMS'
 
   namespace :admin do
+    resources :dashboards
+   
     root 'application#index'
     resources :loaihangs, only: [:new, :create, :destroy]
     resources :tables , only: [:new, :create, :destroy]
      
     resources :vandons
-
+     resources :states, only: [:new, :create, :destroy]
     resources :dichvus, only: [:new, :create, :destroy]
     resources :dichvucongthems, only: [:new, :create, :destroy]
     resources :nackhoiluongs, only: [:new, :create, :destroy]
@@ -42,7 +45,7 @@ get 'cuoccpns/tong_cuoc'
   resources :vungs , only: [:index, :show, :edit, :update]
   resources :tinhs , only: [:index, :show, :edit, :update]
   resources :cuoccpns, only: [:index, :show, :edit, :update]
-      
+  resources :states  , only: [:index, :show, :edit, :update]
   resources :vandons do
     resources :hanghoas
     resources :khachhangs

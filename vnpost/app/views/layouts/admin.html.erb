@@ -47,6 +47,8 @@
                      
 
                         <li>
+                             <a <%= link_to "Thong Ke",  admin_dashboards_path %></a>
+                        </li> <li>
                              <a <%= link_to "Quản lí vận đơn", vandons_path %></a>
                         </li>
                         <li>
@@ -69,6 +71,9 @@
                         </li>
                          <li>
                            <a <%= link_to "Dịch vụ cộng thêm", dichvucongthems_path %></a>
+                        </li>
+                         <li>
+                           <a <%= link_to "Trạng thái", states_path %></a>
                         </li>
                        <!--  <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
@@ -156,8 +161,8 @@
         <!-- /#page-wrapper -->
 
     </div>
- <%= javascript_include_tag 'sb-admin-2.min', 'data-turbolinks-track': 'reload' %> 
-
+<!--  <%= javascript_include_tag 'sb-admin-2.min', 'data-turbolinks-track': 'reload' %> 
+ -->
 </body>
 
 </html>

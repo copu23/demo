@@ -35,7 +35,9 @@ class: "edit" %></li>
  <div class ="col-md-4">
   <p class="m-t-md m-b-md">
   <strong>1. Thông tin người nhận</strong></p>
+  <% if   @vandon.nguoinhans.blank? %>
   <div><%= link_to "Tạo người nhận", new_vandon_nguoinhan_path(@vandon), class: "new" %></div>
+  <% end %>
 
   <% @vandon.nguoinhans.each do |nguoinhan| %>
   <div> Họ tên người nhận: <%= link_to nguoinhan.hotennn, [@vandon, nguoinhan] %></div>
@@ -62,7 +64,9 @@ class: "edit" %></li>
       <p class="m-t-md m-b-md">
       <strong>2. Thông tin khách hàng</strong></p>
       <DIV>
+      <% if @vandon.khachhangs.blank? %>
       <%= link_to "Tạo khách hàng", new_vandon_khachhang_path(@vandon), class: "new" %>
+      <% end %>
       </DIV>
 
 
@@ -90,7 +94,9 @@ class: "edit" %></li>
   <div class="col-md-4">
     <p class="m-b-md-m-b-md">
     <strong>3. Thông tin hàng hóa </strong></p>
+ <!--    <% if @vandon.hanghoas.blank? %> -->
     <div><%= link_to "Thêm mới hàng hóa", new_vandon_hanghoa_path(@vandon), class: "new" %>
+   <!--  <% end %> -->
     </div>
     <div>
 
