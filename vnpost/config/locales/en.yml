@@ -23,5 +23,10 @@ en:
   hello: "Hello world"
   helpers:
     submit:
-        create: "Create"
-        update: "Update"
+        create: "Tạo mới"
+        update: "Cập nhật"
+  en:
+  will_paginate:
+    previous_label: "&#8592; Trang trước"
+    next_label: "Trang sau &#8594;"
+    page_gap: "&hellip;"

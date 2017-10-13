@@ -6,6 +6,8 @@ class HanghoasController < ApplicationController
 	# before_action :set_nackhoiluong
 	def create
 		@hanghoa = @vandon.hanghoas.build(hanghoa_params)
+
+	
 		if @hanghoa.save
 		flash[:notice] = "Tạo thành công."
 		redirect_to [@vandon, @hanghoa]
@@ -20,8 +22,9 @@ class HanghoasController < ApplicationController
 	end
 
 	def show
-	authorize @hanghoa, :show?
+	# authorize @hanghoa, :show?
 	@comment = @hanghoa.comments.build(state_id: @hanghoa.state_id)
+	
 	end
 
 	def edit
@@ -60,7 +63,7 @@ private
 	end
 
 	def hanghoa_params
-		params.require(:hanghoa).permit(:trongluongtinh, :trongluongquydoi, :chieudai, :chieucao, :chieurong, :cuocchinh, :cuocphu, :tongcuoc, :motachitiet, :dichvu_id, :dichvucongthem_id)
+		params.require(:hanghoa).permit(:trongluongtinh, :trongluongquydoi, :chieudai, :chieucao, :chieurong, :cuocchinh, :cuocphu, :tongcuoc, :motachitiet, :dichvu_id, :dichvucongthem_id, :state_id)
 	end
 
 

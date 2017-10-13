@@ -6,12 +6,12 @@ class HanghoaPolicy < ApplicationPolicy
   end
  
 
-def create?
-user.try(:admin?) || record.vandon.has_manager?(user) ||
-record.vandon.has_editor?(user)
-end
-  def show?
-user.try(:admin?) || record.vandon.roles.exists?(user_id: user)
-end
+# def create?
+# user.try(:admin?) || record.vandon.has_manager?(user) ||
+# record.vandon.has_editor?(user)
+# end
+#   def show?
+# user.try(:admin?) || record.vandon.roles.exists?(user_id: user)
+# end
 
 end

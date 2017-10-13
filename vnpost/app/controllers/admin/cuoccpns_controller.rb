@@ -1,4 +1,4 @@
-class Admin::CuoccpnsController < ApplicationController
+class Admin::CuoccpnsController < Admin::ApplicationController
 	 before_action :set_cuoccpn, only: [:show, :edit, :update, :destroy]
 	def new
 		@cuoccpn = Cuoccpn.new

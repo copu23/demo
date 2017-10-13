@@ -1,13 +1,13 @@
 class HomeController < ApplicationController
-	layout "admin"
+	# layout "admin"
   def guiSMS
   	state_id= params[:state_id]
 	hanghoa_id = params[:hanghoa_id]
 	vandonid = Hanghoa.where("hanghoas.id = ?", hanghoa_id).take
 	
-	sdt = Nguoinhan.where("nguoinhans.vandon_id = ? ",vandonid.vandon_id).take
+	sdt = Khachhang.where("khachhangs.vandon_id = ? ",vandonid.vandon_id).take
  	# render json: sdt.sodtnn
- 	phone = sdt.sodtnn
+ 	phone = sdt.sodt
   	 	if state_id == "7"
 			 render json:phone
 		# require 'net/http'

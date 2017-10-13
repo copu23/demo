@@ -2,7 +2,7 @@ class Comment < ApplicationRecord
    belongs_to :hanghoa
     belongs_to :nguoilap, class_name: "User"
      belongs_to :state
-  # belongs_to :previous_state, class_name: "State"
+   # belongs_to :previous_state, class_name: "State"
 
    delegate :vandon, to: :hanghoa
   scope :persisted, lambda { where.not(id: nil) }

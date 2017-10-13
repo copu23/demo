@@ -1,5 +1,5 @@
 <%= simple_form_for [:admin, state] do |f| %>
-<%= f.input :name %>
-<%= f.input :color %>
+<%= f.input :name, label: "Tên trạng thái" %>
+<%= f.input :color, label: "Màu" %>
 <%= f.submit class: 'btn btn-primary' %>
 <% end %>

@@ -30,9 +30,9 @@
   <tbody>
 <% @cuoccpns.each do |cuoccpn| %>
 <tr>
-<td><%= cuoccpn.dichvu_id %></td>
-<td><%=  cuoccpn.nackhoiluong_id %></td>
-<td><%= cuoccpn.vung_id %></td>
+<td><%= cuoccpn.dichvu.tendv %></td>
+<td><%=  cuoccpn.nackhoiluong.tennkl %></td>
+<td><%= cuoccpn.vung.tenvung%></td>
 <td><%= cuoccpn.muccuoc %></td>
 <td>
 <%= link_to t('.show', :default => t("helpers.links.show")),

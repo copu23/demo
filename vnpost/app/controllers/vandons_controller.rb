@@ -1,6 +1,6 @@
 class VandonsController < ApplicationController
    before_action :set_vandon, only: [:show, :edit, :update, :destroy]
-    layout 'admin'
+     layout 'admin'
 	# before_action :set_hanghoa, only: [:show, :edit, :update, :destroy]
 		def new
 		@vandon= Vandon.new
@@ -20,19 +20,18 @@ class VandonsController < ApplicationController
 		end
 	end
 	def index
+		@vandon =Vandon.all
 		@vandons = policy_scope(Vandon)
-		#  @vandons = Vandon.search(params[:term])
-		# @vandons = if params[:term]
-  #   Vandon.where('id LIKE ?', "%#{params[:term]}%")
-  # else
-  #   Vandon.all
-  # end
+		
+		@vandons = Vandon.joins(:nguoinhans).search(params[:search], params[:page]).order('created_at DESC')
 
-  if params[:search]
-    @vandons = Vandon.search(params[:search]).order("created_at DESC")
-  else
-    @vandons = Vandon.all.order('created_at DESC')
-  end
+		 # @vandons = Vandon.search(params[:search], params[:page])
+		  # if params[:search]
+
+		  #   @vandons = Vandon.joins(:nguoinhans).search(params[:search]).order("created_at DESC")
+		  # else
+		  #   @vandons = Vandon.all.order('created_at DESC')
+		  # end
 	end
 
 	
@@ -46,7 +45,7 @@ class VandonsController < ApplicationController
 	end
 
 	def update
-		authorize @vandon, :update?
+		# authorize @vandon, :update?
 		@vandon = Vandon.find(params[:id])
 		if @vandon.update(vandon_params)
 		flash[:notice] = "Cập nhật thành công."

@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
 before_action :set_user, only: [:show, :edit, :update, :archive]
 before_action :set_tables, only: [:new, :create, :edit, :update]
-layout 'admin'
+
 
  def index
 		@users = User.excluding_archived.order(:email)
@@ -76,7 +76,7 @@ private
 	end
 
 	def user_params
-		params.require(:user).permit(:email, :password, :admin)
+		params.require(:user).permit(:email, :password, :admin, :hoten, :diachi, :sdt)
 	end
 	def set_user
 		@user = User.find(params[:id])

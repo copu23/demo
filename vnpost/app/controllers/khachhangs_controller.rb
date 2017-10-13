@@ -3,7 +3,10 @@ class KhachhangsController < ApplicationController
 	before_action :set_vandon	
 
 	before_action :set_khachhang, only: [:show, :edit, :update, :destroy]
-
+	def index
+		
+	end
+	
 	def create
 		@khachhang = @vandon.khachhangs.build(khachhang_params)
 		if @khachhang.save

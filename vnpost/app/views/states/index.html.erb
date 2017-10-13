@@ -1,5 +1,5 @@
 <head>
-  <title>Trang thai</title>
+  <title>Trạng thái</title>
 </head>
 <header>
 <h1> Trạng thái</h1>
@@ -18,9 +18,9 @@
   <thead>
     <tr>
       <th>Trạng thái</th>
-      <th>Màu </th>
-      <th>Name</th>
      
+      <th>Tên trạng thái</th>
+      <th>Màu </th>
       <th> </th>
       <th></th>
       <th></th>
@@ -30,9 +30,9 @@
 <% @states.each do |state| %>
 <tr>
 <td><%= link_to state.id, state %></td>
+<td><%= state.name %></td>
 
 <td><%= state.color %></td>
-<td><%= state.name %></td>
 
 <td>
 <%= link_to t('.show', :default => t("helpers.links.show")),

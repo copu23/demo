@@ -10,21 +10,22 @@ li {
 }
 </style>
 <h1>Mã vận đơn: <%= @vandon.id %></h1>
-
-<li><%= link_to "Edit", edit_vandon_path(@vandon),
+<li><button onclick='window.print(); return false;' class='btn btn-success'>In vận đơn</button></li>
+<li></li>
+<li><%= link_to "Chỉnh sửa", edit_vandon_path(@vandon),
 class: "edit" %></li>
 
-<li><%= link_to "Delete", vandon_path(@vandon),method: :delete,data: { confirm: "Are you sure you want to delete this table?" },class: "delete" %></li>
+<li><%= link_to "Xóa", vandon_path(@vandon),method: :delete,data: { confirm: "Are you sure you want to delete this table?" },class: "delete" %></li>
 <li><%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 vandons_path, class: "cancel" %></li>
 
 <table id="attributes">
 <tr>
 <th>Người lập:</th>
-<td> <%= @vandon.nguoilap.email %> </td>
+<td> <%= @vandon.nguoilap.hoten %> </td>
 </tr>
 <tr>
-<th>Created:</th>
+<th>Ngày lập:</th>
 <td><%= @vandon.created_at %> </td>
 </tr>
 
@@ -44,7 +45,7 @@ class: "edit" %></li>
   <div>SĐT: <%= nguoinhan.sodtnn %></div>
   <div>Địa chỉ: <%= nguoinhan.address %></div>
   <div>Thành phố: <%= nguoinhan.sub_state %><%= nguoinhan.province %></div>
-  <div>
+  <!-- <div>
   <%= link_to "Edit", [:edit, @vandon, @nguoinhan],
   class: "edit" %>
     <% admins_only do %>
@@ -52,7 +53,7 @@ class: "edit" %></li>
   data: { confirm: "Bạn có chắc chắn xóa không"},
   class: "delete" %>
    <% end %>
-  </div>
+  </div> -->
    
     <% end %>
   </div>
@@ -76,7 +77,7 @@ class: "edit" %></li>
       <%= link_to khachhang.hotenkh, [@vandon, khachhang] %></div>
       <div><label>Số điện thoại: </label><%= khachhang.sodt %></div>
       <div><label>Địa chỉ: </label><%= khachhang.address %></div>
-      <%= link_to "Edit", [:edit, @vandon, @khachhang],
+     <!--  <%= link_to "Edit", [:edit, @vandon, @khachhang],
       class: "edit" %>
 
 
@@ -85,7 +86,7 @@ class: "edit" %></li>
       data: { confirm: "Bạn có chắc chắn xóa không"},
       class: "delete" %>
                             <% end %>
-
+ -->
       <% end %>
       </div>
   </div>
@@ -94,38 +95,26 @@ class: "edit" %></li>
   <div class="col-md-4">
     <p class="m-b-md-m-b-md">
     <strong>3. Thông tin hàng hóa </strong></p>
- <!--    <% if @vandon.hanghoas.blank? %> -->
-    <div><%= link_to "Thêm mới hàng hóa", new_vandon_hanghoa_path(@vandon), class: "new" %>
-   <!--  <% end %> -->
-    </div>
-    <div>
+         
+          <div>
+          <% if @vandon.hanghoas.blank? %> 
+          <%= link_to "Thêm mới hàng hóa", new_vandon_hanghoa_path(@vandon), class: "new" %>
+          <% end %> 
+          </div>
+         
+            <% @vandon.hanghoas.each do |hanghoa| %>
+            <div><label> Id: </label><%= link_to hanghoa.id, [@vandon, hanghoa] %></div>
 
-      <% @vandon.hanghoas.each do |hanghoa| %>
-      <div><label> Id: </label><%= link_to hanghoa.id, [@vandon, hanghoa] %></div>
+            <div><label> Trạng thái: </label><%= hanghoa.state_id if hanghoa.state_id %></div>
+          
+            <div><label> Trọng lượng tịnh: </label><%= hanghoa.trongluongtinh %></div>
+           
+            <div><label> Cước chính: </label><%= hanghoa.cuocchinh %></div>
+           
+            <div><label> Cước phụ: </label><%= hanghoa.cuocphu %></div>
 
-      <div><label> Trạng thái: </label>
-     
-      <%= hanghoa.state_id if hanghoa.state_id %></div>
-    
-      <div><label> Trọng lượng tịnh: </label><%= hanghoa.trongluongtinh %></div>
-     
-      <div><label> Cước chính: </label><%= hanghoa.cuocchinh %></div>
-     
-      <div><label> Cước phụ: </label><%= hanghoa.cuocphu %></div></div>
-
-      <div><label> Tổng cước: </label><%= hanghoa.tongcuoc %></div>
-
-
-
-      <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                            edit_vandon_hanghoa_path(hanghoa), class: "edit" %>
-
-
-      <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                            vandon_hanghoa_path(hanghoa), class: "delete" %>
-
-
-      <% end %>
-    </div>
+            <div><label> Tổng cước: </label><%= hanghoa.tongcuoc %></div>
+              <% end %> 
+         
   </div>
 </div>

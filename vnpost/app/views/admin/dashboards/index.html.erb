@@ -1,5 +1,8 @@
-<h3>My Chart</h3>
-<div id="chartContainer"><%= @chart.render() %></div>
+<h3>Biểu đồ</h3>
+<!-- <div id="chartContainer"><%= @chart %></div> -->
+<div id="chart-container"></div>
+<%= @chart.render() %>
+<div id="chartContainer">FusionCharts XT will load here!</div>
 <div class="col-md-5 text-center">
 
 <div class="col-xs-12">
@@ -8,5 +11,6 @@
 <span class="text-muted text-xs"> Tổng vận đơn phát thành công</span>
 <span class="top text-left"></span>
 </a>
+<%=  @hanghoas %>
 </div>
 </div>

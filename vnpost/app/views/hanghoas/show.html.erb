@@ -4,25 +4,6 @@
 
 </header>
 <header>
-<!-- <h2>Trọng lượng tịnh: <%= @hanghoa.trongluongtinh %></h2> -->
-</header>
-
-      <% @vandon.hanghoas.each do |hanghoa| %>
-      <div><label> Id: </label><%= link_to hanghoa.id, [@vandon, hanghoa] %></div>
-
-      <div><label> Trạng thái: </label>
-     
-      <%= hanghoa.state_id if hanghoa.state_id %></div>
-    
-      <div><label> Trọng lượng tịnh: </label><%= hanghoa.trongluongtinh %></div>
-     
-      <div><label> Cước chính: </label><%= hanghoa.cuocchinh %></div>
-     
-      <div><label> Cước phụ: </label><%= hanghoa.cuocphu %></div></div>
-
-      <div><label> Tổng cước: </label><%= hanghoa.tongcuoc %></div>
-
-<% end %>
 <ul class="actions">
 <li><%= link_to "Edit", [:edit, @vandon, @hanghoa],
 class: "edit" %></li>
@@ -32,6 +13,27 @@ data: { confirm: "Bạn có chắc chắn xóa không"},
 class: "delete" %></li>
 <li> <%= cancel_link %> </li>
 </ul>
+<!-- <h2>Trọng lượng tịnh: <%= @hanghoa.trongluongtinh %></h2> -->
+</header>
+
+      <% @vandon.hanghoas.each do |hanghoa| %>
+      <div><label> Id: </label><%= link_to hanghoa.id, [@vandon, hanghoa] %></div>
+	    <% if @hanghoa.state_id.present? %>
+
+		<div><label>Trạng thái: </label>
+		<%= @comment.state.name %></div>
+
+	<% end %>
+      <div><label> Trọng lượng tịnh: </label><%= hanghoa.trongluongtinh %></div>
+     
+      <div><label> Cước chính: </label><%= hanghoa.cuocchinh %></div>
+     
+      <div><label> Cước phụ: </label><%= hanghoa.cuocphu %></div></div>
+
+      <div><label> Tổng cước: </label><%= hanghoa.tongcuoc %></div>
+
+<% end %>
+
 </div>
 <header>
 
@@ -46,12 +48,7 @@ class: "delete" %></li>
 </div>
 <table>
 
-<% if @hanghoa.state_id.present? %>
 
-<tr>Trạng thái: 
-<th> <%= @comment.state.name %></th>
-
-<% end %>
 </tr>
 </table>
 <% if policy(@comment).create? %>

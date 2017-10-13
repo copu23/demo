@@ -8,7 +8,9 @@ get 'cuoccpns/getcuocphi'
 get 'dichvucongthems/get_muccuoc'
 # get 'comments/getid'
 get 'home/guiSMS'
-
+get 'bccps/index'
+get 'search/search'
+root 'application#index'
   namespace :admin do
     resources :dashboards
    

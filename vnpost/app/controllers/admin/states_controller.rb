@@ -1,14 +1,15 @@
 class Admin::StatesController < Admin::ApplicationController
-	
+	layout "admin"
 	def new
 	@state = State.new
 	end
+
 
 	def create
 	@state = State.new(state_params)
 		if @state.save
 		flash[:notice] = "Trạng thái tạo thành công"
-		redirect_to admin_states_path
+		redirect_to states_path
 		else
 		flash.now[:alert] = "Trạng thái không tạo thành công"
 		render "new"

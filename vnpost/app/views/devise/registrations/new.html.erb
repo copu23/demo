@@ -1,20 +1,22 @@
 
  <div class="row" id="pwd-container">
- <div class="col-md-4"></div>
   
-    <div class="col-md-4">
+   
     <h1> Đăng ký</h1>
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
 
   <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+    <%= f.input :hoten,label: "Họ và tên", required: true, autofocus: true %>
+    <%= f.input :sdt, label: "Số điện thoại", required: true, autofocus: true %>
+    <%= f.input :diachi, label: "Địa chỉ", required: true, autofocus: true %>
+     <%= f.input :email, required: true, autofocus: true %>
     <%= f.input :password, label: "Mật khẩu", required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
     <%= f.input :password_confirmation, required: true %>
   </div>
 
  <div class="form-actions">
-<%= f.button :submit, "Đăng nhập", class: "btn btn-primary" %>
+<%= f.button :submit, "Đăng ký", class: "btn btn-primary" %>
 </div>
 <% end %>
 

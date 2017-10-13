@@ -1,0 +1,12 @@
+<div> 
+<!--  <%= @vandons %> -->
+ <% @vandons.each do |vandon| %>
+<tr>
+
+<td><%= vandon.id %></td>
+
+<td><%= vandon.state.name %></td>
+</tr>
+<% end -%>
+
+</div>

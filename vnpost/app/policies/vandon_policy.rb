@@ -6,13 +6,13 @@ class Scope < Scope
 	scope.joins(:roles).where(roles: {user_id: user})
 	end
 
-end
+ end
 
 
 
-	def show?
-	user.try(:admin?) || record.roles.exists?(user_id: user)
-	end
+	# def show?
+	# user.try(:admin?) || record.roles.exists?(user_id: user)
+	# end
 
 	def update?
 	user.try(:admin?) || record.roles.exists?(user_id: user,
