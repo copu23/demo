@@ -1,6 +1,6 @@
 class TinhsController < ApplicationController
 	before_action :set_tinh, only: [:show, :edit, :update, :destroy]
-
+	layout "admin"
 def index
 	@tinhs = Tinh.all
 end

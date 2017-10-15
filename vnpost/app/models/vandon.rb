@@ -21,7 +21,7 @@ class Vandon < ApplicationRecord
 	  #          :conditions
 	  #          :order => 'created_at DESC'
 
-	  @results = Vandon.where(conditions).paginate(:page => page, :per_page => 2)
+	  @results = Vandon.where(conditions).paginate(:page => page, :per_page => 5)
 	end
 
 

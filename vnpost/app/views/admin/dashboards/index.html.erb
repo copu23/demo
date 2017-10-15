@@ -1,8 +1,21 @@
 <h3>Biểu đồ</h3>
-<!-- <div id="chartContainer"><%= @chart %></div> -->
-<div id="chart-container"></div>
-<%= @chart.render() %>
-<div id="chartContainer">FusionCharts XT will load here!</div>
+ <div id="chartContainer">
+
+ <%= @chart_pie %>
+ 	
+ </div> 
+ <div  id="chartContainer1"> <%= @chart %></div>
+  <div id="chartContainer1"></div> 
+<div class="row">
+<div class="col-md-6" id="chart-container">
+<%= @chart.render() %></div>
+<div id="chartContainer"></div>
+<div class="col-md-6" id="chart-container">
+<%= @chart_pie.render() %></div>
+<div id="chartContainer">Biểu đồ đường</div>
+
+
+</div>
 <div class="col-md-5 text-center">
 
 <div class="col-xs-12">
@@ -12,5 +25,7 @@
 <span class="top text-left"></span>
 </a>
 <%=  @hanghoas %>
+
+</div>
 </div>
 </div>
