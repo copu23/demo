@@ -5,7 +5,7 @@ class CommentPolicy < ApplicationPolicy
     end
   end
   def create?
-user.try(:admin?) || record.vandon.has_manager?(user) ||
+user.try(:admin?) ||user.try(:nhanvien?) || record.vandon.has_manager?(user) ||
 record.vandon.has_editor?(user)
 end
 end

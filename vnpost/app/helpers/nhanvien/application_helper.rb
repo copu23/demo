@@ -1,0 +1,2 @@
+module Nhanvien::ApplicationHelper
+end

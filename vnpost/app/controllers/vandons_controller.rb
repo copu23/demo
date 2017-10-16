@@ -1,6 +1,7 @@
 class VandonsController < ApplicationController
+	
    before_action :set_vandon, only: [:show, :edit, :update, :destroy]
-     layout 'admin'
+     
 	# before_action :set_hanghoa, only: [:show, :edit, :update, :destroy]
 		def new
 		@vandon= Vandon.new
@@ -12,7 +13,7 @@ class VandonsController < ApplicationController
 
 		if @vandon.save
 
-		flash[:notice] = "Vận đơn tạo thành công."
+		flash[:notice] = "Vận đơn tạo sfdsgdfgfdthành công."
 		redirect_to @vandon
 		else
 			flash.now[:alert] = "Vận đơn tạo không thành công."

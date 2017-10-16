@@ -1,10 +1,10 @@
 <%= simple_form_for [:admin, user] do |f| %>
-<%= f.input :email %>
-<%= f.input :password %>
-<%= f.input :hoten %>
-<%= f.input :sdt %>
-<%= f.input :diachi %>
-<header>
+<%= f.input :email, label: "Email" %>
+<%= f.input :password, label: "Mật khẩu" %>
+<%= f.input :hoten, label: "Họ và tên" %>
+<%= f.input :sdt , label: "Số điện thoại"%>
+<%= f.input :diachi, label: "Địa chỉ" %>
+<!-- <header>
 <h2>Phân quyền</h2>
 </header>
 <table class="roles">
@@ -13,14 +13,29 @@
 <th><%= label_tag dom_id(table), table.name %></th>
 <td>
 <%= select_tag dom_id(table), options_for_select(roles,
-user.role_on(table)), name: "roles[#{table.id}]",
+ủe.role_on(table)), name: "roles[#{table.id}]",
 include_blank: true %>
 </td>
 </tr>
 <% end %>
-</table>
-<%= f.input :admin, label: "Admin?" %>
-<%= f.button :submit, class: "btn btn-primary" %>
+</table> -->
+
+<!-- 
+<%= f.input :admin, label: "Admin" %>
+
+<%= f.input :nhanvien, label: "Nhân viên" %> -->
+<%= f.radio_button :admin, true %>
+<%= f.label :admin, "Admin", :value => "false" %>
+<div>
+	<%= f.radio_button :admin, false, :checked => true %>
+<%= f.label :nhanvien, "Nhân viên" %>
+</div>
+
+
+<div>
+	<%= f.button :submit, class: "btn btn-primary" %>
 <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 admin_users_path, class: "cancel" %>
+</div>
+
 <% end %>

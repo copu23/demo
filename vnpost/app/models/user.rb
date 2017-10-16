@@ -8,6 +8,8 @@ class User < ApplicationRecord
 	scope :excluding_archived, lambda { where(archived_at: nil) }
   	 def to_s
 	"#{email} (#{admin? ? "Admin" : "Người dùng"})"
+	
+
 	end
 
 	def archive

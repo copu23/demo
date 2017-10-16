@@ -1,5 +1,5 @@
 class HanghoasController < ApplicationController
-	 layout 'admin'
+	 # layout 'admin'
 	before_action :set_vandon	
 
 	before_action :set_hanghoa, only: [:show, :edit, :update, :destroy]

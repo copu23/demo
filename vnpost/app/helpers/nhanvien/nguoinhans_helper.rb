@@ -1,0 +1,2 @@
+module Nhanvien::NguoinhansHelper
+end

@@ -1,0 +1,2 @@
+module Nhanvien::ReportsHelper
+end

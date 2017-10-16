@@ -66,8 +66,8 @@ class Admin::DashboardsController < Admin::ApplicationController
      
 
         @chart = Fusioncharts::Chart.new({
-            :height => 400,
-            :width => 600,
+            :height => 300,
+            :width => 500,
             :type => "msline",
             :renderAt => 'chartContainer1',
          
@@ -122,8 +122,8 @@ class Admin::DashboardsController < Admin::ApplicationController
         })
 
         @chart_pie = Fusioncharts::Chart.new({
-            :height => 400,
-            :width => 600,
+            :height => 300,
+            :width => 500,
             :type => "pie2d",
             :renderAt => 'chartContainer',
          

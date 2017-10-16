@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
  
+  namespace :nhanvien do
+    get 'application/index'
+    resources :reports
+      resources :vandons do
+        resources :hanghoas
+        resources :nguoinhans
+        resources :khachhangs
+      end
+  end
+
 get 'nackhoiluongs/get_id'
 get 'dichvus/get_id'
 get 'dichvucongthems/get_id'
@@ -11,7 +21,7 @@ get 'home/guiSMS'
 get 'bccps/index'
 get 'search/search'
 root 'application#index'
-  namespace :admin do
+    namespace :admin do
     resources :dashboards
    
     root 'application#index'

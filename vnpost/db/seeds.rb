@@ -10,6 +10,11 @@ unless User.exists?(email: "admin@vnpost.com")
 	
 end
 
+unless User.exists?(email: "nhanvien01@vnpost.com")
+	User.create!(email: "nhanvien01@vnpost.com", password: "password", nhanvien: true)
+	
+end
+
 unless User.exists?(email: "giaodichvien@vnpost.com")
 	User.create!(email: "giaodichvien@vnpost.com", password: "password")
 	

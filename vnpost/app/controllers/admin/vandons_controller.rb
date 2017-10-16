@@ -1,6 +1,8 @@
 class Admin::VandonsController < Admin::ApplicationController
+	 layout "admin"
+
 	 before_action :set_vandon, only: [:show, :edit, :update, :destroy]
- 
+
 	def index
 		# @vandons = policy_scope(vandon)
 

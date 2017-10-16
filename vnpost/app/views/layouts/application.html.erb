@@ -57,7 +57,14 @@ background-color: <%= state.color %>;
       <li>
       <%= link_to "Admin", admin_root_path %>
       </li>
+      <% end %> 
+      <% nhanviens_only do %>
+
+      <li>
+      <%= link_to "Nhân viên", nhanvien_application_index_path %>
+      </li>
       <% end %>
+
       <% unless user_signed_in? %>
       <li class="<%= "active" if current_page?("/users/sign_up") %>">
       <%= link_to "Đăng ký", new_user_registration_path %>
@@ -89,7 +96,7 @@ background-color: <%= state.color %>;
       <ul class="nav navbar-nav"> 
       <li>
       <div class="input-group">
-    <%= text_field_tag :searchs, params[:searchs], placeholder: "Nhập mã vận đơn hoặc sđt người nhận hoặc họ tên người nhận", class: 'form-control' %>
+    <%= text_field_tag :searchs, params[:searchs], placeholder: "Nhập mã vận đơn", class: 'form-control' %>
 
       <div class="input-group-btn">
        

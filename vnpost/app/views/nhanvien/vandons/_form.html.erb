@@ -1,0 +1,22 @@
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+}
+</style>
+
+
+<%= simple_form_for([nhanvien,vandon]) do |f| %>
+
+<%= f.input :mota, label: "Mô tả" %>
+<ul id="action">
+<li><%= f.button :submit, class: "btn-primary" %></li>
+<li><%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                nhanvien_vandons_path, class: "cancel" %></li>
+</ul>
+<% end %>

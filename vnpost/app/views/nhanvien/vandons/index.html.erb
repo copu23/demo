@@ -1,0 +1,75 @@
+<head>
+  <title>Vận đơn</title>
+</head>
+<header>
+<h1>Vận đơn</h1>
+
+
+  <%= form_tag(vandons_path, :method => "get", id: "search-form") do %>
+  <div class="input-group col-md-6">
+    <%= text_field_tag :search, params[:search], placeholder: "Nhập mã vận đơn hoặc sđt người nhận hoặc họ tên người nhận", class: 'form-control' %>
+  
+    <div class="input-group-btn">
+      
+      <%= submit_tag "Tìm kiếm", class: "btn btn-primary" %>
+    </div> 
+  <% end %>
+</div>
+
+<ul class="actions">
+<li>
+<%= link_to "Thêm mới", new_nhanvien_vandon_path, class: "new" %>
+</li>
+
+</ul>
+</header>
+<div class="table-responsive">
+  <table id="mytable" class="table table-bordred table-striped" style="width: 800px">
+  <thead>
+    <tr>
+      <th><input type="checkbox" id="checkall" /></th>
+      <th>Vận đơn</th>
+      <th>Ngày tạo</th>
+      <th> Ngày cập nhật</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @vandons.each do |vandon| %>
+    <tr>
+      <td><input type="checkbox" class="checkthis" ></td>
+      <td><%= link_to vandon.id %></td>
+      <td><%= vandon.created_at %></td>
+      <td><%= vandon.updated_at %></td>
+      <td><%= link_to t('.show', :default => t("helpers.links.show")),
+                            nhanvien_vandon_path(vandon), class: "show" %></td>
+      <td><%= link_to t('.edit', :default => t("helpers.links.edit")),
+                             edit_nhanvien_vandon_path(vandon), class: "edit" %></td>
+      
+    </tr>
+   
+   <% end %>
+    
+</tbody>
+</table>
+
+ <%= will_paginate @vandons , renderer: BootstrapPagination::Rails %> 
+   
+
+</div>
+
+<!-- <div class="clearfix"></div>
+<ul class="pagination pull-right">
+  <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-lèt"></span></a></li>
+  <li class="active"><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+  <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+</ul>
+                
+            </div> -->
+            
+        </div>
+  </div>
+</div>

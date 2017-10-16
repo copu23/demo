@@ -1,0 +1,2 @@
+module Nhanvien::HanghoasHelper
+end
