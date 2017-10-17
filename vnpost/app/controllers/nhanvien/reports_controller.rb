@@ -10,7 +10,7 @@ class Nhanvien::ReportsController < Nhanvien::ApplicationController
            @chuyenhoan_pies = Hanghoa.where(:state_id => '6').count
            @phatthanhcong_pies = Hanghoa.where(:state_id => '7').count
            @chuyenphat_pies = Hanghoa.where(:state_id => '8').count
-           
+           @doanhthus = Hanghoa.select("DATE(created_at) as ngay, sum(tongcuoc) as tong").group("DATE(created_at)")
           @tongtts = Hanghoa.count(:state_id)
           @vt_pie = (@vuatao_pies *100)/ @tongtts
           @ch_pie = (@chuyenhoan_pies *100)/ @tongtts
@@ -25,10 +25,17 @@ class Nhanvien::ReportsController < Nhanvien::ApplicationController
         datathanhcong =[]
         datachuyenhoan = []
         values =[]
+        tongdt =[]
+
         @ngaytaos.each do |ngaytao|
         category.push( { :label => ngaytao.ngay,
                         #  :stepSkipped => false,
                         # :appliedSmartLabel=> true
+        } )
+        end 
+        @doanhthus.each do |doanhthu|
+        tongdt.push( { :label => doanhthu.ngay,
+                       :value => doanhthu.tong
         } )
         end 
        
@@ -165,6 +172,30 @@ class Nhanvien::ReportsController < Nhanvien::ApplicationController
         },
         
     ]
+
+                
+       }     
+        })
+
+
+    @chart_column = Fusioncharts::Chart.new({
+            :height => 300,
+            :width => 500,
+            :type => "column2d",
+            :renderAt => 'chartContainer3',
+         
+            :dataSource => {
+                :chart => {
+        :caption => "Half Yearly Revenue Analysis",
+        :subcaption => "Harry's SuperMart",
+        :yaxisname => "Revenue",
+        # :numberprefix "$",
+        :yaxismaxvalue => "250000",
+        :rotatevalues => "0",
+        :theme => "fint",
+        :palettecolors => "#0075c2"
+    },
+    :data => tongdt
 
                 
        }     

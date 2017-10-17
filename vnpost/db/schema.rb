@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171016025405) do
+ActiveRecord::Schema.define(version: 20171017171033) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "text",              limit: 65535
@@ -72,6 +72,9 @@ ActiveRecord::Schema.define(version: 20171016025405) do
     t.integer  "dichvu_id"
     t.integer  "dichvucongthem_id"
     t.integer  "state_id"
+    t.integer  "tienthuho"
+    t.integer  "cuocthuho"
+    t.integer  "thuho"
     t.index ["dichvu_id"], name: "index_hanghoas_on_dichvu_id", using: :btree
     t.index ["dichvucongthem_id"], name: "index_hanghoas_on_dichvucongthem_id", using: :btree
     t.index ["state_id"], name: "index_hanghoas_on_state_id", using: :btree
@@ -98,6 +101,15 @@ ActiveRecord::Schema.define(version: 20171016025405) do
     t.text     "mota",       limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "mucphithuhos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "tenmp"
+    t.integer  "gtbd"
+    t.integer  "gtkt"
+    t.integer  "mucphi"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "nackhoiluongs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

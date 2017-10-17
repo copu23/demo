@@ -22,8 +22,15 @@
  		<div>
  			<%= f.input :trongluongtinh,label:"Trọng lượng tịnh" %>
 		</div>
+			<%= f.label :thêm_thể_tích_hàng %>
+				  <%= f.check_box :trongluongquydoi, label: "Thêm thẻ tích hàng"%>
+				  <div id="card_details" style="display:none;">
+				   <%= f.input :chieucao, label:"Chiều cao" %>
+				   <%= f.input :chieudai, label:"Chiều dài" %>
+				   <%= f.input :chieurong, label:"Chiều rộng" %>
+		  			</div>
 				
- 		<div >
+ 		<!-- <div >
  			<%= f.input :chieucao, label:"Chiều cao" %></div>
 				
  		<div >
@@ -32,7 +39,7 @@
  		<div >
  			<%= f.input :chieurong, label:"Chiều rộng" %></div>
 		<div>
- 			<%= f.input :trongluongquydoi, label: "Trọng lượng quy đổi" %></div>
+ 			<%= f.input :trongluongquydoi, label: "Trọng lượng quy đổi" %></div> -->
  	</div>
 		
  <div class ="col-md-4">
@@ -42,7 +49,7 @@
 	 		</p>
 
 			<div class="col-lg-12 col-md-12">
-				<%= f.input :dichvu_id, label: "Dịch vụ"  do %>
+				<%= f.input :dichvu_id, label:false do %>
 				<%= f.collection_select :dichvu_id,Dichvu.all,:id,:tendv, {:prompt=> "---Dịch vụ---"} %>
 				<% end %>
 	 		</div>
@@ -53,16 +60,21 @@
 					<strong>3. Dịch vụ cộng thêm</strong>
 			</p>
 			<div class="col-md-12 m-t-md m-b-md">
-			<%= f.input :dichvucongthem_id  ,label: "Dịch vụ cộng thêm" do %>
+			<%= f.input :dichvucongthem_id  ,label: false do %>
 			<%= f.collection_select :dichvucongthem_id,Dichvucongthem.all,:id,:tendvct, {:prompt=> "---Dịch vụ cộng thêm---"} %>
 			<% end %>
-				
+			<%= f.label :name, label: "Tiền thu hộ" %>
+				  <%= f.check_box :tienthuho %>
+				  <div id="thuho" style="display:none;">
+				   <%= f.input :tienthuho, label:false %>
+				   
+		  			</div>	
 			
 			<p  class="m-t-md m-b-md">
 	 			<strong>4. Mô tả chi tiết</strong>
 	 		</p>
 			<div class="col-md-12 m-t-md m-b-md">
-				<%= f.input :motachitiet, label: "motachitiet" %></div>
+				<%= f.input :motachitiet, label:false %></div>
 			<div class="col-md-12 m-t-md m-b-md">
 				<%= f.association :state, label: "Trạng thái" %>
 </div>
@@ -199,6 +211,32 @@
 	});
 
 	
+
+	$("#hanghoa_chieurong").on('change', function(){
+
+		$('#hanghoa_trongluongtinh').val( parseInt($("#hanghoa_chieucao").val()) * parseInt($("#hanghoa_chieudai").val()) * parseInt($("#hanghoa_chieurong").val()) *1000 / 600)
+	});
+
+
+var checkbox = document.getElementById('hanghoa_trongluongquydoi');
+var details_div = document.getElementById('card_details');
+  checkbox.onchange = function() {
+     if(this.checked) {
+       details_div.style['display'] = 'block';
+     } else {
+       details_div.style['display'] = 'none';
+     }
+  };
+var checkbox_th = document.getElementById('hanghoa_tienthuho');
+var thuho_div = document.getElementById('thuho');
+  checkbox_th.onchange = function() {
+     if(this.checked) {
+       thuho_div.style['display'] = 'block';
+     } else {
+       thuho_div.style['display'] = 'none';
+     }
+  };
+
 	    	
 
 

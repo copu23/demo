@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tenmp: MyString
+  gtbd: 1
+  gtkt: 1
+  mucphi: 1
+
+two:
+  tenmp: MyString
+  gtbd: 1
+  gtkt: 1
+  mucphi: 1

@@ -16,7 +16,9 @@ get 'dichvucongthems/get_id'
 get 'tinhs/getvung_id'
 get 'cuoccpns/getcuocphi'
 get 'dichvucongthems/get_muccuoc'
+get 'mucphithuhos/get_mucphi'
 # get 'comments/getid'
+
 get 'home/guiSMS'
 get 'bccps/index'
 get 'search/search'
@@ -58,6 +60,7 @@ root 'application#index'
   resources :tinhs , only: [:index, :show, :edit, :update]
   resources :cuoccpns, only: [:index, :show, :edit, :update]
   resources :states  , only: [:index, :show, :edit, :update]
+  resources :mucphithuhos
   resources :vandons do
     resources :hanghoas
     resources :khachhangs

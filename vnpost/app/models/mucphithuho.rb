@@ -1,0 +1,2 @@
+class Mucphithuho < ApplicationRecord
+end

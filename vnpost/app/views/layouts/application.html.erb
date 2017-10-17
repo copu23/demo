@@ -23,10 +23,9 @@ background-color: <%= state.color %>;
 </style>
 
   </head>
-
-  <body >
+ <body >
  <div class="container">
-<nav class="navbar navbar-default " role="navigation" >
+  <nav class="navbar navbar-default " role="navigation" >
   <div class="row">
     <!-- <div logo-wrapper col-sm-7 col-xs-12 col-left> -->
       <!-- <a <img src="/images/Banne.jpg" alt="rss feed"/> -->
@@ -109,7 +108,9 @@ background-color: <%= state.color %>;
     </ul>
      <% end %> 
     </div>
- </div>
+  
+    </div>
+
 </nav>
 
 
@@ -119,6 +120,9 @@ background-color: <%= state.color %>;
 </div>
 <% end %>
 <%= yield %>
+</body>
+
+</div>
 <footer >
 <div class="row" style="background: #ffc61a ">
 <div class="col-md-4">
@@ -168,7 +172,8 @@ background-color: <%= state.color %>;
 </div>
 </div>
 </footer>
-</div>
-  </body>
+  
+
   
 </html>
+

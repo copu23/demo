@@ -1,0 +1,22 @@
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+}
+</style>
+<%= simple_form_for(@mucphithuho) do |f| %>
+<%= f.input :tenmp,label: "Số tiền thu hộ (COD)" %>
+<%= f.input :gtbd, label: "Số tiền bắt đầu" %>
+<%= f.input :gtkt, label: "Số tiền bắt đầu" %>
+<%= f.input :mucphi, label: "Mức phí" %>
+<ul id="action">
+<li><%= f.button :submit, class: "btn-primary" %></li>
+<li><%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                mucphithuhos_path, class: "cancel" %></li>
+</ul>
+<% end %>

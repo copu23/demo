@@ -1,0 +1,51 @@
+
+<head>
+  <title>Định mức phí thu hộ</title>
+</head>
+<header>
+<h1>Định mức phí thu hộ</h1>
+
+<ul class="actions">
+<li>
+<%= link_to "Thêm mới", new_mucphithuho_path, class: "new" %>
+</li>
+</ul>
+
+</ul>
+</header>
+<div>
+<table class="table-responsive"">
+  <thead>
+    <tr>
+      <th>Số tiền thu hộ</th>
+      <th>Từ </th>
+      <th>Đến</th>
+      <th>Mức phí</th>
+     <!--  <th> </th> -->
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @mucphithuhos.each do |mucphithuho| %>
+<tr>
+<td><%= link_to mucphithuho.tenmp, mucphithuho %></td>
+<td><%= mucphithuho.gtbd %></td>
+<td><%= mucphithuho.gtkt %></td>
+<td><%= mucphithuho.mucphi %></td>
+<!-- <td>
+<%= link_to t('.show', :default => t("helpers.links.show")),
+                      mucphithuho_path(mucphithuho), class: "show" %></td> -->
+<td><%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_mucphithuho_path(mucphithuho), class: "edit" %></td>
+
+<td>
+
+<td><%= link_to "Xóa", mucphithuho_path(mucphithuho),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %></td>
+
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+</div>
