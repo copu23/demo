@@ -1,4 +1,6 @@
+
 <style>
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -10,7 +12,7 @@ li {
 }
 </style>
 <h1>Mã vận đơn: <%= @vandon.id %></h1>
-<li><button onclick='window.print(); return false;' class='btn btn-success'>In vận đơn</button></li>
+<li><%= link_to "In",  print_vandon_path(@vandon) , class: 'btn btn-success' %></li>
 <li></li>
 <li><%= link_to "Chỉnh sửa", edit_vandon_path(@vandon),
 class: "edit" %></li>

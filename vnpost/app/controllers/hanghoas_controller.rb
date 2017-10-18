@@ -63,7 +63,7 @@ private
 	end
 
 	def hanghoa_params
-		params.require(:hanghoa).permit(:trongluongtinh, :trongluongquydoi, :chieudai, :chieucao, :chieurong, :cuocchinh, :cuocphu, :tongcuoc, :motachitiet, :dichvu_id, :dichvucongthem_id, :state_id)
+		params.require(:hanghoa).permit(:tienthuho,:cuocthuho,:thuho,:trongluongtinh, :trongluongquydoi, :chieudai, :chieucao, :chieurong, :cuocchinh, :cuocphu, :tongcuoc, :motachitiet, :dichvu_id, :dichvucongthem_id, :state_id)
 	end
 
 

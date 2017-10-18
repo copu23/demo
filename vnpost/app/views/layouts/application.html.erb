@@ -35,7 +35,7 @@ background-color: <%= state.color %>;
   </div>
 
   <div class="navbar-header" >
-    <%= link_to "Trang chủ", root_path, class: "navbar-brand" %>
+    <%= link_to "TRANG CHỦ", root_path, class: "navbar-brand" %>
     <button type="button" class="navbar-toggle collapsed"
     data-toggle="collapse" data-target="#collapse">
     <span class="sr-only">Toggle navigation</span>
@@ -45,31 +45,31 @@ background-color: <%= state.color %>;
     </button>
   </div>
 
-
+<div class="row">
   <div class="collapse navbar-collapse " id="collapse">
     <ul class="nav navbar-nav">
-      <li><%= link_to "Bưu chính chuyển phát",  bccps_index_path %></li>
-      <li> <%= link_to "Tài chính bưu chính",  bccps_index_path %> </li>
+      <li><%= link_to "BƯU CHÍNH CHUYÊN PHÁT",  bccps_index_path %></li>
+      <li> <%= link_to "TÀI CHÍNH BƯU CHÍNH",  bccps_index_path %> </li>
     
       <% admins_only do %>
 
       <li>
-      <%= link_to "Admin", admin_root_path %>
+      <%= link_to "ADMIN", admin_root_path %>
       </li>
       <% end %> 
       <% nhanviens_only do %>
 
       <li>
-      <%= link_to "Nhân viên", nhanvien_application_index_path %>
+      <%= link_to "NHÂN VIÊN", nhanvien_application_index_path %>
       </li>
       <% end %>
 
       <% unless user_signed_in? %>
-      <li class="<%= "active" if current_page?("/users/sign_up") %>">
-      <%= link_to "Đăng ký", new_user_registration_path %>
-      </li>
+      <!-- <li class="<%= "active" if current_page?("/users/sign_up") %>">
+      <%= link_to "Đăng kÝ", new_user_registration_path %>
+      </li> -->
       <li class="<%= "active" if current_page?("/users/sign_in") %>">
-      <%= link_to "Đăng nhập", new_user_session_path %>
+      <%= link_to "ĐĂNG NHÂP", new_user_session_path %>
       </li>
       <% end %>
 
@@ -79,7 +79,7 @@ background-color: <%= state.color %>;
           Signed in as <%= current_user.email %>
           </p>
           <ul class="nav navbar-nav">
-          <li><%= link_to "Đăng xuất", destroy_user_session_path,
+          <li><%= link_to "ĐĂNG XUÂT", destroy_user_session_path,
           method: :delete %>
           </li>
 
@@ -88,28 +88,27 @@ background-color: <%= state.color %>;
       <% end %>
   
 
-</ul>
-
-    <div class="navbar-right col-md-4" style="padding-top: 10px">
+    
+    <!-- <div class="navbar-right col-md-4" style="padding-top: 10px"> -->
     <%= form_tag(search_search_path, :method => "get", id: "search-form") do %>
-      <ul class="nav navbar-nav"> 
-      <li>
-      <div class="input-group">
+    <!--   <ul class="nav navbar-nav"> 
+      <li> -->
+      <div class="input-group" style="padding-top: 10PX">
     <%= text_field_tag :searchs, params[:searchs], placeholder: "Nhập mã vận đơn", class: 'form-control' %>
 
       <div class="input-group-btn">
        
-     <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
-  <span class="glyphicon glyphicon-search"></span> 
-<% end %>
-    </div>
-
+       <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+      <span class="glyphicon glyphicon-search"></span> 
+      <% end %>
+  <!--   </div> -->
+<!-- 
     </li>
-    </ul>
+    </ul> -->
      <% end %> 
-    </div>
-  
-    </div>
+   </div>
+</div>
+</ul>
 
 </nav>
 
@@ -121,9 +120,7 @@ background-color: <%= state.color %>;
 <% end %>
 <%= yield %>
 </body>
-
-</div>
-<footer >
+<footer style="padding-top: 10px" >
 <div class="row" style="background: #ffc61a ">
 <div class="col-md-4">
   <label> Bưu chính chuyển phát</label>
@@ -155,9 +152,8 @@ background-color: <%= state.color %>;
     </ul>
   </div>
 
-</div>
 
-<div class="row " style="background: blue">
+<div class="row " style="background:  #0000ff">
   <div class="col-md-7" style="padding-left: 40px">
  <p> 
         - Bưu điện Vĩnh Long
@@ -171,8 +167,12 @@ background-color: <%= state.color %>;
   
 </div>
 </div>
+</div>
+
 </footer>
   
+
+</div>
 
   
 </html>

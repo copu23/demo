@@ -1,12 +1,28 @@
 <div> 
-<!--  <%= @vandons %> -->
- <% @vandons.each do |vandon| %>
-<tr>
+<h1>Thông tin hàng hóa</h1>
+ <% @hanghoas.each do |hanghoa| %>
+<!-- <div>
+	<label>Người gửi</label>
+	<%= hanghoa.vandon.khachhangs.ids[13] %>
+</div> -->
 
-<td><%= vandon.id %></td>
 
-<td><%= vandon.state.name %></td>
-</tr>
+<div>   <i class="fa fa-balance-scale" style="padding-left: 10px; padding-right: 10px; height: 30px"> </i>
+<label>Khối lượng (gram): </label>
+<%= hanghoa.trongluongtinh %></td>
+</div>
+<div>
+ <i class="fa fa-balance-scale" style="padding-left: 10px; padding-right: 10px; height: 30px"> </i>
+<label>Tổng cước</label>
+<%= hanghoa.tongcuoc %></td>
+</div>
+<div>
+ <i class="fa fa-gavel" style="padding-left: 10px; padding-right: 10px; height: 30px"> </i>
+<label>Trạng thái</label>
+<%= hanghoa.state.name %></td>
+</div>
+
 <% end -%>
 
 </div>
+

@@ -20,6 +20,7 @@ get 'mucphithuhos/get_mucphi'
 # get 'comments/getid'
 
 get 'home/guiSMS'
+# get 'vandons/print'
 get 'bccps/index'
 get 'search/search'
 root 'application#index'
@@ -62,12 +63,16 @@ root 'application#index'
   resources :states  , only: [:index, :show, :edit, :update]
   resources :mucphithuhos
   resources :vandons do
+
     resources :hanghoas
     resources :khachhangs
     resources :nguoinhans
-
+    member do
+      get :print
+    end
 
     end
+
   resources :hanghoas, only: [] do
     resources :comments, only: [:create]
   end

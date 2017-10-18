@@ -3,8 +3,14 @@ class VandonsController < ApplicationController
    before_action :set_vandon, only: [:show, :edit, :update, :destroy]
      
 	# before_action :set_hanghoa, only: [:show, :edit, :update, :destroy]
-		def new
+	def new
 		@vandon= Vandon.new
+	end
+	def print
+
+		 @vandon = Vandon.find(params[:id])
+		 
+		 render :layout => false
 	end
 
 	def create

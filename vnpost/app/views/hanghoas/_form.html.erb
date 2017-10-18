@@ -16,10 +16,10 @@
 <div id="theone" class="row"> 
 
  <div class ="col-md-4">
- 	<p class="m-t-md m-b-md">
- 		<strong>1. Thông tin hàng hóa</strong>
- 	</p>
- 		<div>
+ <div class="panel panel-primary">
+    <div class="panel-heading">1. Thông tin hàng hóa</div>
+    <div class="panel-body">
+    	<div>
  			<%= f.input :trongluongtinh,label:"Trọng lượng tịnh" %>
 		</div>
 	
@@ -27,10 +27,14 @@
 				  <%= f.check_box :trongluongquydoi, label: "Thêm thẻ tích hàng"%>
 				  <div id="card_details" style="display:none;">
 				   <%= f.input :chieucao, label:"Chiều cao" %>
-				   <%= f.input :chieucao, label:"Chiều cao" %>
+				   <%= f.input :chieudai, label:"Chiều dài" %>
 				   <%= f.input :chieurong, label:"Chiều rộng" %>
 		  			</div>
 	
+    </div>
+  </div>
+ 
+ 		
  		<!-- <div >
  			<%= f.input :chieucao, label:"Chiều cao" %></div>
 				
@@ -217,8 +221,14 @@
 	
 	});
 
+
+
 	$("#hanghoa_cuocphu").on('change', function(){
 		$('#hanghoa_tongcuoc').val( parseInt($("#hanghoa_cuocphu").val()) + parseInt($("#hanghoa_cuocchinh").val())+ parseInt($("#hanghoa_cuocthuho").val()))
+	    
+	    });
+	$("#hanghoa_chieurong").on('change', function(){
+		$('#hanghoa_trongluongtinh').val( parseInt($("#hanghoa_chieurong").val()) * parseInt($("#hanghoa_chieucao").val())* parseInt($("#hanghoa_chieudai").val()) *1000/600 )
 	    
 	    });
 	$("#hanghoa_cuocthuho").on('change', function(){

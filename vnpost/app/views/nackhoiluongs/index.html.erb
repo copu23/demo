@@ -15,13 +15,13 @@
 </ul>
 </header>
 <div>
-<table class="table-responsive"">
+<table class="table table-bordred table-striped" >
   <thead>
     <tr>
       <th>Nấc khối lượng</th>
-      <th>Mô tả </th>
-      <th> Khối lượng bắt đầu</th>
-      <th>Khối lượng kết thúc</th>
+    
+      <th> Từ (gram)</th>
+      <th>Đến (gram)</th>
       <th> </th>
       <th></th>
       <th></th>
@@ -31,7 +31,7 @@
 <% @nackhoiluongs.each do |nackhoiluong| %>
 <tr>
 <td><%= link_to nackhoiluong.tennkl, nackhoiluong %></td>
-<td><%= nackhoiluong.mota %></td>
+
 <td><%= nackhoiluong.khoiluongbd %></td>
 <td><%= nackhoiluong.khoiluongkt %></td>
 <td>
