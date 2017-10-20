@@ -43,12 +43,14 @@
  		<div >
  			<%= f.input :chieurong, label:"Chiều rộng" %></div> -->
 	</div>	
+
 		
  <div class ="col-md-4">
+ <div class="panel panel-primary">
+    <div class="panel-heading">2. Thông tin dịch vụ</div>
+    <div class="panel-body">
 		<div class="row">
-			<p class="m-t-md m-b-md">
-	 			<strong>2. Thông tin dịch vụ</strong>
-	 		</p>
+		
 
 			<div class="col-lg-12 col-md-12">
 				<%= f.input :dichvu_id, label:false  do %>
@@ -79,18 +81,20 @@
 				<%= f.input :motachitiet, label: "motachitiet" %></div>
 			<div class="col-md-12 m-t-md m-b-md">
 				<%= f.association :state, label: "Trạng thái" ,:selected => params[:pid]%>
-</div>
+			</div>
 			
 			
 		
+	
+			</div>
 	</div>
 	</div>
 	</div>
-			
-	 <div class ="col-md-4">
-		<p  class="m-t-md m-b-md">
-	 		<strong>5. Cước phí</strong>
-	 	</p>
+	</div>
+ <div class ="col-md-4">
+	<div class="panel panel-primary">
+    <div class="panel-heading">5. Cước phí</div>
+    <div class="panel-body">
 
 		<div class="col-md-12 m-t-md m-b-md">
 
@@ -102,13 +106,15 @@
 			<%= f.input :cuocthuho, label: "Cước thu hộ ",:input_html => { :value => 1} %></div>
 		<div class="col-md-12 m-t-md m-b-md">
 			<%= f.input :tongcuoc, label: "Tổng cước" %></div>
-
+</div>
 		<div class="col-md-12 m-t-md m-b-md"><%= f.button :submit, class: "btn-primary" %></div>
 				
 		
 	</div>
 	
 </div>
+
+
 
 <% end %>	
 

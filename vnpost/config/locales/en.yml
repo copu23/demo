@@ -25,6 +25,8 @@ en:
     submit:
         create: "Tạo mới"
         update: "Cập nhật"
+        edit: "Chỉnh sửa"
+        show: "Xem"
   en:
   will_paginate:
     previous_label: "&#8592; Trang trước"

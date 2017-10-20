@@ -40,10 +40,14 @@
       <td><%= link_to vandon.id, vandon %></td>
       <td><%= vandon.created_at %></td>
       <td><%= vandon.updated_at %></td>
-      <td><%= link_to t('.show', :default => t("helpers.links.show")),
+       <td><%= link_to "Xem", vandon_path(vandon), class: "show" %></td>
+      <td><%= link_to "Sửa" , edit_vandon_path(vandon),
+class: "edit" %></td>
+     
+      <!-- <td><%= link_to t('.show', :default => t("helpers.links.show")),
                             vandon_path(vandon), class: "show" %></td>
       <td><%= link_to t('.edit', :default => t("helpers.links.edit")),
-                            edit_vandon_path(vandon), class: "edit" %></td>
+                            edit_vandon_path(vandon), class: "edit" %></td> -->
       
     </tr>
    

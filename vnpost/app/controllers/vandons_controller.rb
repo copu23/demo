@@ -10,7 +10,7 @@ class VandonsController < ApplicationController
 
 		 @vandon = Vandon.find(params[:id])
 		 
-		 render :layout => false
+		 render :layout => "print"
 	end
 
 	def create

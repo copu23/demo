@@ -4,46 +4,41 @@
 </head>
 <header>
 <h1>Bảng mức cước</h1>
-<ul class="actions">
+
 <% admins_only do %>
-<ul class="actions">
-<li>
+
 <%= link_to "Thêm mới", new_admin_cuoccpn_path, class: "new" %>
-</li>
-</ul>
+
 <% end %>
-</ul>
+
 </header>
-<div>
-<table class="table table-bordred table-striped" >
+<div >
+<table class="table table-hover"  >
   <thead>
     <tr>
       <th>Dịch vụ</th>
       <th>Nấc khối lượng</th>
       <th> Vùng</th>
       <th> Mức cước</th>
-      <th></th>
-      <th></th>
-       <th></th>
+     
     </tr>
   </thead>
   <tbody>
 <% @cuoccpns.each do |cuoccpn| %>
 <tr>
-<td><%= cuoccpn.dichvu.tendv %></td>
-<td><%=  cuoccpn.nackhoiluong.tennkl %></td>
-<td><%= cuoccpn.vung.tenvung%></td>
-<td><%= cuoccpn.muccuoc %></td>
-<td>
-<%= link_to t('.show', :default => t("helpers.links.show")),
-                      cuoccpn_path(cuoccpn), class: "show" %></td>
-<td><%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_cuoccpn_path(cuoccpn), class: "edit" %></td>
+<td class="col-md-2"><%= cuoccpn.dichvu.tendv %></td>
+<td class="col-md-1"><%=  cuoccpn.nackhoiluong.tennkl %></td>
+<td class="col-md-1"><%= cuoccpn.vung.tenvung%></td>
+<td class="col-md-1"><%= cuoccpn.muccuoc %></td>
+<td class="col-md-1">
+<%= link_to "Xem", cuoccpn_path(cuoccpn), class: "show" %></td>
 
-<td>
+<td class="col-md-1"><%= link_to "Sửa", edit_cuoccpn_path(cuoccpn), class: "edit" %></td>
+
+<td class="col-md-1">
 <% admins_only do %>
 
-<td><%= link_to "Xóa", admin_cuoccpn_path(cuoccpn),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %></td>
+<%= link_to "Xóa", admin_cuoccpn_path(cuoccpn),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %>
 <% end %>
 </td>
 </tr>
