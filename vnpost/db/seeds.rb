@@ -28,4 +28,7 @@ State.create(name:"Phát thành công", color: "#008000")
 State.create(name:"Chuyển hoàn", color: "#990000")
 State.create(name:"Hoàn lại", color: "#663399")
 end
-
+sunless User.exists?(email: "quantri@vnpost.com")
+	User.create!(email: "quantrin@vnpost.com", password: "123456", admin: true)
+	
+end

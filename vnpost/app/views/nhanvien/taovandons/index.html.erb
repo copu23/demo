@@ -1,0 +1,69 @@
+<head>
+  <title>Vận đơn</title>
+</head>
+<header>
+<h1>Vận đơn</h1>
+
+
+  <%= form_tag(taovandons_path, :method => "get", id: "search-form") do %>
+  <div class="input-group col-md-6">
+    <%= text_field_tag :search, params[:search], placeholder: "Nhập mã vận đơn hoặc sđt người nhận hoặc họ tên người nhận", class: 'form-control' %>
+  
+    <div class="input-group-btn">
+      
+      <%= submit_tag "Tìm kiếm", class: "btn btn-primary" %>
+    </div> 
+  <% end %>
+</div>
+
+<ul class="actions">
+<li>
+<%= link_to "Thêm mới",  new_nhanvien_taovandon_path, class: "new" %>
+</li>
+
+</ul>
+</header>
+<div class="table-responsive">
+  <table id="mytable" class="table table-bordred table-striped" style="width: 800px">
+  <thead>
+    <tr>
+      <th><input type="checkbox" id="checkall" /></th>
+      <th>Vận đơn</th>
+      <th>Ngày tạo</th>
+      <th> Trạng thái</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @taovandons.each do |taovandon| %>
+    <tr>
+      <td><input type="checkbox" class="checkthis" ></td>
+      <td><%= link_to taovandon.id, taovandon %></td>
+      <td><%= taovandon.created_at %></td>
+      <td><%= taovandon.trangthai %></td>
+      <td><%= link_to "Xem",  nhanvien_taovandon_path(taovandon), class: "show" %></td>
+      <td><%= link_to "Sửa", edit_nhanvien_taovandon_path(taovandon), class: "edit" %></td>
+      
+    </tr>
+   
+   <% end %>
+    
+</tbody>
+</table>
+
+   
+
+</div>
+
+<!-- <div class="clearfix"></div>
+<ul class="pagination pull-right">
+  <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-lèt"></span></a></li>
+  <li class="active"><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+  <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+</ul>
+                
+            </div> -->
+            

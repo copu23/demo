@@ -3,7 +3,7 @@ class CreateComments < ActiveRecord::Migration[5.0]
     create_table :comments do |t|
       t.text :text
       t.references :hanghoa, foreign_key: true
-      t.references :nguoilap, index: true
+      t.references :users, index: true
 
       t.timestamps
 
@@ -11,5 +11,5 @@ class CreateComments < ActiveRecord::Migration[5.0]
 
    end
 
-  add_foreign_key :comments, :users, column: :nguoilap_id
+   # add_foreign_key :comments, :users, column: :nguoilap_id
 end

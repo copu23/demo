@@ -1,0 +1,22 @@
+<header>
+<!-- 
+<h1><%= @taovandon.id %></h1> -->
+<div>
+<label>Họ tên khách hàng</label>
+<%= @taovandon.hotenkh %></div>
+
+<div><label>Địa chỉ</label>
+<%= @taovandon.diachi %></div>
+<div><label>Số điện thoại</label><%= @taovandon.sdt%></div>
+<div><label>Khối lượng</label><%= @taovandon.khoiluong%></div>
+<div><label>Trạng thái</label><%= @taovandon.trangthai%></div>
+<div><%= link_to "Chỉnh sửa", edit_taovandon_path(@taovandon),
+class: "edit" %></div>
+
+<% admins_only do %>
+<li><%= link_to "Xóa", admin_taovandon_path(@taovandon),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %></li>
+<li><%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                taovandons_path, class: "cancel" %></li>
+<% end %>
+</ul>
+</header>

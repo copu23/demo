@@ -4,13 +4,30 @@ class Admin::VandonsController < Admin::ApplicationController
 	 before_action :set_vandon, only: [:show, :edit, :update, :destroy]
 
 	def index
+		@vandons =Vandon.all.order("created_at DESC")
 		# @vandons = policy_scope(vandon)
 
  	   @vandons = Vandon.all.paginate(page: params[:page], per_page: 5)
 
 	end
 
-	
+	def new
+		@vandon= Vandon.new
+	end
+
+	def create
+		@vandon = Vandon.new(vandon_params)
+		@vandon.nguoilap = current_user
+
+		if @vandon.save
+
+		flash[:notice] = "Vận đơn tạo thành công."
+		redirect_to "/nhanvien/vandons"
+		else
+			flash.now[:alert] = "Vận đơn tạo không thành công."
+			render "new"
+		end
+	end
 
 	def show
 	

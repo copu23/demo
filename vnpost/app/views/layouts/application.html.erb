@@ -21,7 +21,7 @@ background-color: <%= state.color %>;
 <% end %>
 
 </style>
-
+<link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Play" rel="stylesheet">
   </head>
  <body >
  <div class="container">
@@ -29,7 +29,7 @@ background-color: <%= state.color %>;
   <div class="row">
     <!-- <div logo-wrapper col-sm-7 col-xs-12 col-left> -->
       <!-- <a <img src="/images/Banne.jpg" alt="rss feed"/> -->
-      <%= image_tag("banne.jpg",:alt => "rss feed") %>
+      <%= image_tag("banne.jpg",:alt => "rss feed", :style => "width: 100%") %>
     <!-- </div> -->
     
   </div>
@@ -50,6 +50,7 @@ background-color: <%= state.color %>;
     <ul class="nav navbar-nav">
       <li><%= link_to "BƯU CHÍNH CHUYÊN PHÁT",  bccps_index_path %></li>
       <li> <%= link_to "TÀI CHÍNH BƯU CHÍNH",  bccps_index_path %> </li>
+       <li> <%= link_to "TẠO VẬN ĐƠN",  new_taovandon_path %> </li>
     
       <% admins_only do %>
 
@@ -65,8 +66,8 @@ background-color: <%= state.color %>;
       <% end %>
 
       <% unless user_signed_in? %>
-      <!-- <li class="<%= "active" if current_page?("/users/sign_up") %>">
-      <%= link_to "Đăng kÝ", new_user_registration_path %>
+     <!--  <li class="<%= "active" if current_page?("/users/sign_up") %>">
+      <%= link_to "Đăng ký", new_user_registration_path %>
       </li> -->
       <li class="<%= "active" if current_page?("/users/sign_in") %>">
       <%= link_to "ĐĂNG NHÂP", new_user_session_path %>
@@ -119,15 +120,53 @@ background-color: <%= state.color %>;
 </div>
 <% end %>
 <%= yield %>
+<div class="row">
+    <div class="col-md-6">
+      <h3 class="text-center">TIN TỨC</h3>
+
+      <%= image_tag("tintuc.jpg",:alt => "rss feed", :style => "width: 100%; padding-bottom:10px") %>
+         <%= link_to "Họp mặt truyền thống cán bộ bưu điện- viễn thông các tỉnh khu vực Tây Nam bộ", nhanvien_application_index_path %>
+      <p>Kỷ niệm 72 năm Ngày truyền thống ngành Bưu điện và 70 năm Ngày thành lập Công đoàn ngành Thông tin và Truyền thông Việt Nam, ngày 20/8/2017, Viễn thông Vĩnh Long và Bưu điện tỉnh Vĩnh Long tổ chức họp mặt truyền thống cán bộ bưu điện- viễn thông các tỉnh khu vực Tây Nam bộ (T3) lần thứ X năm 2017.</p>
+    </div>
+    <div class="col-md-6">
+    <h3> SỰ KIỆN</h3>
+      <div class="row">
+          <div class="col-md-4">
+         <%= image_tag("tintuc1.jpg",:alt => "rss feed", :style => "width: 100%; padding-bottom:10px") %></div>
+         <div class="col-md-8">
+          <%= link_to "Cùng với chủ đề “Hãy tưởng tượng bạn là một lá thư du hành xuyên thời gian.", nhanvien_application_index_path %>
+           
+         </div>
+      </div>
+      <div class="row">
+          <div class="col-md-4">
+       
+       <%= image_tag("tintuc2.jpg",:alt => "rss feed", :style => "width: 100%; padding-bottom:10px") %></div>
+            <div class="col-md-8">
+            <%= link_to " Công bố chủ đề cuộc thi viết thư quốc tế UPU lần thứ 47 (2018)", nhanvien_application_index_path %>
+           
+             
+            </div>
+      </div>
+         <div class="row">
+          <div class="col-md-4">
+       
+       <%= image_tag("tintuc3.jpg",:alt => "rss feed", :style => "width: 100%; padding-bottom:10px") %></div>
+            <div class="col-md-8">
+            <%= link_to " Trao đổi của Ban giám khảo về chủ đề Cuộc thi viết thư UPU 47", nhanvien_application_index_path %>
+             
+            </div>
+      </div>
+    </div>
+  
+</div>
+
 </body>
 
-  
-
-</div>
-<footer style="padding-top: 10px" >
-<div class="row" style="background: #ffc61a ">
+ <footer style="padding-top: 10px" >
+<div class="row" style="background:    #ebebe0 ">
 <div class="col-md-4">
-  <label> Bưu chính chuyển phát</label>
+  <label class="text-center">BƯU CHÍNH CHUYỂN PHÁT</label>
   
   <ul>
     <li> <span>Vận chuyển hàng nặng quốc tế</span></li>
@@ -136,8 +175,8 @@ background-color: <%= state.color %>;
   </ul>
     
   </div>
-  <div class="col-md-4">
-    <label> Tài chính bưu chính</label>
+  <div class="col-md-4 ">
+    <label class="text-center">TÀI CHÍNH BƯU CHÍNH</label>
     
     <ul>
       <li> <span>Thu hộ- chi hộ</span></li>
@@ -147,7 +186,7 @@ background-color: <%= state.color %>;
     
   </div>
   <div class="col-md-4">
-    <label> Phân phối truyền thông</label>
+    <label class="text-center">PHÂN PHÔÍ TRUYỀN THÔNG</label>
     <ul>
       <li> <span>Dịch vụ phân phối hàng hóa</span></li>
       <li> <span>Truyền thông, quảng cáo </span></li>
@@ -156,24 +195,25 @@ background-color: <%= state.color %>;
     </ul>
   </div>
 
+</div>
+<div class="row " style="background:     #ffad33">
+<div class="text-center">
 
-<div class="row " style="background:  #0000ff">
-  <div class="col-md-7" style="padding-left: 40px">
- <p> 
-        - Bưu điện Vĩnh Long
- <br>
-        - Địa chỉ: Số 14 Hoàng Thái Hiếu, Phường 1, Tp. Vĩnh Long, Vĩnh Long
- <br>
-        - Điện thoại: 0270 3823 320
- </p>
-</div>
-<div class="col-md-5">
-  
-</div>
-</div>
+         BƯU ĐIỆN VĨNH LONG
+         </div>
+<div class="text-center">
+         Địa chỉ: Số 14 Hoàng Thái Hiếu, Phường 1, Tp. Vĩnh Long, Vĩnh Long </div>
+ <div class="text-center">
+         Điện thoại: 0270 3823 320
+ </div>
+
+
 </div>
 
-</footer>
+</footer> 
+
+
+
 
   
 </html>

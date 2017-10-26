@@ -18,7 +18,7 @@
 
 <ul class="actions">
 <li>
-<%= link_to "Thêm mới", new_vandon_path, class: "new" %>
+<%= link_to "Thêm mới", new_admin_vandon_path, class: "new" %>
 </li>
 
 </ul>
@@ -37,11 +37,11 @@
    <% @vandons.each do |vandon| %>
     <tr>
       <td><input type="checkbox" class="checkthis" ></td>
-      <td><%= link_to vandon.id, vandon %></td>
+      <td><%= link_to vandon.id, vandon ,  :sort => "created_at" %></td>
       <td><%= vandon.created_at %></td>
       <td><%= vandon.updated_at %></td>
-       <td><%= link_to "Xem", vandon_path(vandon), class: "show" %></td>
-      <td><%= link_to "Sửa" , edit_vandon_path(vandon),
+       <td><%= link_to "Xem", admin_vandon_path(vandon), class: "show" %></td>
+      <td><%= link_to "Sửa" , edit_admin_vandon_path(vandon),
 class: "edit" %></td>
      
       <!-- <td><%= link_to t('.show', :default => t("helpers.links.show")),

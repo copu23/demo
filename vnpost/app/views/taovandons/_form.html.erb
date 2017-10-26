@@ -1,0 +1,35 @@
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+}
+</style>
+
+
+<%= simple_form_for(@taovandon) do |f| %>
+<div class="row">
+<div class="col-md-6"><%= f.input :hotenkh, label: "Khách hàng", hint: "Họ và tên" %>
+	<%= f.input :diachi, label: "Địa chỉ", hint: "Âp, phường,xã, quận huyện" %>
+	<%= f.input :sdt, label: "Số điện thoại", hint: "Sử dụng số này để liên lạc" %>
+</div>
+<div class="col-md-6">
+			
+<%= f.input :khoiluong, label: "Khối lượng hàng hóa", hint: "(Tính theo gram ví dụ: 450gram,...)" %>
+
+<!-- 
+<%= f.input :trangthai, label: "Trạng thái", default: "Chờ duyệt" %>  -->
+<%= f.input :noinhan, label: "Nơi nhận hàng"  %>
+</div>
+</div>
+
+
+<%= f.button :submit ,"Tạo", class: "btn-primary" %>
+<%= link_to "Hủy", root_path, class: "cancel" %>
+
+
+<% end %>

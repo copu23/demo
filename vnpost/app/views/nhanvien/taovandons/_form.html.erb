@@ -1,0 +1,31 @@
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+}
+</style>
+
+
+<%= simple_form_for([:nhanvien, taovandon]) do |f| %>
+
+<%= f.input :hotenkh, label: "Khách hàng", hint: "Họ và tên" %>
+
+<%= f.input :diachi, label: "Địa chỉ", hint: "Âp, phường,xã, quận huyện" %>
+
+<%= f.input :sdt, label: "Số điện thoại", hint: "Sử dụng số này để liên lạc" %>
+<%= f.input :khoiluong, label: "Khối lượng hàng hóa" %>
+<%=f.select  :trangthai, options_for_select([ "Đã duyệt", "Đã hủy" ,"Chờ duyệt"], "Chờ duyệt") %>
+
+<%= f.input :noinhan, label: "Nơi nhận"  %>
+
+<%= f.button :submit, "Tạo", class: "btn-primary" %>
+<%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                nhanvien_taovandons_path, class: "cancel" %>
+
+
+<% end %>

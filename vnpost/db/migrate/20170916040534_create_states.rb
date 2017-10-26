@@ -8,6 +8,6 @@ class CreateStates < ActiveRecord::Migration[5.0]
     end
     
     add_reference :hanghoas, :state, index: true, foreign_key: true
-	add_reference :comments, :state, foreign_key: true
+	# add_reference :comments, :state, foreign_key: true
   end
 end

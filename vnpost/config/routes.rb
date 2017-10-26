@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   namespace :nhanvien do
     get 'application/index'
     resources :reports
+    resources :taovandons
       resources :vandons do
         resources :hanghoas
         resources :nguoinhans
         resources :khachhangs
+
       end
   end
 
@@ -72,7 +74,7 @@ root 'application#index'
     end
 
     end
-
+resources :taovandons
   resources :hanghoas, only: [] do
     resources :comments, only: [:create]
   end
