@@ -1,4 +1,4 @@
-class Admin::TinhsController < ApplicationController
+class Admin::TinhsController < Admin::ApplicationController
 	before_action :set_tinh, only: [:show, :edit, :update, :destroy]
 	def new
 		@tinh = Tinh.new
@@ -8,12 +8,19 @@ class Admin::TinhsController < ApplicationController
 	def create
 		@tinh = Tinh.new(tinh_params)
 		if @tinh.save
-		flash[:notice] = "TỈnh tạo thành công."
-		redirect_to @tinh
+		flash[:notice] = "Tỉnh tạo thành công."
+		redirect_to admin_tinhs_path
 		else
-		flash.now[:alert] = "Tỉnh vụ tạo không thành công."
+		flash.now[:alert] = "Tỉnh tạo không thành công."
 		render "new"
 		end
+	end
+	def index
+		@tinhs = Tinh.all
+
+	end
+	def show
+		
 	end
 
 	def destroy

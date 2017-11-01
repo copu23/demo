@@ -12,12 +12,12 @@ li {
 <h1>Mã vận đơn: <%= @vandon.id %></h1>
 <li><button onclick='window.print(); return false;' class='btn btn-success'>In vận đơn</button></li>
 <li></li>
-<li><%= link_to "Chỉnh sửa", edit_vandon_path(@vandon),
+<li><%= link_to "Chỉnh sửa", edit_admin_vandon_path(@vandon),
 class: "edit" %></li>
 
-<li><%= link_to "Xóa", vandon_path(@vandon),method: :delete,data: { confirm: "Are you sure you want to delete this table?" },class: "delete" %></li>
-<li><%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                vandons_path, class: "cancel" %></li>
+<li><%= link_to "Xóa", admin_vandon_path(@vandon),method: :delete,data: { confirm: "Are you sure you want to delete this table?" },class: "delete" %></li>
+<li><%= link_to "Trở về",
+                admin_vandons_path, class: "cancel" %></li>
 
 <table id="attributes">
 <tr>
@@ -37,7 +37,7 @@ class: "edit" %></li>
   <p class="m-t-md m-b-md">
   <strong>1. Thông tin người nhận</strong></p>
   <% if   @vandon.nguoinhans.blank? %>
-  <div><%= link_to "Tạo người nhận", new_nhanvien_vandon_nguoinhan_path(@vandon), class: "new" %></div>
+  <div><%= link_to "Tạo người nhận", new_admin_vandon_nguoinhan_path(@vandon), class: "new" %></div>
   <% end %>
 
   <% @vandon.nguoinhans.each do |nguoinhan| %>
@@ -66,7 +66,7 @@ class: "edit" %></li>
       <strong>2. Thông tin khách hàng</strong></p>
       <DIV>
       <% if @vandon.khachhangs.blank? %>
-      <%= link_to "Tạo khách hàng", new_nhanvien_vandon_khachhang_path(@vandon), class: "new" %>
+      <%= link_to "Tạo khách hàng", new_admin_vandon_khachhang_path(@vandon), class: "new" %>
       <% end %>
       </DIV>
 
@@ -98,7 +98,7 @@ class: "edit" %></li>
          
           <div>
           <% if @vandon.hanghoas.blank? %> 
-          <%= link_to "Thêm mới hàng hóa", new_nhanvien_vandon_hanghoa_path(@vandon), class: "new" %>
+          <%= link_to "Thêm mới hàng hóa", new_admin_vandon_hanghoa_path(@vandon), class: "new" %>
           <% end %> 
           </div>
          

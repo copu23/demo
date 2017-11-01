@@ -1,0 +1,53 @@
+
+<head>
+  <title>Nấc khối lượng</title>
+</head>
+<header>
+<h1>Nấc khối lượng</h1>
+<ul class="actions">
+<% admins_only do %>
+<ul class="actions">
+<li>
+<%= link_to "Thêm mới", new_admin_nackhoiluong_path, class: "new" %>
+</li>
+</ul>
+<% end %>
+</ul>
+</header>
+<div>
+<table class="table table-bordred table-striped" >
+  <thead>
+    <tr>
+      <th>Nấc khối lượng</th>
+    
+      <th> Từ (gram)</th>
+      <th>Đến (gram)</th>
+      <th> </th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @nackhoiluongs.each do |nackhoiluong| %>
+<tr>
+<td><%= link_to nackhoiluong.tennkl, nackhoiluong %></td>
+
+<td><%= nackhoiluong.khoiluongbd %></td>
+<td><%= nackhoiluong.khoiluongkt %></td>
+<td>
+<%= link_to "Xem",
+                      admin_nackhoiluong_path(nackhoiluong), class: "show" %></td>
+<td><%= link_to "Sửa",
+                      edit_admin_nackhoiluong_path(nackhoiluong), class: "edit" %></td>
+
+<td>
+<% admins_only do %>
+
+<td><%= link_to "Xóa", admin_nackhoiluong_path(nackhoiluong),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %></td>
+<% end %>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+</div>

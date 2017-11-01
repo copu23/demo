@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     resources :reports
     resources :taovandons
       resources :vandons do
+          member do
+            get :search
+          end
         resources :hanghoas
         resources :nguoinhans
         resources :khachhangs
@@ -28,18 +31,29 @@ get 'search/search'
 root 'application#index'
     namespace :admin do
     resources :dashboards
-   
+   resources :mucphithuhos
     root 'application#index'
     resources :loaihangs, only: [:new, :create, :destroy]
     resources :tables , only: [:new, :create, :destroy]
      
-    resources :vandons
+    resources :vandons do
+       resources :hanghoas
+    resources :khachhangs
+    resources :nguoinhans
+    member do
+      get :print
+    end
+
+          member  do
+            get :search
+          end
+      end
      resources :states, only: [:new, :create, :destroy]
     resources :dichvus, only: [:new, :create, :destroy]
     resources :dichvucongthems, only: [:new, :create, :destroy]
-    resources :nackhoiluongs, only: [:new, :create, :destroy]
+    resources :nackhoiluongs
      resources :vungs, only: [:new, :create, :destroy]
-    resources :tinhs, only: [:new, :create, :destroy]
+    resources :tinhs
       resources :cuoccpns, only: [:new, :create, :destroy]
 
     resources :users do

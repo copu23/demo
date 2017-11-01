@@ -1,15 +1,17 @@
 class Admin::VandonsController < Admin::ApplicationController
-	 layout "admin"
+	
 
 	 before_action :set_vandon, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@vandons =Vandon.all.order("created_at DESC")
+		# @vandons =Vandon.all.order("created_at DESC")
 		# @vandons = policy_scope(vandon)
 
- 	   @vandons = Vandon.all.paginate(page: params[:page], per_page: 5)
+ 	  @vandons = Vandon.joins(:nguoinhans).search(params[:search], params[:page]).order('created_at DESC')
 
 	end
+
+
 
 	def new
 		@vandon= Vandon.new
@@ -22,7 +24,7 @@ class Admin::VandonsController < Admin::ApplicationController
 		if @vandon.save
 
 		flash[:notice] = "Vận đơn tạo thành công."
-		redirect_to "/nhanvien/vandons"
+		redirect_to "/admin/vandons"
 		else
 			flash.now[:alert] = "Vận đơn tạo không thành công."
 			render "new"

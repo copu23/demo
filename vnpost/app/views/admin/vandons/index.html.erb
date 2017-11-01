@@ -5,7 +5,7 @@
 <h1>Vận đơn</h1>
 
 
-  <%= form_tag(vandons_path, :method => "get", id: "search-form") do %>
+  <%= form_tag(admin_vandons_path, :method => "get", id: "search-form") do %>
   <div class="input-group col-md-6">
     <%= text_field_tag :search, params[:search], placeholder: "Nhập mã vận đơn hoặc sđt người nhận hoặc họ tên người nhận", class: 'form-control' %>
   

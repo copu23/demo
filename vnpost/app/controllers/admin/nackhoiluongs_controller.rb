@@ -1,7 +1,14 @@
-class Admin::NackhoiluongsController < ApplicationController
+class Admin::NackhoiluongsController < Admin::ApplicationController
 	before_action :set_nackhoiluong, only: [:show, :edit, :update, :destroy]
 	def new
 		@nackhoiluong = Nackhoiluong.new
+		
+	end
+	def  index
+		@nackhoiluongs =Nackhoiluong.all
+		
+	end
+	def show
 		
 	end
 

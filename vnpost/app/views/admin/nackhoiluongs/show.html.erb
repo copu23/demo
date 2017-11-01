@@ -1,0 +1,17 @@
+<header>
+
+<h1><%= @nackhoiluong.tennkl %></h1>
+<%= @nackhoiluong.mota %>
+<%= @nackhoiluong.khoiluongbd %>
+<%= @nackhoiluong.khoiluongkt %>
+
+<ul class="actions">
+<li><%= link_to "Chỉnh sửa", edit_admin_nackhoiluong_path(@nackhoiluong),
+class: "edit" %></li>
+<% admins_only do %>
+<li><%= link_to "Xóa", admin_nackhoiluong_path(@nackhoiluong),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %></li>
+<li><%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                admin_nackhoiluongs_path, class: "cancel" %></li>
+<% end %>
+</ul>
+</header>

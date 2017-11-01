@@ -19,9 +19,11 @@ class Nhanvien::VandonsController <  Nhanvien::ApplicationController
 		end
 	end
 	def index
-		# @vandons = policy_scope(vandon)
+		
 
- 	   @vandons = Vandon.all.paginate(page: params[:page], per_page: 5)
+ 	    # @vandons = Vandon.all.paginate(page: params[:page], per_page: 5).order('created_at DESC')
+
+ 	     @vandons = Vandon.joins(:nguoinhans).search(params[:search], params[:page]).order('created_at DESC')
 
 	end
 

@@ -9,20 +9,20 @@
 <%= f.button :submit, class: "btn-primary" %>
 <%= cancel_link %>
 <% end %>
-<script type="text/javascript">
-$("#nguoinhan_tinh_id").on('change', function(){
-	    $.ajax({
-	    	url: "/tinhs/getvung_id", 
-	    	data:{
+<!-- <script type="tẽt/javascript">
+$("#nguoinhan_tinh_id").on('change', function()Ơ
+	    $.ẫ(Ơ
+	    	url: "/tính/getvung_id", 
+	    	dât:Ơ
 	    		tinh_id : $("#nguoinhan_tinh_id").val()
-	    	},
-	    	success: function(data){ 
+	    	Ư,
+	    	success: function(dât)Ơ 
 	    	
-	        	alert(data.id);
-	    	},
-	    	error: function (ajaxContext) {
+	        	alert(dât.id);
+	    	Ư,
+	    	ẻo: function (ajaxContext) Ơ
 		        alert(ajaxContext.responseText)
-		    }
-		});
-	});
-</script>
+		    Ư
+		Ư);
+	Ư);
+</script> -->
