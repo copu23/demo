@@ -50,7 +50,7 @@
                      
 
                         <li>
-                            <%= link_to   admin_dashboards_path do %>
+                            <%= active_link_to   admin_dashboards_path do %>
                               <i class="fa fa-bar-chart" style="padding-left: 10px; padding-right: 10px"> </i> 
                               
                               THÔNG KÊ
@@ -59,93 +59,32 @@
                             
                         </li> 
                         <li>
-                             <a <%= link_to "Quản lí vận đơn", admin_vandons_path %></a>
+                          <%= active_link_to "Quản lí vận đơn", admin_vandons_path %>
                         </li>
                          <li>
-                             <a <%= link_to "Quản lí tỉnh", admin_tinhs_path %></a>
+                              <%= active_link_to "Quản lí tỉnh", admin_tinhs_path %>
                         </li>
                           </li> 
                         <li>
-                            <a <%= link_to "Quản lí người dùng", admin_users_path %> </a>
-                           <!--  <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">Flot Chát</a>
-                                </li>
-                                <li>
-                                    <a href="mói.html">Mói.js Chát</a>
-                                </li>
-                            </ul> -->
-                            <!-- /.nav-second-level -->
+                             <%= active_link_to "Quản lí người dùng", admin_users_path %> 
+                   
                         </li>
                         <li>
-                            <a <%= link_to "Định mức cước", cuoccpns_path %></a>
+                           <%= active_link_to "Định mức cước", cuoccpns_path %>
                         </li>
                         <li>
-                            <a <%= link_to "Định mức phí thu hộ", admin_mucphithuhos_path %></a>
+                            <%= active_link_to "Định mức phí thu hộ", admin_mucphithuhos_path %>
                         </li>
                         <li>
-                           <a <%= link_to "Nấc khối lượng", admin_nackhoiluongs_path %></a>
+                            <%= active_link_to "Nấc khối lượng", admin_nackhoiluongs_path %>
                         </li>
                          <li>
-                           <a <%= link_to "Dịch vụ cộng thêm", dichvucongthems_path %></a>
+                            <%= active_link_to "Dịch vụ cộng thêm", dichvucongthems_path %>
                         </li>
                          <li>
-                           <a <%= link_to "Trạng thái", states_path %></a>
+                          <%= active_link_to "Trạng thái", states_path %>
                         </li>
-                       <!--  <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
-                                </li>
-                                <li>
-                                    <a href="buttons.html">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="notifications.html">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="icons.html"> Icons</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grid</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                      <!--   </li> -->
-                      <!--   <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa ăở"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa ăở"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
-                         <!--        </li>
-                            </ul> 
-                            <!-- /.nav-second-level -->
-                        <!-- </li>   -->
+                      
                         <li class="active">
                             
                            
@@ -166,14 +105,14 @@
 
         <!-- Page Content -->
         <div id="page-wrapper">
-           <div class="container" id="contain">
+       
             <% flash.each do |key, message| %>
         <div class="alert alert-<%= key %>">
             <%= message %>
         </div>
         <% end %>
         <%= yield %>
-        </div>
+       
         </div>
         <!-- /#page-wrapper -->
 

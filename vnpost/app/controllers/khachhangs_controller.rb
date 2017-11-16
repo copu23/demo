@@ -1,5 +1,5 @@
-class KhachhangsController < ApplicationController
-	layout "admin"
+class KhachhangsController <Nhanvien::ApplicationController
+	
 	before_action :set_vandon	
 
 	before_action :set_khachhang, only: [:show, :edit, :update, :destroy]
@@ -11,7 +11,7 @@ class KhachhangsController < ApplicationController
 		@khachhang = @vandon.khachhangs.build(khachhang_params)
 		if @khachhang.save
 		flash[:notice] = "Tạo thành công."
-		redirect_to @vandon
+		redirect_to [:nhanvien,@vandon]
 		else
 		flash.now[:alert] = "Tạo không thành công."
 		render "new"
@@ -34,7 +34,7 @@ class KhachhangsController < ApplicationController
 	def update
 		if @khachhang.update(khachhang_params)
 		flash[:notice] = "Cập nhật thành công."
-		redirect_to @vandon
+		redirect_to [@vandon, @nguoinhan]
 		else
 		flash.now[:alert] = "Cập nhật không thành công."
 		render "edit"

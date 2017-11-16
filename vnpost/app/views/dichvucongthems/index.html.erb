@@ -1,21 +1,14 @@
 
-<head>
-  <title>Dịch vụ cộng thêm</title>
-</head>
-<header>
-<h1>Dịch vụ cộng thêm </h1>
-<ul class="actions">
-<% admins_only do %>
-<ul class="actions">
-<li>
-<%= link_to "Thêm mới", new_admin_dichvucongthem_path, class: "new" %>
-</li>
-</ul>
-<% end %>
-</ul>
-</header>
+  <div class="row">
+  <div class="col-md-8"><h1>Dịch vụ cộng thêm </h1></div>
+
+<div class="col-md-4" style="padding-top: 20px"><%= link_to "Thêm mới", new_admin_dichvucongthem_path, class: "new" %></div>
+
+</div>
+
 <div>
-<table class="table-responsive"">
+<table class="table table-bordred table-striped"">
+
   <thead>
     <tr>
       <th>Dịch vụ</th>

@@ -1,16 +1,14 @@
-<header>
-
-<h1><%= @tinh.tentinh %></h1>
-<h1><%= @tinh.vung_id %></h1>
-
-
+<div>
 <ul class="actions">
 <li><%= link_to "Chỉnh sửa", edit_admin_tinh_path(@tinh),
 class: "edit" %></li>
 <% admins_only do %>
 <li><%= link_to "Xóa", admin_tinh_path(@tinh),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %></li>
 <li><%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                tinhs_path, class: "cancel" %></li>
+                admin_tinhs_path, class: "cancel" %></li>
 <% end %>
 </ul>
-</header>
+
+</div>
+<div><h1 style="margin: 0px;padding-top: 20px"><%= @tinh.tentinh %></h1>
+<h1><%= @tinh.vung_id %></h1></div>

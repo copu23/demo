@@ -1,5 +1,5 @@
 class BccpsController < ApplicationController
-	def idex
+	def index
 		
 		
 	end

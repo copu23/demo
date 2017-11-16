@@ -18,6 +18,7 @@ gem "bootstrap-table-rails"
 gem 'geocoder'
 gem 'fusioncharts-rails'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
+gem "active_link_to"
 
 # gem 'mdbootstrap-rails'
 # gem 'groupdate'

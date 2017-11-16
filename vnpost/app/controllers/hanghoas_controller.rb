@@ -10,7 +10,7 @@ class HanghoasController < ApplicationController
 	
 		if @hanghoa.save
 		flash[:notice] = "Tạo thành công."
-		redirect_to [@vandon, @hanghoa]
+		redirect_to [:nhanvien,@vandon, @hanghoa]
 		else
 		flash.now[:alert] = "Tạo không thành công."
 		render "new"
@@ -35,7 +35,7 @@ class HanghoasController < ApplicationController
 	def update
 		if @hanghoa.update(hanghoa_params)
 		flash[:notice] = "Cập nhật thành công."
-		redirect_to @vandon
+		redirect_to [:nhanvien,@vandon]
 		else
 		flash.now[:alert] = "Cập nhật không thành công."
 		render "edit"
@@ -63,7 +63,7 @@ private
 	end
 
 	def hanghoa_params
-		params.require(:hanghoa).permit(:tienthuho,:cuocthuho,:thuho,:trongluongtinh, :trongluongquydoi, :chieudai, :chieucao, :chieurong, :cuocchinh, :cuocphu, :tongcuoc, :motachitiet, :dichvu_id, :dichvucongthem_id, :state_id)
+		params.require(:hanghoa).permit(:trongluongtinh, :trongluongquydoi, :chieudai, :chieucao, :chieurong, :cuocchinh, :cuocphu, :tongcuoc, :motachitiet, :dichvu_id, :dichvucongthem_id, :state_id)
 	end
 
 

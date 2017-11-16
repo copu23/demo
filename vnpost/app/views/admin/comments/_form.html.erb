@@ -1,0 +1,28 @@
+
+<header>
+<h3>Thêm Thông tin trạng thái</h3>
+</header>
+<%= simple_form_for [:admin,@vandon,hanghoa,comment] do |f| %>
+ <% if comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%= f.input :text, label: "Mô tả" %>
+<%= f.association :state, label: "Trạng thái",:selected => params[:pid] %>
+
+<%= f.submit class: "btn btn-primary" %>
+<% end %>
+
+<!-- <select class="select optional form-control" name="comment[state_id]"
+id="comment_state_id">
+<option value="1" selected="selected">New</option>
+<option value="2">Open</option>
+<option value="3">Closed</option>
+</select> -->

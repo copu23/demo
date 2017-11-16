@@ -7,8 +7,12 @@ Rails.application.routes.draw do
       resources :vandons do
           member do
             get :search
+            get :print
+  
           end
-        resources :hanghoas
+       resources :hanghoas do
+                 resources :comments, only: [:create]
+            end
         resources :nguoinhans
         resources :khachhangs
 
@@ -32,21 +36,25 @@ root 'application#index'
     namespace :admin do
     resources :dashboards
    resources :mucphithuhos
+  
     root 'application#index'
     resources :loaihangs, only: [:new, :create, :destroy]
     resources :tables , only: [:new, :create, :destroy]
      
     resources :vandons do
-       resources :hanghoas
-    resources :khachhangs
-    resources :nguoinhans
-    member do
-      get :print
-    end
+           resources :hanghoas do
+                 resources :comments, only: [:create]
+            end
 
-          member  do
-            get :search
-          end
+        resources :khachhangs
+        resources :nguoinhans
+        member do
+          get :print
+        end
+
+              member  do
+                get :search
+              end
       end
      resources :states, only: [:new, :create, :destroy]
     resources :dichvus, only: [:new, :create, :destroy]

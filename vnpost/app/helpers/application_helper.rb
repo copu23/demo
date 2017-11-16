@@ -19,9 +19,9 @@ module ApplicationHelper
 	include Rails.application.routes.url_helpers
 
 	    def cancel_link
-	      return link_to 'Cancel', request.env["HTTP_REFERER"], 
+	      return link_to 'Trở về', request.env["HTTP_REFERER"], 
 	        :class => 'cancel', 
-	        :confirm => 'Are you sure? Any changes will be lost.'
+	        :confirm => 'Bạn có chắc chắn không? Dữ liệu thay đổi sẽ bị mất.'
 	    end
 
 end

@@ -1,26 +1,20 @@
-<head>
-  <title>Trạng thái</title>
-</head>
-<header>
-<h1> Trạng thái</h1>
-<ul class="actions">
-<% admins_only do %>
-<ul class="actions">
-<li>
+
+
+<div class="row">
+ <div class="col-md-8"> <h1> Trạng thái</h1></div>
+<div class="col-md-4", style="padding-top: 20px">
 <%= link_to "Thêm mới", new_admin_state_path, class: "new" %>
-</li>
-</ul>
-<% end %>
-</ul>
-</header>
+</div>
+</div>
+
 <div>
-<table class="table-responsive"">
+<table class="table table-bordred table-striped"">
   <thead>
     <tr>
       <th>Trạng thái</th>
      
       <th>Tên trạng thái</th>
-      <th>Màu </th>
+    
       <th> </th>
       <th></th>
       <th></th>
@@ -32,7 +26,7 @@
 <td><%= link_to state.id, state %></td>
 <td><%= state.name %></td>
 
-<td><%= state.color %></td>
+
 
 <td>
 <%= link_to t('.show', :default => t("helpers.links.show")),

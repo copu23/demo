@@ -12,11 +12,18 @@ class Nhanvien::VandonsController <  Nhanvien::ApplicationController
 		if @vandon.save
 
 		flash[:notice] = "Vận đơn tạo thành công."
-		redirect_to "/nhanvien/vandons"
+		render "show"
 		else
 			flash.now[:alert] = "Vận đơn tạo không thành công."
 			render "new"
 		end
+	end
+
+	def print
+
+		 @vandon = Vandon.find(params[:id])
+		 
+		 render :layout => "print"
 	end
 	def index
 		

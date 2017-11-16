@@ -1,0 +1,41 @@
+<div id="khachhang">
+<header>
+<h1>Vân đon<%=@vandon.id %></h1>
+</header>
+
+
+<table class="table-responsive"">
+  <thead>
+    <tr>
+      <th>Khách hàng</th>
+       <th>SĐT </th>
+      <th> Địa chỉ</th>
+      
+       <th> </th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @vandon.khachhangs.each do |khachhang| %>
+<tr>
+<td><%= link_to khachhang.hotenkh, [@vandon, khachhang] %></td>
+<td><%= khachhang.sodt %></td>
+<td><%= khachhang.address %></td>
+
+<td><%= link_to "Edit", [:edit, :admin,@vandon, @khachhang],
+class: "edit" %></td>
+
+<td>
+<% admins_only do %>
+<td><%= link_to "Delete", [:admin,@vandon, @khachhang], method: :delete,
+data: { confirm: "Bạn có chắc chắn xóa không"},
+class: "delete" %>
+                      <% end %>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+
+

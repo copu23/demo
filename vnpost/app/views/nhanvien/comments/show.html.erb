@@ -1,0 +1,11 @@
+<header>
+<h3>Ghi chú</h3>
+</header>
+<div id="comments">
+<% if @hanghoa.comments.persisted.any? %>
+<%= render @hanghoa.comments.persisted %>
+
+<% else %>
+<p>Không có ghi chú nào.</p>
+<% end %>
+</div>

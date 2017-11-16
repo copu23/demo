@@ -11,4 +11,8 @@ class Nguoinhan < ApplicationRecord
 	end
 	end
 	after_validation :reverse_geocode 
+	validates :sodtnn,   :presence => {:message => 'SĐT không được trống'},
+		             numericality:{message: "Chỉ chứa kí tự số từ 0 đến 9"},
+		              :length => { :minimum => 10, :maximum => 11}
+ 	validates :hotennn, presence:{message: "Không được để trống"}
 end

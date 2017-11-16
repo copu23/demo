@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head> 
 
-<body id="one">
 
     <div id="wrapp" style="background-color:   #ffcc00">
 
@@ -48,7 +47,7 @@
                             <!-- /input-group -->
                      
 
-                        <li>
+                        <li class="<%= "active" if current_page?("/nhanvien/reports") %>">
                             <%= link_to   nhanvien_reports_path do %>
                               <i class="fa fa-bar-chart" style="padding-left: 10px; padding-right: 10px"> </i> 
                               
@@ -57,11 +56,11 @@
                            
                             
                         </li> 
-                        <li>
-                             <a <%= link_to "Quản lí vận đơn", nhanvien_vandons_path %></a>
+                        <li class="<%= "active" if current_page?("/nhanvien/vandons") %>">
+                             <%= link_to "Quản lí vận đơn", nhanvien_vandons_path %>
                         </li>
-                        <li>
-                             <a <%= link_to "Vận đơn chờ duyệt", nhanvien_taovandons_path %></a>
+                        <li class="<%= "active" if current_page?("/nhanvien/taovandons") %>">
+                              <%= link_to "Vận đơn chờ duyệt", nhanvien_taovandons_path %>
                         </li>
                       <!-- 
                         <button class="dropbtn" onclick="myFunction()">
@@ -94,20 +93,19 @@
 
         <!-- Page Content -->
         <div id="page-wrapper">
-           <div class="container" id="contain">
+           
             <% flash.each do |key, message| %>
         <div class="alert alert-<%= key %>">
             <%= message %>
         </div>
         <% end %>
         <%= yield %>
-        </div>
-        </div>
+                </div>
         <!-- /#page-wrapper -->
 
-    </div>
+  
 
-</body>
+
 
 </html>
 

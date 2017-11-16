@@ -24,6 +24,9 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_link_to (1.0.5)
+      actionpack
+      addressable
     activejob (5.0.6)
       activesupport (= 5.0.6)
       globalid (>= 0.3.6)
@@ -38,6 +41,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     arel (7.1.4)
     autoprefixer-rails (7.1.4)
       execjs
@@ -100,6 +105,7 @@ GEM
       mini_portile2 (~> 2.2.0)
     orm_adapter (0.5.0)
     pg (0.21.0)
+    public_suffix (3.0.0)
     puma (3.10.0)
     pundit (0.3.0)
       activesupport (>= 3.0.0)
@@ -195,6 +201,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_link_to
   bootstrap-sass (~> 3.3)
   bootstrap-table-rails
   byebug
@@ -223,4 +230,4 @@ DEPENDENCIES
   will_paginate-bootstrap (~> 1.0, >= 1.0.1)
 
 BUNDLED WITH
-   1.15.4
+   1.16.0.pre.3

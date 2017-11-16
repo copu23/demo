@@ -5,10 +5,10 @@ class Admin::VandonsController < Admin::ApplicationController
 
 	def index
 		# @vandons =Vandon.all.order("created_at DESC")
-		# @vandons = policy_scope(vandon)
+		 # @vandons = policy_scope(vandon)
 
- 	  @vandons = Vandon.joins(:nguoinhans).search(params[:search], params[:page]).order('created_at DESC')
-
+ 	  
+   	 @vandons = Vandon.joins(:nguoinhans).search(params[:search], params[:page]).order('created_at DESC')
 	end
 
 
@@ -24,7 +24,7 @@ class Admin::VandonsController < Admin::ApplicationController
 		if @vandon.save
 
 		flash[:notice] = "Vận đơn tạo thành công."
-		redirect_to "/admin/vandons"
+		render "show"
 		else
 			flash.now[:alert] = "Vận đơn tạo không thành công."
 			render "new"

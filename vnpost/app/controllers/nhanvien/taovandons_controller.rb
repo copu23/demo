@@ -12,7 +12,7 @@ class Nhanvien::TaovandonsController < Nhanvien::ApplicationController
 		end
 	end 
 	def  index
-		@taovandons = Taovandon.all.order("trangthai DESC")
+		@taovandons = Taovandon.all.order(created_at: :DESC)
 	end
 
 	def new

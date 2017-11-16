@@ -134,7 +134,7 @@ class Nhanvien::ReportsController < Nhanvien::ApplicationController
          
             :dataSource => {
                 :chart => {
-        :caption => "Expenditures Incurred in Publishing a Book",
+        :caption => "Thống kê vận đơn theo tình trạng",
         :bgcolor => "FFFFFF",
         :showvalues => "1",
         :showpercentvalues => "1",
@@ -186,9 +186,9 @@ class Nhanvien::ReportsController < Nhanvien::ApplicationController
          
             :dataSource => {
                 :chart => {
-        :caption => "Half Yearly Revenue Analysis",
-        :subcaption => "Harry's SuperMart",
-        :yaxisname => "Revenue",
+        :caption => "Tổng doanh thu theo ngày",
+        :subcaption => "(nghìn đồng)",
+        :yaxisname => "nghìn đồng",
         # :numberprefix "$",
         :yaxismaxvalue => "250000",
         :rotatevalues => "0",
@@ -201,7 +201,10 @@ class Nhanvien::ReportsController < Nhanvien::ApplicationController
        }     
         })
 
-       @Tongvandonphatthanhcong = Hanghoa.where(:state_id => "7").count
+          @Tongvandonphatthanhcong = Hanghoa.where(:state_id => "7").count
+       @tongcuocthuho = Hanghoa.sum(:cuocthuho)
+       @tongvdchuyenhoan =  Hanghoa.where(:state_id => "8").count
+       
        
     end
 end

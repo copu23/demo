@@ -6,8 +6,10 @@ class Admin::DashboardsController < Admin::ApplicationController
            @hanghoas = Hanghoa.select("state_id, DATE(created_at) as ngay, count(state_id) as sovd").where(:created_at => Time.now.beginning_of_week..Time.now.end_of_week).group("state_id, DATE(created_at)")
            @ngaytaos = Hanghoa.select("DATE(created_at) as ngay").distinct
            @vuataos = Hanghoa.select("count(state_id) as sovd, state_id, DATE(created_at) as ngay").where(:state_id => '5').group("state_id, DATE(created_at)")
-           @thanhcongs = Hanghoa.select("count(state_id) as sovd, state_id, DATE(created_at) as ngay").where( :state_id => '6').group("state_id, DATE(created_at)")
-           @chuyenhoans = Hanghoa.select("count(state_id) as sovd, state_id, DATE(created_at) as ngay").where(:state_id => '7').group("state_id, DATE(created_at)")
+           @thanhcongs = Hanghoa.select("count(state_id) as sovd, state_id, DATE(created_at) as ngay").where( :state_id => '7').group("state_id, DATE(created_at)")
+           @chuyenhoans = Hanghoa.select("count(state_id) as sovd, state_id, DATE(created_at) as ngay").where(:state_id => '6').group("state_id, DATE(created_at)")
+           @chuyentieps = Hanghoa.select("count(state_id) as sovd, state_id, DATE(created_at) as ngay").where(:state_id => '8').group("state_id, DATE(created_at)")
+           
            @vuatao_pies = Hanghoa.where(:state_id => '5').count
            @chuyenhoan_pies = Hanghoa.where(:state_id => '6').count
            @phatthanhcong_pies = Hanghoa.where(:state_id => '7').count
@@ -26,6 +28,7 @@ class Admin::DashboardsController < Admin::ApplicationController
         datavt = []
         datathanhcong =[]
         datachuyenhoan = []
+        datachuyentiep = []
         values =[]
         @ngaytaos.each do |ngaytao|
         category.push( { :label => ngaytao.ngay,
@@ -62,6 +65,13 @@ class Admin::DashboardsController < Admin::ApplicationController
            
         })
         end
+         @chuyentieps.each do |chuyentiep|
+        datachuyentiep.push({
+            :value => chuyentiep.sovd
+           
+        })
+        end
+
 
      
 
@@ -104,16 +114,20 @@ class Admin::DashboardsController < Admin::ApplicationController
             
                 :categories => {:category => category},
                 :dataset => [{
-                    "seriesname": "vừa tạo" ,
+                    "seriesname": "vừa tiếp nhận" ,
                     :data => datavt
                     },
                     {
-                    "seriesname": "đã chuyển" ,
+                    "seriesname": "phát thành công" ,
                     :data => datathanhcong
                     },
                     {
                     "seriesname": "chuyển hoàn" ,
                     :data => datachuyenhoan
+                    },
+                    {
+                    "seriesname": "chuyển tiếp" ,
+                    :data => datachuyentiep
                     },
                 ]
                   }
@@ -129,7 +143,7 @@ class Admin::DashboardsController < Admin::ApplicationController
          
             :dataSource => {
                 :chart => {
-        :caption => "Expenditures Incurred in Publishing a Book",
+        :caption => "Thống kê vận đơn theo tình trạng",
         :bgcolor => "FFFFFF",
         :showvalues => "1",
         :showpercentvalues => "1",
@@ -173,6 +187,8 @@ class Admin::DashboardsController < Admin::ApplicationController
         })
 
        @Tongvandonphatthanhcong = Hanghoa.where(:state_id => "7").count
+       @tongcuocthuho = Hanghoa.sum(:cuocthuho)
+       @tongvdchuyenhoan =  Hanghoa.where(:state_id => "8").count
        
     end
 end

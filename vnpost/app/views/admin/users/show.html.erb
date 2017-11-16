@@ -1,26 +1,36 @@
-<header>
-<h1><%= @user %></h1>
-<ul class="actions">
-<li>
+<!-- <div class="row">
+<h1><%= @user %></h1></div>
+<div>
 <%= link_to "Chỉnh sửa ", [:edit, :admin, @user], class: "edit" %>
-</li>
-<li>
+
 <%= link_to "Vô hiệu hóa", [:archive, :admin, @user], method: :patch,
 data: { confirm: "Bạn có chắc chắn muốn vô hiệu hóa người dùng này không?"},
 class: "delete" %>
-</li>
-</ul>
-</header>
-<header>
-<!-- <h2>Phân quyền</h2> -->
-</header>
-<% if @user.roles.any? %>
-<ul>
-<% @user.roles.each do |role| %>
-<li><%= role.table.name %>: <%= role.role.titleize %></li>
-<% end %>
-</ul>
-<% else %>
-<p>Không có quyền nào.</p>
-<% end %>
+
+
+</div>
+<div>
+	<%= @user.hoten %>
+	<%= @user.sdt %>
+	<%= @user.diachi %>
+
+</div> -->
+
+<div class="card" style="margin: 0px; padding-top: 20px">
+  <h3 class="card-header"><%= @user %></h3>
+  <div class="card-block">
+     <p class="card-text"><span class="fa fa-user">                          Họ tên: <%= @user.hoten %></p>
+    <p class="card-text"><span class="glyphicon glyphicon-cd"></span>             Số điện thoại: <%= @user.sdt %></p>
+    <p class="card-text"><span class="fa fa-address-book-o"> Địa chỉ: <%= @user.diachi %></p>
+
+    <%= link_to "Chỉnh sửa ", [:edit, :admin, @user], class: "edit" %>
+
+<%= link_to "Vô hiệu hóa", [:archive, :admin, @user], method: :patch,
+data: { confirm: "Bạn có chắc chắn muốn vô hiệu hóa người dùng này không?"},
+class: "delete" %>
+
+
+   
+  </div>
+</div>
 

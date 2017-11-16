@@ -41,7 +41,7 @@ class: "edit" %></li>
   <% end %>
 
   <% @vandon.nguoinhans.each do |nguoinhan| %>
-  <div> Họ tên người nhận: <%= link_to nguoinhan.hotennn, [@vandon, nguoinhan] %></div>
+  <div> Họ tên người nhận: <%= link_to nguoinhan.hotennn, [:admin,@vandon, nguoinhan] %></div>
   <div>SĐT: <%= nguoinhan.sodtnn %></div>
   <div>Địa chỉ: <%= nguoinhan.address %></div>
   <div>Thành phố: <%= nguoinhan.sub_state %><%= nguoinhan.province %></div>
@@ -74,7 +74,7 @@ class: "edit" %></li>
       <div>
       <% @vandon.khachhangs.each do |khachhang| %>
       <div><label>Họ tên KH:</label>
-      <%= link_to khachhang.hotenkh, [@vandon, khachhang] %></div>
+      <%= link_to khachhang.hotenkh, [:admin,@vandon, khachhang] %></div>
       <div><label>Số điện thoại: </label><%= khachhang.sodt %></div>
       <div><label>Địa chỉ: </label><%= khachhang.address %></div>
      <!--  <%= link_to "Edit", [:edit, @vandon, @khachhang],
@@ -103,7 +103,7 @@ class: "edit" %></li>
           </div>
          
             <% @vandon.hanghoas.each do |hanghoa| %>
-            <div><label> Id: </label><%= link_to hanghoa.id, [@vandon, hanghoa] %></div>
+            <div><label> Id: </label><%= link_to hanghoa.id, [:admin,@vandon, hanghoa] %></div>
 
             <div><label> Trạng thái: </label><%= hanghoa.state_id if hanghoa.state_id %></div>
           

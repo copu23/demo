@@ -1,5 +1,4 @@
 
-
 <%= simple_form_for([:nhanvien,vandon, hanghoa]) do |f| %>
 
  <% if hanghoa.errors.any? %>
@@ -25,7 +24,7 @@
 		</div>
 	
 				<%= f.label :thêm_thể_tích_hàng %>
-				  <%= f.check_box :trongluongquydoi, label: "Thêm thẻ tích hàng"%>
+				  <%= f.check_box :trongluongquydoi, label: "Thêm thể tích hàng"%>
 				  <div id="card_details" style="display:none;">
 				   <%= f.input :chieucao, label:"Chiều cao" %>
 				   <%= f.input :chieudai, label:"Chiều dài" %>
@@ -59,7 +58,12 @@
 				<% end %>
 	 		</div>
 	 	
- 			
+ 			<%= f.label :name, label:"Thu hộ (COD)" %>
+				  <%= f.check_box :thuho %>
+				  <div id="thuho" style="display:none;">
+				   <%= f.input :tienthuho, label:false %>
+				   
+		  			</div>	
 			
 			<p class="m-t-md m-b-md">
 					<strong>3. Dịch vụ cộng thêm</strong>
@@ -68,12 +72,7 @@
 			<%= f.input :dichvucongthem_id  ,label:false do %>
 			<%= f.collection_select :dichvucongthem_id,Dichvucongthem.all,:id,:tendvct, {:prompt=> "---Dịch vụ cộng thêm---"} %>
 			<% end %>
-				<%= f.label :name, label:"Thu hộ (COD)" %>
-				  <%= f.check_box :thuho %>
-				  <div id="thuho" style="display:none;">
-				   <%= f.input :tienthuho, label:false %>
-				   
-		  			</div>	
+				
 			
 			<p  class="m-t-md m-b-md">
 	 			<strong>4. Mô tả chi tiết</strong>
@@ -104,7 +103,7 @@
 		<div class="col-md-12 m-t-md m-b-md">
 			<%= f.input :cuocphu, label: "Cước phụ ",:input_html => { :value => 0}  %></div>
 		<div class="col-md-12 m-t-md m-b-md">
-			<%= f.input :cuocthuho, label: "Cước thu hộ ",:input_html => { :value => 1} %></div>
+			<%= f.input :cuocthuho, label: "Cước thu hộ ",:input_html => { :value => 0} %></div>
 		<div class="col-md-12 m-t-md m-b-md">
 			<%= f.input :tongcuoc, label: "Tổng cước" %></div>
 </div>
@@ -235,7 +234,7 @@
 	    
 	    });
 	$("#hanghoa_chieurong").on('change', function(){
-		$('#hanghoa_trongluongtinh').val( parseInt($("#hanghoa_chieurong").val()) * parseInt($("#hanghoa_chieucao").val())* parseInt($("#hanghoa_chieudai").val()) *1000/600 )
+		$('#hanghoa_trongluongtinh').val( parseInt($("#hanghoa_chieurong").val()) * parseInt($("#hanghoa_chieucao").val())* parseInt($("#hanghoa_chieudai").val()) *1000/ 600 )
 	    
 	    });
 	$("#hanghoa_cuocthuho").on('change', function(){

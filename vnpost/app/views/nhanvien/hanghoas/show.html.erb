@@ -1,0 +1,61 @@
+
+<div id="hanghoa">
+<header>
+<div class="row">
+	<div class="col-md-6"><h1>Mã vận đơn:      <%= @vandon.id %></h1></div>
+	<div class="col-md-1" style="padding-top: 20px"><%= link_to "Edit", [:edit,:nhanvien, @vandon, @hanghoa],
+class: "edit" %></div>
+<div class="col-md-1" style="padding-top: 20px">
+<%= link_to "Delete", [:nhanvien,@vandon, @hanghoa], method: :delete,
+data: { confirm: "Bạn có chắc chắn xóa không"},
+class: "delete" %></div>
+<div class="col-md-1" style="padding-top: 20px"> <%= cancel_link %> </div>
+</div>
+
+
+
+
+
+
+      <% @vandon.hanghoas.each do |hanghoa| %>
+      <div><label> Id: </label><%= link_to hanghoa.id, [@vandon, hanghoa] %></div>
+	    <% if @hanghoa.state_id.present? %>
+
+		<div><label>Trạng thái: </label>
+		<%= @comment.state.name %></div>
+
+	<% end %>
+      <div><label> Trọng lượng tịnh: </label><%= hanghoa.trongluongtinh %></div>
+     
+      <div><label> Cước chính: </label><%= hanghoa.cuocchinh %></div>
+     
+      <div><label> Cước phụ: </label><%= hanghoa.cuocphu %></div>
+
+      <div><label> Tổng cước: </label><%= hanghoa.tongcuoc %></div>
+
+<% end %>
+
+</div>
+
+
+<%= render "nhanvien/comments/form",  hanghoa: @hanghoa, comment: @comment %>
+
+<script type="text/javascript">
+var hanghoa_id=<%= @hanghoa.id %>
+		$("#comment_state_id").on('change', function(){
+	    $.ajax({
+	    	url: "/home/guiSMS", 
+	    	data:{
+	    		hanghoa_id : hanghoa_id,
+	    		 state_id : $("#comment_state_id").val()
+	    	},
+	    	success: function(data){ 
+
+	        	alert(data.id)
+	    	},
+	    	error: function (ajaxContext) {
+		        alert(ajaxContext.responseText)
+		    }
+		});
+	});
+</script>

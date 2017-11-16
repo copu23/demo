@@ -1,10 +1,13 @@
 <head>
   <title>Vận đơn</title>
-</head>
-<header>
-<h1>Vận đơn</h1>
 
 
+<div class="row">
+
+<h1 class="text-center" >DANH SÁCH VẬN  ĐƠN</h1>
+</div>
+<div class="row">
+  <div class="col-md-8"> 
   <%= form_tag(nhanvien_vandons_path, :method => "get", id: "search-form") do %>
   <div class="input-group col-md-6">
     <%= text_field_tag :search, params[:search], placeholder: "Nhập mã vận đơn hoặc sđt người nhận hoặc họ tên người nhận", class: 'form-control' %>
@@ -16,13 +19,12 @@
   <% end %>
 </div>
 
-<ul class="actions">
-<li>
-<%= link_to "Thêm mới", new_nhanvien_vandon_path, class: "new" %>
-</li>
+  </div>
+  <div class="col-md-4">
 
-</ul>
-</header>
+<%= link_to "Thêm mới", new_nhanvien_vandon_path, class: "new" %>
+</div>
+</div>
 <div class="table-responsive">
   <table id="mytable" class="table table-bordred table-striped" style="width: 800px">
   <thead>

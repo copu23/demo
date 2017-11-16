@@ -48,9 +48,11 @@ background-color: <%= state.color %>;
 <div class="row">
   <div class="collapse navbar-collapse " id="collapse">
     <ul class="nav navbar-nav">
-      <li><%= link_to "BƯU CHÍNH CHUYÊN PHÁT",  bccps_index_path %></li>
-      <li> <%= link_to "TÀI CHÍNH BƯU CHÍNH",  bccps_index_path %> </li>
-       <li> <%= link_to "TẠO VẬN ĐƠN",  new_taovandon_path %> </li>
+      <li class="<%= "active" if current_page?("/bccps/index") %>">
+      <%= link_to "BƯU CHÍNH CHUYÊN PHÁT",  bccps_index_path %></li>
+      <li class="<%= "active" if current_page?("/loaihangs") %>"> 
+      <%= link_to "TÀI CHÍNH BƯU CHÍNH",  loaihangs_path %> </li>
+       <li class="<%= "active" if current_page?("/taovandons/new") %>"> <%= link_to "TẠO VẬN ĐƠN",  new_taovandon_path %> </li>
     
       <% admins_only do %>
 
@@ -60,7 +62,7 @@ background-color: <%= state.color %>;
       <% end %> 
       <% nhanviens_only do %>
 
-      <li>
+      <li class="<%= "active" if current_page?("/nhanviens") %>">
       <%= link_to "NHÂN VIÊN", nhanvien_application_index_path %>
       </li>
       <% end %>
@@ -91,27 +93,33 @@ background-color: <%= state.color %>;
 
     
     <!-- <div class="navbar-right col-md-4" style="padding-top: 10px"> -->
-    <%= form_tag(search_search_path, :method => "get", id: "search-form") do %>
+  
     <!--   <ul class="nav navbar-nav"> 
       <li> -->
-      <div class="input-group" style="padding-top: 10PX">
-    <%= text_field_tag :searchs, params[:searchs], placeholder: "Nhập mã vận đơn", class: 'form-control' %>
+      <div class="input-group" style="padding-top: 10PX; padding-left: 5px">
+        <%= form_tag(search_search_path, :method => "get", id: "search-form") do %>
+         <div class="input-group-btn" >
+        <%= text_field_tag :searchs, params[:searchs], placeholder: "Nhập mã vận đơn", class: 'form-control' %>
 
-      <div class="input-group-btn" >
+     
        
        <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
       <span class="glyphicon glyphicon-search"></span> 
-      <% end %>
-  <!--   </div> -->
-<!-- 
-    </li>
-    </ul> -->
-     <% end %> 
+     
+
+    
    </div>
+
 </div>
+    <% end %>
+    <% end %> 
+
 </ul>
+</div>
+</div>
 
 </nav>
+
 
 
 <% flash.each do |key, message| %>

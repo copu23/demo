@@ -10,5 +10,7 @@ class Khachhang < ApplicationRecord
 	end
 	end
 	after_validation :reverse_geocode 
-
+	validates :sodt,   :presence => {:message => 'SĐT không được trống'},
+		             numericality:{message: "Chỉ chứa kí tự số từ 0 đến 9"},
+		            length: { in: 10..11 }
 end

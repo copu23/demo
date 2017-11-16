@@ -15,9 +15,9 @@ li {
 <li><%= link_to "Chỉnh sửa", edit_nhanvien_vandon_path(@vandon),
 class: "edit" %></li>
 
-<li><%= link_to "Xóa", vandon_path(@vandon),method: :delete,data: { confirm: "Are you sure you want to delete this table?" },class: "delete" %></li>
+<li><%= link_to "Xóa", nhanvien_vandon_path(@vandon),method: :delete,data: { confirm: "Are you sure you want to delete this table?" },class: "delete" %></li>
 <li><%= link_to "Trở về",
-                admin_vandons_path, class: "cancel" %></li>
+                nhanvien_vandons_path, class: "cancel" %></li>
 
 <table id="attributes">
 <tr>
@@ -37,18 +37,18 @@ class: "edit" %></li>
   <p class="m-t-md m-b-md">
   <strong>1. Thông tin người nhận</strong></p>
   <% if   @vandon.nguoinhans.blank? %>
-  <div><%= link_to "Tạo người nhận",  new_nhanvien_vandon_nguoinhan_path(@vandon), class: "new" %></div>
+  <div><%= link_to "Tạo người nhận", new_nhanvien_vandon_nguoinhan_path(@vandon), class: "new" %></div>
   <% end %>
 
   <% @vandon.nguoinhans.each do |nguoinhan| %>
-  <div> Họ tên người nhận: <%= link_to nguoinhan.hotennn, [@vandon, nguoinhan] %></div>
+  <div> Họ tên người nhận: <%= link_to nguoinhan.hotennn, [:nhanvien,@vandon, nguoinhan] %></div>
   <div>SĐT: <%= nguoinhan.sodtnn %></div>
   <div>Địa chỉ: <%= nguoinhan.address %></div>
   <div>Thành phố: <%= nguoinhan.sub_state %><%= nguoinhan.province %></div>
   <!-- <div>
   <%= link_to "Edit", [:edit, @vandon, @nguoinhan],
   class: "edit" %>
-    <% admins_only do %>
+    <% nhanviens_only do %>
   <%= link_to "Delete", [@vandon, @nguoinhan], method: :delete,
   data: { confirm: "Bạn có chắc chắn xóa không"},
   class: "delete" %>
@@ -74,14 +74,14 @@ class: "edit" %></li>
       <div>
       <% @vandon.khachhangs.each do |khachhang| %>
       <div><label>Họ tên KH:</label>
-      <%= link_to khachhang.hotenkh, [@vandon, khachhang] %></div>
+      <%= link_to khachhang.hotenkh, [:nhanvien,@vandon, khachhang] %></div>
       <div><label>Số điện thoại: </label><%= khachhang.sodt %></div>
       <div><label>Địa chỉ: </label><%= khachhang.address %></div>
      <!--  <%= link_to "Edit", [:edit, @vandon, @khachhang],
       class: "edit" %>
 
 
-      <% admins_only do %>
+      <% nhanviens_only do %>
       <%= link_to "Delete", [@vandon, @khachhang], method: :delete,
       data: { confirm: "Bạn có chắc chắn xóa không"},
       class: "delete" %>
@@ -103,7 +103,7 @@ class: "edit" %></li>
           </div>
          
             <% @vandon.hanghoas.each do |hanghoa| %>
-            <div><label> Id: </label><%= link_to hanghoa.id, [@vandon, hanghoa] %></div>
+            <div><label> Id: </label><%= link_to hanghoa.id, [:nhanvien,@vandon, hanghoa] %></div>
 
             <div><label> Trạng thái: </label><%= hanghoa.state_id if hanghoa.state_id %></div>
           

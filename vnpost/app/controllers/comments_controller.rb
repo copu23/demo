@@ -1,22 +1,22 @@
 class CommentsController < ApplicationController
 	before_action :set_hanghoa
-	layout "admin"
+	# layout "admin"
 
-def create
+	def create
 
-	@comment = @hanghoa.comments.build(comment_params)
-	@comment.nguoilap = current_user
-	authorize @comment, :create?
-		if @comment.save
-			flash[:notice] = " Tạo ghi chú thành công"
-			
-	 redirect_to [@hanghoa.vandon, @hanghoa]
-		else
-	flash.now[:alert] = "Tạo ghi chú không thành công."
-	@vandon = @hanghoa.vandon
-	 render "hanghoas/show"
+		@comment = @hanghoa.comments.build(comment_params)
+		@comment.nguoilap = current_user
+		authorize @comment, :create?
+			if @comment.save
+				flash[:notice] = " Tạo ghi chú thành công"
+				
+		 redirect_to [@hanghoa.vandon, @hanghoa]
+			else
+		flash.now[:alert] = "Tạo ghi chú không thành công."
+		@vandon = @hanghoa.vandon
+		 render "hanghoas/show"
+		end
 	end
-end
 
 # def getid
 # 				hanghoa_id = params[:hanghoa_id]

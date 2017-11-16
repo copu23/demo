@@ -1,43 +1,43 @@
-class NguoinhansController < ApplicationController
-	layout "admin"
+class NguoinhansController < Nhanvien::ApplicationController
+	
 		before_action :set_vandon	
 
-	before_action :set_nguoinhan, only: [:show, :edit, :update, :destroy]
+		before_action :set_nguoinhan, only: [:show, :edit, :update, :destroy]
 
-	def create
-		@nguoinhan = @vandon.nguoinhans.build(nguoinhan_params)
-		if @nguoinhan.save
-		flash[:notice] = "Tạo thành công."
-		redirect_to @vandon
-		else
-		flash.now[:alert] = "Tạo không thành công."
-		render "new"
+		def create
+			@nguoinhan = @vandon.nguoinhans.build(nguoinhan_params)
+			if @nguoinhan.save
+			flash[:notice] = "Tạo thành công."
+			redirect_to [:nhanvien,@vandon]
+			else
+			flash.now[:alert] = "Tạo không thành công."
+			render "new"
+			end
+		end 
+
+		def new
+			@nguoinhan = @vandon.nguoinhans.build
 		end
-	end 
 
-	def new
-		@nguoinhan = @vandon.nguoinhans.build
-	end
-
-	def show
-		
-	end
-
-	def edit
-		@nguoinhan = Nguoinhan.find(params[:id])
+		def show
 			
-	end
-
-	
-
-	def update
-		if @nguoinhan.update(nguoinhan_params)
-		flash[:notice] = "Cập nhật thành công."
-		redirect_to [@vandon, @nguoinhan]
-		else
-		flash.now[:alert] = "Cập nhật không thành công."
-		render "edit"
 		end
+
+		def edit
+			@nguoinhan = Nguoinhan.find(params[:id])
+				
+		end
+
+		
+
+		def update
+			if @nguoinhan.update(nguoinhan_params)
+			flash[:notice] = "Cập nhật thành công."
+			redirect_to [@vandon, @nguoinhan]
+			else
+			flash.now[:alert] = "Cập nhật không thành công."
+			render "edit"
+			end
 
 	end
 

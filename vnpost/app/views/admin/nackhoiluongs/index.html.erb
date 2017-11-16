@@ -2,18 +2,12 @@
 <head>
   <title>Nấc khối lượng</title>
 </head>
-<header>
-<h1>Nấc khối lượng</h1>
-<ul class="actions">
-<% admins_only do %>
-<ul class="actions">
-<li>
-<%= link_to "Thêm mới", new_admin_nackhoiluong_path, class: "new" %>
-</li>
-</ul>
-<% end %>
-</ul>
-</header>
+<div class="row">
+    <div class="col-md-8" ><h1>Nấc khối lượng</h1></div>
+<div class="col-md-4">
+<%= link_to "Thêm mới", new_admin_nackhoiluong_path, class: "new" , :style => "margin:20px"%>
+</div>
+</div>
 <div>
 <table class="table table-bordred table-striped" >
   <thead>

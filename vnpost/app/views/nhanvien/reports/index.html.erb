@@ -1,34 +1,46 @@
-<h3>Biểu đồ</h3>
+
  <div class="row">
- 
 
-
- <!--  <div id="chartContainer1"></div>  -->
-
-<div class="col-md-6" id="chart-container">
-<div id="chartContainer"><%= @chart_pie %></div> 
-<%= @chart.render() %></div>
-<div id="chartContainer"></div>
-<div class="col-md-6" id="chart-container">
- <div  id="chartContainer1"> <%= @chart %></div>
-<%= @chart_pie.render() %></div>
- <div  id="chartContainer3"> <%= @chart_column %></div>
-<%= @chart_column.render() %></div>
-
-<div id="chartContainer">Biểu đồ đường</div>
-
-
+	<div class="col-md-6" id="chart-container">
+	<div id="chartContainer"><%= @chart_pie %></div> 
+	<%= @chart.render() %></div>
+	<div id="chartContainer"></div>
+	<div class="col-md-6" id="chart-container">
+	 <div  id="chartContainer1"> <%= @chart %></div>
+ 	</div>
+	<%= @chart_pie.render() %>
 </div>
-<div class="col-md-5 text-center">
+<div class="row" >
 
-<div class="col-xs-12">
- <a class="block panel padder-v bg-info item">
-<span class= "block panel padder-v bg-info item"><%=  @Tongvandonphatthanhcong %></span>
-<span class="text-muted text-xs"> Tổng vận đơn phát thành công</span>
-<span class="top text-left"></span>
-</a>
+ <div  class="col-md-6" id="chartContainer3"> <%= @chart_column %></div>
+<%= @chart_column.render() %>
 
+<div class="col-md-6 ">
+	<div class="row text-center" >
+	 	
+			<a class="block panel padder-v bg-info item">
+			<span class= "block panel padder-v bg-info item"><%=  @Tongvandonphatthanhcong %></span>
+			<span class="text-muted text-xs"> Phát thành công</span>
+			<span class="top text-left"></span>
+			</a>
+	</div>	
+	<div class="row text-center">
+			<a class="block panel padder-v bg-info item">
+			<span class= "block panel padder-v bg-info item"><%=  @tongvdchuyenhoan %></span>
+			<span class="text-muted text-xs"> Chuyển hoàn</span>
+			<span class="top text-left"></span>
+			</a>
+		</div>
+	<div class="row text-center">
+			<a class="block panel padder-v bg-info item">
+			<span class= "block panel padder-v bg-info item"><%=  @tongcuocthuho%></span>
+			<span class="text-muted text-xs"> COD</span>
+			<span class="top text-left"></span>
+			</a>
+		
 
-</div>
-</div>
+		</div>
+	</div>
+
+	
 </div>

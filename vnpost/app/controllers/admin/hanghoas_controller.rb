@@ -9,7 +9,7 @@ class Admin::HanghoasController < Admin::ApplicationController
 	
 		if @hanghoa.save
 		flash[:notice] = "Tạo thành công."
-		redirect_to [@vandon, @hanghoa]
+		redirect_to [:admin,@vandon]
 		else
 		flash.now[:alert] = "Tạo không thành công."
 		render "new"
@@ -34,7 +34,7 @@ class Admin::HanghoasController < Admin::ApplicationController
 	def update
 		if @hanghoa.update(hanghoa_params)
 		flash[:notice] = "Cập nhật thành công."
-		redirect_to @vandon
+		redirect_to [:admin,@vandon]
 		else
 		flash.now[:alert] = "Cập nhật không thành công."
 		render "edit"
@@ -47,7 +47,7 @@ class Admin::HanghoasController < Admin::ApplicationController
 	def destroy
 		@hanghoa.destroy
 		flash[:notice] = "Xóa thành công."
-		redirect_to @vandon
+		redirect_to admin_vandons_path
 	end
 
 

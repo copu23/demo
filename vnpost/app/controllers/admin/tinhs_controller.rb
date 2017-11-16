@@ -23,6 +23,18 @@ class Admin::TinhsController < Admin::ApplicationController
 		
 	end
 
+	def update
+		if @tinh.update(tinh_params)
+		flash[:notice] = "Cập nhật thành công."
+		redirect_to  [@tinh, @admin]
+		else
+		flash.now[:alert] = "Cập nhật không thành công."
+		render "edit"
+		end
+
+	end
+
+
 	def destroy
 		@tinh = Tinh.find(params[:id])
 		@tinh.destroy

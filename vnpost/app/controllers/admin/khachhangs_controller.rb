@@ -10,7 +10,7 @@ class Admin::KhachhangsController < Admin::ApplicationController
 		@khachhang = @vandon.khachhangs.build(khachhang_params)
 		if @khachhang.save
 		flash[:notice] = "Tạo thành công."
-		redirect_to admin_vandons_path
+		redirect_to [:admin, @vandon]
 		else
 		flash.now[:alert] = "Tạo không thành công."
 		render "new"
@@ -33,7 +33,7 @@ class Admin::KhachhangsController < Admin::ApplicationController
 	def update
 		if @khachhang.update(khachhang_params)
 		flash[:notice] = "Cập nhật thành công."
-		redirect_to @vandon
+		redirect_to [:admin,@vandon]
 		else
 		flash.now[:alert] = "Cập nhật không thành công."
 		render "edit"

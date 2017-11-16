@@ -1,27 +1,22 @@
 
-<head>
+
   <title>Tỉnh</title>
-</head>
-<header>
-<h1>Tỉnh</h1>
-<ul class="actions">
-<% admins_only do %>
-<ul class="actions">
-<li>
-<%= link_to "Thêm mới", new_admin_tinh_path, class: "new" %>
-</li>
-</ul>
-<% end %>
-</ul>
-</header>
-<div>
-<table class="table-responsive"">
+<div class="row">
+<h1 style="margin: 0px; padding-top: 20px" class="text-center" >DANH SÁCH TỈNH - THÀNH PHỐ</h1>
+</div>
+<div class="row ">
+<div class="col-md-8"></div>
+<div class="col-md-4">
+<%= link_to "Thêm mới", new_admin_tinh_path, class: "new " %>
+
+</div>
+</div>
+  <table  class="table table-striped">
   <thead>
     <tr>
       <th>Tỉnh</th>
        <th>Vùng</th>
-      
-      <th> </th>
+        <th> </th>
       <th></th>
       <th></th>
     </tr>
@@ -41,8 +36,7 @@
 <td>
 <% admins_only do %>
 
-<td><%= link_to "Xóa", admin_tinh_path(tinh),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %></td>
-<% end %>
+<%= link_to "Xóa", admin_tinh_path(tinh),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %><% end %>
 </td>
 </tr>
 <% end %>

@@ -19,8 +19,8 @@ class VandonsController < ApplicationController
 
 		if @vandon.save
 
-		flash[:notice] = "Vận đơn tạo sfdsgdfgfdthành công."
-		redirect_to @vandon
+		flash[:notice] = "Vận đơn tạo thành công."
+		redirect_to [:nhanvien,@vandon]
 		else
 			flash.now[:alert] = "Vận đơn tạo không thành công."
 			render "new"
