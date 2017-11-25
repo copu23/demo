@@ -11,7 +11,12 @@ class Admin::VandonsController < Admin::ApplicationController
    	 @vandons = Vandon.joins(:nguoinhans).search(params[:search], params[:page]).order('created_at DESC')
 	end
 
+	def print
 
+		 @vandon = Vandon.find(params[:id])
+		 
+		 render :layout => "print"
+	end
 
 	def new
 		@vandon= Vandon.new

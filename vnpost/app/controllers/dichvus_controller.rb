@@ -1,5 +1,5 @@
 class DichvusController < ApplicationController
-
+ layout "admin"
 before_action :set_dichvu, only: [:show, :edit, :update, :destroy]
 
 def index

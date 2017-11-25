@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+    <% if content_for?(:title) %>
+    <%= yield(:title) %>
+    <% else %>
+    VNPost
+    <% end %>
+</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+ <body >
+ <div class="container">
+<div class="row">
+        <%= image_tag("ems.png",:alt => "rss feed",:class => "img-fluid", :style =>"width: 100%") %>
+</div>
+ <h1 class="text-center">Vận Đơn</h1>
+<h4>Mã vận đơn: <%= @vandon.id %></h4>
+
+<table id="attributes">
+  <tr>
+    <th>Người lập:</th>
+    <td> <%= @vandon.nguoilap.hoten %> </td>
+  </tr>
+  <tr>
+    <th>Ngày lập:</th>
+    <td><%= @vandon.created_at %> </td>
+  </tr>
+
+</table>
+
+
+<div class= "row"> 
+ <div class ="col-md-4">
+  <p class="m-t-md m-b-md">
+    <strong>1. Thông tin người nhận</strong></p>
+
+
+    <% @vandon.nguoinhans.each do |nguoinhan| %>
+    <div> Họ tên người nhận: <%= nguoinhan.hotennn %></div>
+    <div>SĐT: <%= nguoinhan.sodtnn %></div>
+    <div>Địa chỉ: <%= nguoinhan.address %></div>
+    <div>Thành phố: <%= nguoinhan.sub_state %><%= nguoinhan.province %></div>
+    <% end %>
+  </div>
+
+
+  <div class ="col-md-4">
+
+
+    <p class="m-t-md m-b-md">
+      <strong>2. Thông tin khách hàng</strong></p>
+      <div>
+        <% @vandon.khachhangs.each do |khachhang| %>
+        <div><label>Họ tên KH:</label>
+          <%=  khachhang.hotenkh %></div>
+        <div><label>Số điện thoại: </label><%= khachhang.sodt %></div>
+        <div><label>Địa chỉ: </label><%= khachhang.address %></div>
+
+         <% end %>
+      </div>
+  </div>
+<div class="col-md-4">
+ <p class="m-t-md m-b-md">
+      <strong>2. Thông tin hàng hóa</strong></p>
+    <% @vandon.hanghoas.each do |hanghoa| %>
+
+          
+            <div><label> Trọng lượng tịnh: </label><%= hanghoa.trongluongtinh %></div>
+           
+            <div><label> Cước chính: </label><%= hanghoa.cuocchinh %></div>
+           
+            <div><label> Cước phụ: </label><%= hanghoa.cuocphu %></div>
+
+            <div><label> Tổng cước: </label><%= hanghoa.tongcuoc %></div>
+              <% end %> 
+</div>
+</div>
+<button onclick='window.print(); return false;' class='btn btn-success'>In vận đơn</button>
+</div>
+
+
+
+</body>
+</html>

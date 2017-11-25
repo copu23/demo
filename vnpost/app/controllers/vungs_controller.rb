@@ -1,5 +1,6 @@
 class VungsController < ApplicationController
 	before_action :set_vung, only: [:show, :edit, :update, :destroy]
+	layout "admin"
 
 def index
 	@vungs = Vung.all

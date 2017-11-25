@@ -8,11 +8,11 @@ class Admin::CommentsController < Admin::ApplicationController
 		@comment.nguoilap = current_user
 		authorize @comment, :create?
 			if @comment.save
-				flash[:notice] = " Tạo ghi chú thành công"
+				flash[:notice] = "Thay đổi trạng thái thành công."
 				
 		redirect_to [:admin,@hanghoa.vandon, @hanghoa]
 			else
-		flash.now[:alert] = "Tạo ghi chú không thành công."
+		flash.now[:alert] = "Thay đổi trạng thái không thành công."
 		@vandon = @hanghoa.vandon
 		 render "hanghoas/show"
 		end

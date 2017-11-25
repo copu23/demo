@@ -22,7 +22,20 @@ class Admin::NackhoiluongsController < Admin::ApplicationController
 		render "new"
 		end
 	end
+	def edit
+	@nackhoiluong = Nackhoiluong.find(params[:id])
+		
+	end
 
+	def update
+		if @nackhoiluong.update(nackhoiluong_params)
+		flash[:notice] = "Cập nhật thành công."
+		redirect_to  @nackhoiluong
+		else
+		flash.now[:alert] = "Cập nhật không thành công."
+		render "edit"
+		end
+	end
 	def destroy
 		@nackhoiluong = Nackhoiluong.find(params[:id])
 		@nackhoiluong.destroy

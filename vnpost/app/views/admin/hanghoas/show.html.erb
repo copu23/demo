@@ -1,10 +1,8 @@
 
 <div id="hanghoa">
-<header>
-<h1><%= @vandon.id %></h1>
+<div>
+<h1 style="margin: 0px; padding-top: 20px">Mã vận đơn:   <%= @vandon.id %></h1>
 
-</header>
-<header>
 <ul class="actions">
 <li><%= link_to "Edit", [:edit,:admin, @vandon, @hanghoa],
 class: "edit" %></li>
@@ -14,8 +12,7 @@ data: { confirm: "Bạn có chắc chắn xóa không"},
 class: "delete" %></li>
 <li> <%= cancel_link %> </li>
 </ul>
-<!-- <h2>Trọng lượng tịnh: <%= @hanghoa.trongluongtinh %></h2> -->
-</header>
+</div>
 
       <% @vandon.hanghoas.each do |hanghoa| %>
       <div><label> Id: </label><%= link_to hanghoa.id, [@vandon, hanghoa] %></div>

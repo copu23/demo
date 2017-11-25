@@ -9,13 +9,13 @@ li {
     display: inline;
 }
 </style>
-<h1>Mã vận đơn: <%= @vandon.id %></h1>
-<li><button onclick='window.print(); return false;' class='btn btn-success'>In vận đơn</button></li>
+<h1 style="margin: 0px; padding-top: 20px">Mã vận đơn: <%= @vandon.id %></h1>
+<li><%= link_to "In vận đơn",  print_nhanvien_vandon_path(@vandon) , class: 'btn btn-success' %></li>
 <li></li>
 <li><%= link_to "Chỉnh sửa", edit_nhanvien_vandon_path(@vandon),
 class: "edit" %></li>
 
-<li><%= link_to "Xóa", nhanvien_vandon_path(@vandon),method: :delete,data: { confirm: "Are you sure you want to delete this table?" },class: "delete" %></li>
+<!-- <li><%= link_to "Xóa", nhanvien_vandon_path(@vandon),method: :delete,data: { confirm: "Are you sure you want to delete this table?" },class: "delete" %></li> -->
 <li><%= link_to "Trở về",
                 nhanvien_vandons_path, class: "cancel" %></li>
 
