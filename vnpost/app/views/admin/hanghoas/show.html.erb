@@ -7,7 +7,7 @@
 <li><%= link_to "Edit", [:edit,:admin, @vandon, @hanghoa],
 class: "edit" %></li>
 
-<li><%= link_to "Delete", [@vandon, @hanghoa], method: :delete,
+<li><%= link_to "Delete", [:admin,@vandon, @hanghoa], method: :delete,
 data: { confirm: "Bạn có chắc chắn xóa không"},
 class: "delete" %></li>
 <li> <%= cancel_link %> </li>

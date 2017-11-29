@@ -10,7 +10,7 @@ class Admin::KhachhangsController < Admin::ApplicationController
 		@khachhang = @vandon.khachhangs.build(khachhang_params)
 		if @khachhang.save
 		flash[:notice] = "Tạo thành công."
-		redirect_to [:admin, @vandon]
+		redirect_to  new_admin_vandon_hanghoa_path
 		else
 		flash.now[:alert] = "Tạo không thành công."
 		render "new"

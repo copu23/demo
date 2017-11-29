@@ -34,41 +34,41 @@ get 'bccps/index'
 get 'search/search'
 root 'application#index'
     namespace :admin do
-    resources :dashboards
-   resources :mucphithuhos
-  
-    root 'application#index'
-    resources :loaihangs, only: [:new, :create, :destroy]
-    resources :tables , only: [:new, :create, :destroy]
-     
-    resources :vandons do
-           resources :hanghoas do
-                 resources :comments, only: [:create]
-            end
+                      resources :dashboards
+                     resources :mucphithuhos
+                    
+                      root 'application#index'
+                      resources :loaihangs, only: [:new, :create, :destroy]
+                      resources :tables , only: [:new, :create, :destroy]
+                       
+                      resources :vandons do
+                             resources :hanghoas do
+                                   resources :comments, only: [:create]
+                              end
 
-        resources :khachhangs
-        resources :nguoinhans
-        member do
-          get :print
-        end
+                          resources :khachhangs
+                          resources :nguoinhans
+                          member do
+                            get :print
+                          end
 
-              member  do
-                get :search
-              end
-      end
-     resources :states, only: [:new, :create, :destroy]
-    resources :dichvus, only: [:new, :create, :destroy]
-    resources :dichvucongthems, only: [:new, :create, :destroy]
-    resources :nackhoiluongs
-     resources :vungs, only: [:new, :create, :destroy]
-    resources :tinhs
-      resources :cuoccpns, only: [:new, :create, :destroy]
+                                member  do
+                                  get :search
+                                end
+                        end
+                       resources :states
+                      resources :dichvus, only: [:new, :create, :destroy]
+                      resources :dichvucongthems, only: [:new, :create, :destroy]
+                      resources :nackhoiluongs
+                       resources :vungs, only: [:new, :create, :destroy]
+                      resources :tinhs
+                        resources :cuoccpns, only: [:new, :create, :destroy]
 
-    resources :users do
-	    member do
-		  patch :archive
-		  end
-	   end
+                      resources :users do
+                  	    member do
+                  		  patch :archive
+                  		  end
+                  	   end
   end
    
        
@@ -84,7 +84,7 @@ root 'application#index'
   resources :vungs , only: [:index, :show, :edit, :update]
   resources :tinhs , only: [:index, :show, :edit, :update]
   resources :cuoccpns, only: [:index, :show, :edit, :update]
-  resources :states  , only: [:index, :show, :edit, :update]
+  resources :states  
   resources :mucphithuhos
   resources :vandons do
 

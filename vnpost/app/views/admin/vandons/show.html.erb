@@ -34,87 +34,76 @@ class: "edit" %></li>
 
 <div class= "row"> 
  <div class ="col-md-4">
-  <p class="m-t-md m-b-md">
-  <strong>1. Thông tin người nhận</strong></p>
-  <% if   @vandon.nguoinhans.blank? %>
-  <div><%= link_to "Tạo người nhận", new_admin_vandon_nguoinhan_path(@vandon), class: "new" %></div>
-  <% end %>
+         <div class="panel panel-info">
+         <div class="panel-heading"> <strong>1. Thông tin người nhận</strong></div>
+         <div class="panel-body">
+                <% if   @vandon.nguoinhans.blank? %>
+                <div><%= link_to "Tạo người nhận", new_admin_vandon_nguoinhan_path(@vandon), class: "new" %></div>
+                <% end %>
 
-  <% @vandon.nguoinhans.each do |nguoinhan| %>
-  <div> Họ tên người nhận: <%= link_to nguoinhan.hotennn, [:admin,@vandon, nguoinhan] %></div>
-  <div>SĐT: <%= nguoinhan.sodtnn %></div>
-  <div>Địa chỉ: <%= nguoinhan.address %></div>
-  <div>Thành phố: <%= nguoinhan.sub_state %><%= nguoinhan.province %></div>
-  <!-- <div>
-  <%= link_to "Edit", [:edit, @vandon, @nguoinhan],
-  class: "edit" %>
-    <% admins_only do %>
-  <%= link_to "Delete", [@vandon, @nguoinhan], method: :delete,
-  data: { confirm: "Bạn có chắc chắn xóa không"},
-  class: "delete" %>
-   <% end %>
-  </div> -->
-   
-    <% end %>
+                <% @vandon.nguoinhans.each do |nguoinhan| %>
+                <div><label>Họ tên người nhận: </label>   <%= link_to nguoinhan.hotennn, [:admin,@vandon, nguoinhan] %></div>
+                <div><label>SĐT:  </label>  <%= nguoinhan.sodtnn %></div>
+                <div><label>Địa chỉ: </label> <%= nguoinhan.address %></div>
+                <div><label> Thành phố:   </label>    <%= nguoinhan.sub_state %><%= nguoinhan.province %></div>
+                <% end %>
+           </div>
+               
+                 
+                  
+          </div>
   </div>
 
  
   <div class ="col-md-4">
- 
+           <div class="panel panel-info">
+                 <div class="panel-heading">
+                      <strong>2. Thông tin khách hàng</strong></div>
+                <div class="panel-body">
+                  
+                <!--       <% if @vandon.khachhangs.blank? %>
+                      <%= link_to "Tạo khách hàng", new_admin_vandon_khachhang_path(@vandon), class: "new" %>
+                      <% end %>
+                -->
 
-      <p class="m-t-md m-b-md">
-      <strong>2. Thông tin khách hàng</strong></p>
-      <DIV>
-      <% if @vandon.khachhangs.blank? %>
-      <%= link_to "Tạo khách hàng", new_admin_vandon_khachhang_path(@vandon), class: "new" %>
-      <% end %>
-      </DIV>
-
-
-      <div>
-      <% @vandon.khachhangs.each do |khachhang| %>
-      <div><label>Họ tên KH:</label>
-      <%= link_to khachhang.hotenkh, [:admin,@vandon, khachhang] %></div>
-      <div><label>Số điện thoại: </label><%= khachhang.sodt %></div>
-      <div><label>Địa chỉ: </label><%= khachhang.address %></div>
-     <!--  <%= link_to "Edit", [:edit, @vandon, @khachhang],
-      class: "edit" %>
-
-
-      <% admins_only do %>
-      <%= link_to "Delete", [@vandon, @khachhang], method: :delete,
-      data: { confirm: "Bạn có chắc chắn xóa không"},
-      class: "delete" %>
-                            <% end %>
- -->
-      <% end %>
-      </div>
-  </div>
+                      <% @vandon.khachhangs.each do |khachhang| %>
+                      <div><label>Họ tên KH:</label>
+                      <%= link_to khachhang.hotenkh, [:admin,@vandon, khachhang] %></div>
+                      <div><label>Số điện thoại: </label><%= khachhang.sodt %></div>
+                      <div><label>Địa chỉ: </label><%= khachhang.address %></div>
+                <% end %>
+                  </div>
+                   
+            </div>
+</div>
 
 
-  <div class="col-md-4">
-    <p class="m-b-md-m-b-md">
-    <strong>3. Thông tin hàng hóa </strong></p>
-         
-          <div>
-          <% if @vandon.hanghoas.blank? %> 
-          <%= link_to "Thêm mới hàng hóa", new_admin_vandon_hanghoa_path(@vandon), class: "new" %>
-          <% end %> 
+            <div class="col-md-4">
+                      <div class="panel panel-info">
+                            <div class="panel-heading">
+                        <strong>3. Thông tin hàng hóa </strong></div>
+                             <div class="panel-body">
+                        
+                   <!--            <% if @vandon.hanghoas.blank? %> 
+                              <%= link_to "Thêm mới hàng hóa", new_admin_vandon_hanghoa_path(@vandon), class: "new" %>
+                              <% end %> 
+                              -->
+                             
+                                <% @vandon.hanghoas.each do |hanghoa| %>
+                                <div><label> Id: </label><%= link_to hanghoa.id, [:admin,@vandon, hanghoa] %></div>
+
+                                <div><label> Trạng thái: </label><%= hanghoa.state_id if hanghoa.state_id %></div>
+                              
+                                <div><label> Trọng lượng tịnh: </label><%= hanghoa.trongluongtinh %></div>
+                               
+                                <div><label> Cước chính: </label><%= hanghoa.cuocchinh %></div>
+                               
+                                <div><label> Cước phụ: </label><%= hanghoa.cuocphu %></div>
+
+                                <div><label> Tổng cước: </label><%= hanghoa.tongcuoc %></div>
+                                  <% end %> 
+                             
+                               </div>
+                      </div>
           </div>
-         
-            <% @vandon.hanghoas.each do |hanghoa| %>
-            <div><label> Id: </label><%= link_to hanghoa.id, [:admin,@vandon, hanghoa] %></div>
-
-            <div><label> Trạng thái: </label><%= hanghoa.state_id if hanghoa.state_id %></div>
-          
-            <div><label> Trọng lượng tịnh: </label><%= hanghoa.trongluongtinh %></div>
-           
-            <div><label> Cước chính: </label><%= hanghoa.cuocchinh %></div>
-           
-            <div><label> Cước phụ: </label><%= hanghoa.cuocphu %></div>
-
-            <div><label> Tổng cước: </label><%= hanghoa.tongcuoc %></div>
-              <% end %> 
-         
-  </div>
 </div>

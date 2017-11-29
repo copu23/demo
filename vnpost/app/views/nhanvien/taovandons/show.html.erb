@@ -9,19 +9,36 @@ li {
     display: inline;
 }
 </style>
-<header>
+<div style="padding-top: 20px" ><h1 class="text-center" >THÔNG TIN VẬN ĐƠN </h1></div>
+<div >
+<div class="row ">
+	<div class="col-md-3 col-md-offset-4 vd" style="background-color: "><label>Họ tên khách hàng</label>
+	</div>
+	<div class="col-md- 4 col-md-offset-5 vd">   <%= @taovandon.hotenkh %></div>
+</div>
+<div class="row ">
+	<div class="col-md-3 col-md-offset-4 vd" style="background-color: "><label>Địa chỉ</label>
+	</div>
+	<div class="col-md- 4 col-md-offset-5 vd "> <%= @taovandon.diachi %></div>
+</div>
+<div class="row ">
+	<div class="col-md-3 col-md-offset-4 vd " style="background-color: "><label>Số điện thoại</label>
+	</div>
+	<div class="col-md- 4 col-md-offset-5 vd ">  <%= @taovandon.sdt%></div>
+</div>
+<div class="row ">
+	<div class="col-md-3 col-md-offset-4 vd " style="background-color: "><label>Khối lượng</label>
+	</div>
+	<div class="col-md- 4 col-md-offset-5 vd "> <%= @taovandon.khoiluong%></div>
+</div>
+<div class="row ">
+	<div class="col-md-3 col-md-offset-4 vd " style="background-color: "><label>Trạng thái vận đơn</label>
+	</div>
+	<div class="col-md- 4 col-md-offset-5 vd " style="color: #0000ff"> <%= @taovandon.trangthai%></div>
+</div>
 
-</header>
-<div>
-<label>Họ tên khách hàng</label>
-<%= @taovandon.hotenkh %></div>
-
-<div><label>Địa chỉ</label>
-<%= @taovandon.diachi %></div>
-<div><label>Số điện thoại</label><%= @taovandon.sdt%></div>
-<div><label>Khối lượng</label><%= @taovandon.khoiluong%></div>
-<div><label>Trạng thái</label><%= @taovandon.trangthai%></div>
-
+   
+<div class="col-md-4 col-md-offset-4">
 <ul>
 <li><%= link_to "Chỉnh sửa", edit_nhanvien_taovandon_path(@taovandon),
 class: "edit" %></li>
@@ -31,4 +48,6 @@ class: "edit" %></li>
                 nhanvien_taovandons_path, class: "cancel" %></li>
 
 </ul>
+</div>
+</div>
 

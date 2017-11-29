@@ -34,44 +34,47 @@ class: "edit" %></li>
 
 <div class= "row"> 
  <div class ="col-md-4">
-  <p class="m-t-md m-b-md">
-  <strong>1. Thông tin người nhận</strong></p>
-  <% if   @vandon.nguoinhans.blank? %>
-  <div><%= link_to "Tạo người nhận", new_nhanvien_vandon_nguoinhan_path(@vandon), class: "new" %></div>
-  <% end %>
+          <div class="panel panel-info">
+                <div class="panel-heading">
+                  <strong>1. Thông tin người nhận</strong></div>
+            <div class="panel-body">
+            <% if   @vandon.nguoinhans.blank? %>
+            <div><%= link_to "Tạo người nhận", new_nhanvien_vandon_nguoinhan_path(@vandon), class: "new" %></div>
+            <% end %>
 
-  <% @vandon.nguoinhans.each do |nguoinhan| %>
-  <div> Họ tên người nhận: <%= link_to nguoinhan.hotennn, [:nhanvien,@vandon, nguoinhan] %></div>
-  <div>SĐT: <%= nguoinhan.sodtnn %></div>
-  <div>Địa chỉ: <%= nguoinhan.address %></div>
-  <div>Thành phố: <%= nguoinhan.sub_state %><%= nguoinhan.province %></div>
-  <!-- <div>
-  <%= link_to "Edit", [:edit, @vandon, @nguoinhan],
-  class: "edit" %>
-    <% nhanviens_only do %>
-  <%= link_to "Delete", [@vandon, @nguoinhan], method: :delete,
-  data: { confirm: "Bạn có chắc chắn xóa không"},
-  class: "delete" %>
-   <% end %>
-  </div> -->
-   
-    <% end %>
+            <% @vandon.nguoinhans.each do |nguoinhan| %>
+            <div> Họ tên người nhận: <%= link_to nguoinhan.hotennn, [:nhanvien,@vandon, nguoinhan] %></div>
+            <div>SĐT: <%= nguoinhan.sodtnn %></div>
+            <div>Địa chỉ: <%= nguoinhan.address %></div>
+            <div>Thành phố: <%= nguoinhan.sub_state %><%= nguoinhan.province %></div>
+            <!-- <div>
+            <%= link_to "Edit", [:edit, @vandon, @nguoinhan],
+            class: "edit" %>
+              <% nhanviens_only do %>
+            <%= link_to "Delete", [@vandon, @nguoinhan], method: :delete,
+            data: { confirm: "Bạn có chắc chắn xóa không"},
+            class: "delete" %>
+             <% end %>
+            </div> -->
+             </div>
+              <% end %>
+         </div>
   </div>
 
  
   <div class ="col-md-4">
  
-
-      <p class="m-t-md m-b-md">
-      <strong>2. Thông tin khách hàng</strong></p>
-      <DIV>
+<div class="panel panel-info">
+    <div class="panel-heading">
+      <strong>2. Thông tin khách hàng</strong>
+      </div>
       <% if @vandon.khachhangs.blank? %>
       <%= link_to "Tạo khách hàng", new_nhanvien_vandon_khachhang_path(@vandon), class: "new" %>
       <% end %>
-      </DIV>
+    
 
 
-      <div>
+      <div class="panel-body">
       <% @vandon.khachhangs.each do |khachhang| %>
       <div><label>Họ tên KH:</label>
       <%= link_to khachhang.hotenkh, [:nhanvien,@vandon, khachhang] %></div>
@@ -89,18 +92,21 @@ class: "edit" %></li>
  -->
       <% end %>
       </div>
+  
+  </div>
   </div>
 
 
   <div class="col-md-4">
-    <p class="m-b-md-m-b-md">
-    <strong>3. Thông tin hàng hóa </strong></p>
+ <div class="panel panel-info">
+        <div class="panel-heading">
+    <strong>3. Thông tin hàng hóa </strong></div>
          
-          <div>
+          <div class="panel-body">
           <% if @vandon.hanghoas.blank? %> 
           <%= link_to "Thêm mới hàng hóa", new_nhanvien_vandon_hanghoa_path(@vandon), class: "new" %>
           <% end %> 
-          </div>
+          
          
             <% @vandon.hanghoas.each do |hanghoa| %>
             <div><label> Id: </label><%= link_to hanghoa.id, [:nhanvien,@vandon, hanghoa] %></div>
@@ -117,4 +123,5 @@ class: "edit" %></li>
               <% end %> 
          
   </div>
+</div>
 </div>

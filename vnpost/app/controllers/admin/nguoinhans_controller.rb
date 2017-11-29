@@ -7,7 +7,7 @@ class Admin::NguoinhansController < Admin::ApplicationController
 			@nguoinhan = @vandon.nguoinhans.build(nguoinhan_params)
 			if @nguoinhan.save
 			flash[:notice] = "Tạo thành công."
-			redirect_to [:admin,@vandon]
+			redirect_to   new_admin_vandon_khachhang_path
 			else
 			flash.now[:alert] = "Tạo không thành công."
 			render "new"
@@ -43,7 +43,7 @@ class Admin::NguoinhansController < Admin::ApplicationController
 	def destroy
 		@nguoinhan.destroy
 		flash[:notice] = "Xóa thành công."
-		redirect_to @vandon
+		redirect_to [:admin,@vandon]
 	end
 
 private

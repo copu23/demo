@@ -1,10 +1,9 @@
-<div id="khachhang">
-<header>
-<h1>Vân đon<%=@vandon.id %></h1>
-</header>
+
+<h1 style="margin: 0px; padding-top: 20px ">Vân đơn:      <%=@vandon.id %></h1>
 
 
-<table class="table-responsive"">
+
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Khách hàng</th>
@@ -33,6 +32,8 @@ data: { confirm: "Bạn có chắc chắn xóa không"},
 class: "delete" %>
                       <% end %>
 </td>
+  <td> <%= cancel_link  %> </td>
+
 </tr>
 <% end %>
 </tbody>

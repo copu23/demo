@@ -78,7 +78,7 @@
 	 			<strong>4. Mô tả chi tiết</strong>
 	 		</p>
 			<div class="col-md-12 m-t-md m-b-md">
-				<%= f.input :motachitiet, label: "motachitiet" %></div>
+				<%= f.input :motachitiet , label:false %></div>
 			<div class="col-md-12 m-t-md m-b-md">
 				<%= f.association :state, label: "Trạng thái" ,:selected => params[:pid]%>
 			</div>
@@ -103,11 +103,17 @@
 		<div class="col-md-12 m-t-md m-b-md">
 			<%= f.input :cuocphu, label: "Cước phụ ",:input_html => { :value => 0}  %></div>
 		<div class="col-md-12 m-t-md m-b-md">
-			<%= f.input :cuocthuho, label: "Cước thu hộ ",:input_html => { :value => 1} %></div>
+			<%= f.input :cuocthuho, label: "Cước thu hộ ",:input_html => { :value => 0} %></div>
 		<div class="col-md-12 m-t-md m-b-md">
 			<%= f.input :tongcuoc, label: "Tổng cước" %></div>
 </div>
-		<div class="col-md-12 m-t-md m-b-md"><%= f.button :submit, class: "btn-primary" %></div>
+		<div class="col-md-12 m-t-md m-b-md" style="padding-top: 20px"><%= f.button :submit, class: "btn-primary" %>
+			<%= link_to "Hủy bỏ", [:admin,@vandon], method: :delete,
+  data: { confirm: "Bạn có chắc chắn huy không"},class: "delete" %>
+
+
+		</div>
+		
 				
 		
 	</div>
@@ -116,7 +122,8 @@
 
 
 
-<% end %>	
+<% end %>
+	
 
 <script type="text/javascript">
 	var nackhoiluong_id

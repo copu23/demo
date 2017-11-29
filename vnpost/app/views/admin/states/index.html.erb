@@ -1,0 +1,47 @@
+
+
+<div class="row">
+ <div class="col-md-8"> <h1> Trạng thái</h1></div>
+<div class="col-md-4", style="padding-top: 20px">
+<%= link_to "Thêm mới", new_admin_state_path, class: "new" %>
+</div>
+</div>
+
+<div>
+<table class="table table-bordred table-striped"">
+  <thead>
+    <tr>
+      <th>Trạng thái</th>
+     
+      <th>Tên trạng thái</th>
+    
+      <th> </th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @states.each do |state| %>
+<tr>
+<td><%= link_to state.id, state %></td>
+<td><%= state.name %></td>
+
+
+
+<td>
+<%= link_to t('.show', :default => t("helpers.links.show")),
+                      admin_state_path(state), class: "show" %></td>
+<td><%= link_to "Edit",edit_admin_state_path(state),
+class: "edit" %></td>
+
+<td>
+<% admins_only do %>
+
+<td><%= link_to "Xóa", admin_state_path(state),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %></td>
+<% end %>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+</div>

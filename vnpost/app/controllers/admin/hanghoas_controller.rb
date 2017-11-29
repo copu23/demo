@@ -47,7 +47,7 @@ class Admin::HanghoasController < Admin::ApplicationController
 	def destroy
 		@hanghoa.destroy
 		flash[:notice] = "Xóa thành công."
-		redirect_to admin_vandons_path
+		redirect_to [:admin,@vandon]
 	end
 
 

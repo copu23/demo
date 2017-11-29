@@ -57,7 +57,7 @@ background-color: <%= state.color %>;
       <% admins_only do %>
 
       <li>
-      <%= link_to "ADMIN", admin_root_path %>
+      <%= link_to "QUẢN TRỊ", admin_root_path %>
       </li>
       <% end %> 
       <% nhanviens_only do %>
@@ -76,7 +76,7 @@ background-color: <%= state.color %>;
       </li>
       <% end %>
 
-      <% if user_signed_in? %>
+     <!--  <% if user_signed_in? %>
         <div class="navbar-right">
           <p class="navbar-text">
           Signed in as <%= current_user.email %>
@@ -88,7 +88,7 @@ background-color: <%= state.color %>;
 
           </ul>
         </div>
-      <% end %>
+      <% end %> -->
   
 
     

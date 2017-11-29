@@ -72,7 +72,7 @@ class Admin::VandonsController < Admin::ApplicationController
 		@vandon = Vandon.find(params[:id])
 		@vandon.destroy
 		flash[:notice] = "Trạng thái đã được xóa."
-		redirect_to vandons_path
+		redirect_to admin_vandons_path
 	end
 
 

@@ -13,6 +13,7 @@ class StatesController < ApplicationController
 
   def edit
 
+			@state = State.find(params[:id])
   end
 
 def update
@@ -27,6 +28,9 @@ def update
 end
 
 	private
+	def set_state
+	@state = State.find(params[:id])
+	end
 	def state_params
 	params.require(:state).permit(:name, :color)
 	end
