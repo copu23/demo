@@ -1,0 +1,42 @@
+
+<h1 style="margin: 0px; padding-top: 20px ">Vân đơn:      <%=@vandon.id %></h1>
+
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Khách hàng</th>
+       <th>SĐT </th>
+      <th> Địa chỉ</th>
+      
+       <th> </th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @vandon.khachhangs.each do |khachhang| %>
+<tr>
+<td><%= link_to khachhang.hotenkh, [:nhanvien,@vandon, khachhang] %></td>
+<td><%= khachhang.sodt %></td>
+<td><%= khachhang.address %></td>
+
+<td><%= link_to "Edit", [:edit, :nhanvien,@vandon, @khachhang],
+class: "edit" %></td>
+
+<td>
+<% admins_only do %>
+<td><%= link_to "Delete", [:nhanvien,@vandon, @khachhang], method: :delete,
+data: { confirm: "Bạn có chắc chắn xóa không"},
+class: "delete" %>
+                      <% end %>
+</td>
+  <td> <%= cancel_link  %> </td>
+
+</tr>
+<% end %>
+</tbody>
+</table>
+
+

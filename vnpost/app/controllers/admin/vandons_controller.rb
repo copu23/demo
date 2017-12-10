@@ -6,9 +6,18 @@ class Admin::VandonsController < Admin::ApplicationController
 	def index
 		# @vandons =Vandon.all.order("created_at DESC")
 		 # @vandons = policy_scope(vandon)
+		
+	# if params[:tim]
+ #   # @vandons = Vandon.joins(:nguoinhans).search(params[:search], params[:page]).order('created_at DESC')
+ #   	  @vandons = Vandon.tim(params[:tim], params[:page])
+  	# elsif params[:search]
+  		
+          @vandons = Vandon.joins(:nguoinhans).search(params[:search], params[:page]).order('created_at DESC')
+           # else
+           # @vandons = Vandon.paginate(:page => 1, :per_page => 5).order('created_at  ASC')
+  # end	
+   	
 
- 	  
-   	 @vandons = Vandon.joins(:nguoinhans).search(params[:search], params[:page]).order('created_at DESC')
 	end
 
 	def print
@@ -80,7 +89,7 @@ class Admin::VandonsController < Admin::ApplicationController
 
 	private
 		def vandon_params
-			params.require(:vandon).permit( :mota, :term)
+			params.require(:vandon).permit( :mota, :term, :tim)
 		end
 
 		def set_vandon

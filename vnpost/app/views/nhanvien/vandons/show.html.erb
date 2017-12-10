@@ -11,9 +11,9 @@ li {
 </style>
 <h1 style="margin: 0px; padding-top: 20px">Mã vận đơn: <%= @vandon.id %></h1>
 <li><%= link_to "In vận đơn",  print_nhanvien_vandon_path(@vandon) , class: 'btn btn-success' %></li>
-<li></li>
-<li><%= link_to "Chỉnh sửa", edit_nhanvien_vandon_path(@vandon),
-class: "edit" %></li>
+
+<!-- <li><%= link_to "Chỉnh sửa", edit_nhanvien_vandon_path(@vandon),
+class: "edit" %></li> -->
 
 <!-- <li><%= link_to "Xóa", nhanvien_vandon_path(@vandon),method: :delete,data: { confirm: "Are you sure you want to delete this table?" },class: "delete" %></li> -->
 <li><%= link_to "Trở về",
@@ -26,7 +26,7 @@ class: "edit" %></li>
 </tr>
 <tr>
 <th>Ngày lập:</th>
-<td><%= @vandon.created_at %> </td>
+<td><%= @vandon.created_at.strftime(' %d/%m/%Y %H:%M:%S') %> </td>
 </tr>
 
 </table>
@@ -43,22 +43,38 @@ class: "edit" %></li>
             <% end %>
 
             <% @vandon.nguoinhans.each do |nguoinhan| %>
-            <div> Họ tên người nhận: <%= link_to nguoinhan.hotennn, [:nhanvien,@vandon, nguoinhan] %></div>
-            <div>SĐT: <%= nguoinhan.sodtnn %></div>
-            <div>Địa chỉ: <%= nguoinhan.address %></div>
-            <div>Thành phố: <%= nguoinhan.sub_state %><%= nguoinhan.province %></div>
-            <!-- <div>
-            <%= link_to "Edit", [:edit, @vandon, @nguoinhan],
-            class: "edit" %>
-              <% nhanviens_only do %>
-            <%= link_to "Delete", [@vandon, @nguoinhan], method: :delete,
-            data: { confirm: "Bạn có chắc chắn xóa không"},
-            class: "delete" %>
+              <div class="row ">
+                            <div class="col-md-6">
+                            <label>Họ tên người nhận:</label></div>
+                            <div class="col-md-6" style="text-align: right;">
+                          <%= link_to nguoinhan.hotennn, [:nhanvien,@vandon, nguoinhan] %></div>
+                      </div>
+                 <div class="row ">
+                                  <div class="col-md-6">
+                                  <label>SĐT: </label></div>
+                                  <div class="col-md-6" style="text-align: right;">
+                                 <%= nguoinhan.sodtnn %></div>
+                            </div>
+                 <div class="row ">
+                                        <div class="col-md-6">
+                                        <label>Địa chỉ: </label></div>
+                                        <div class="col-md-6" style="text-align: right;">
+                                     <%= nguoinhan.address %></div>
+                                  </div>
+                             
+                  <div class="row ">
+                                        <div class="col-md-6">
+                                        <label>Quận, huyện- Tỉnh: </label></div>
+                                        <div class="col-md-6" style="text-align: right;">
+                                   <%= nguoinhan.sub_state %><%= nguoinhan.province %>
+                                  </div>
+                    </div>
+         
              <% end %>
-            </div> -->
              </div>
-              <% end %>
+           
          </div>
+
   </div>
 
  
@@ -68,28 +84,36 @@ class: "edit" %></li>
     <div class="panel-heading">
       <strong>2. Thông tin khách hàng</strong>
       </div>
-      <% if @vandon.khachhangs.blank? %>
+     <!--  <% if @vandon.khachhangs.blank? %>
       <%= link_to "Tạo khách hàng", new_nhanvien_vandon_khachhang_path(@vandon), class: "new" %>
       <% end %>
-    
+     -->
 
 
       <div class="panel-body">
       <% @vandon.khachhangs.each do |khachhang| %>
-      <div><label>Họ tên KH:</label>
-      <%= link_to khachhang.hotenkh, [:nhanvien,@vandon, khachhang] %></div>
-      <div><label>Số điện thoại: </label><%= khachhang.sodt %></div>
-      <div><label>Địa chỉ: </label><%= khachhang.address %></div>
-     <!--  <%= link_to "Edit", [:edit, @vandon, @khachhang],
-      class: "edit" %>
+      <div class="row ">
+                            <div class="col-md-6">
+                            <label>Họ tên KH:</label></div>
+                            <div class="col-md-6" style="text-align: right;">
+                            <%= link_to khachhang.hotenkh, [:nhanvien,@vandon, khachhang] %></div>
+                      </div>
+                      <div class="row ">
+                            <div class="col-md-6">
+                            <label>Số điện thoại: </label></div>
+                            <div class="col-md-6" style="text-align: right;">
+                            <%= khachhang.sodt %></div>
+                      </div>
+                      <div class="row ">
+                            <div class="col-md-6">
+                            <label>Địa chỉ: </label></div>
+                            <div class="col-md-6" style="text-align: right;">
+                            <%= khachhang.address %></div>
+                      </div>
+          
 
 
-      <% nhanviens_only do %>
-      <%= link_to "Delete", [@vandon, @khachhang], method: :delete,
-      data: { confirm: "Bạn có chắc chắn xóa không"},
-      class: "delete" %>
-                            <% end %>
- -->
+
       <% end %>
       </div>
   
@@ -103,25 +127,45 @@ class: "edit" %></li>
     <strong>3. Thông tin hàng hóa </strong></div>
          
           <div class="panel-body">
-          <% if @vandon.hanghoas.blank? %> 
+         <!--  <% if @vandon.hanghoas.blank? %> 
           <%= link_to "Thêm mới hàng hóa", new_nhanvien_vandon_hanghoa_path(@vandon), class: "new" %>
-          <% end %> 
+          <% end %>  -->
           
          
             <% @vandon.hanghoas.each do |hanghoa| %>
-            <div><label> Id: </label><%= link_to hanghoa.id, [:nhanvien,@vandon, hanghoa] %></div>
+           <div class="row" >
+                                      <div class="col-md-6 " ><label> Id: </label></div>
+                                      <div class="col-md-6 " style="text-align: right"><%= link_to hanghoa.id, [:nhanvien,@vandon, hanghoa] %></div>
+                                </div>
 
-            <div><label> Trạng thái: </label><%= hanghoa.state_id if hanghoa.state_id %></div>
-          
-            <div><label> Trọng lượng tịnh: </label><%= hanghoa.trongluongtinh %></div>
-           
-            <div><label> Cước chính: </label><%= hanghoa.cuocchinh %></div>
-           
-            <div><label> Cước phụ: </label><%= hanghoa.cuocphu %></div>
+                                <div class="row">
+                                       <div class="col-md-6"><label> Trạng thái: </label></div>
+                                        <div class="col-md-6 " style="text-align: right"  >
+                                <%= hanghoa.state.name if hanghoa.state_id %></div>
+                              </div>
+                                <div class="row"><div class="col-md-6" ><label> Trọng lượng tịnh: </label></div>
+                                <div class="col-md-6" style="text-align: right;">
+                                <%= hanghoa.trongluongtinh %> gram</div>
+                                </div>
+                               
+                                <div class="row"> <div class="col-md-6" ><label> Cước chính: </label></div>
+                                <div class="col-md-6" style="text-align: right;">
+                                <%= hanghoa.cuocchinh %> đồng</div>
+                                </div>
+                               
+                                <div class="row"><div class="col-md-6"><label> Cước phụ: </label></div>
+                                <div class="col-md-6" style="text-align: right">
+                                <%= hanghoa.cuocphu %> đồng</div>
+                                </div>
 
-            <div><label> Tổng cước: </label><%= hanghoa.tongcuoc %></div>
+
+                                <div class="row"><div class="col-md-6" ><label> Tổng cước: </label></div>
+                                <div class="col-md-6" style="text-align: right; color: #0000ff">
+                                <%= hanghoa.tongcuoc %> đồng</div>
+                                </div>
               <% end %> 
          
   </div>
+</div>
 </div>
 </div>

@@ -7,4 +7,5 @@ class Taovandon < ApplicationRecord
 	validates :sdt,   :presence => {:message => 'SĐT không được trống'},
 		             numericality:{message: "Chỉ chứa kí tự số từ 0 đến 9"},
 		              :length => { :minimum => 10, :maximum => 11}
+      validates_numericality_of :khoiluong, :greater_than=> 0 , message: "khối lượng phải lớn hơn 0"
 end

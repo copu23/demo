@@ -3,7 +3,7 @@ class Admin::DashboardsController < Admin::ApplicationController
    
     def index
 
-           @hanghoas = Hanghoa.select("state_id, DATE(created_at) as ngay, count(state_id) as sovd").where(:created_at => Time.now.beginning_of_week..Time.now.end_of_week).group("state_id, DATE(created_at)")
+           @hanghoas = Hanghoa.select("state_id, DATE(created_at) as ngay, count(state_id) as sovd").group("state_id, DATE(created_at)")
            @ngaytaos = Hanghoa.select("DATE(created_at) as ngay").distinct
            @vuataos = Hanghoa.select("count(state_id) as sovd, state_id, DATE(created_at) as ngay").where(:state_id => '5').group("state_id, DATE(created_at)")
            @thanhcongs = Hanghoa.select("count(state_id) as sovd, state_id, DATE(created_at) as ngay").where( :state_id => '7').group("state_id, DATE(created_at)")

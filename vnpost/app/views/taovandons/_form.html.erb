@@ -13,13 +13,13 @@ li {
 
 <%= simple_form_for(@taovandon) do |f| %>
 <div class="row">
-<div class="col-md-6"><%= f.input :hotenkh, label: "Khách hàng", hint: "Họ và tên" %>
-	<%= f.input :diachi, label: "Địa chỉ", hint: "Âp, phường/xã, quận/ huyện, tỉnh/ TP" %>
-	<%= f.input :sdt, label: "Số điện thoại", hint: "Sử dụng số này để liên lạc" %>
+<div class="col-md-6"><%= f.input :hotenkh, label: "Họ tên khách hàng" %>
+	<%= f.input :diachi, label: "Địa chỉ" %>
+	<%= f.input :sdt, label: "Số điện thoại" %>
 </div>
 <div class="col-md-6">
 			
-<%= f.input :khoiluong, label: "Khối lượng hàng hóa", hint: "(Tính theo gram ví dụ: 450gram,...)" %>
+<%= f.input :khoiluong, label: "Khối lượng hàng hóa (Tính bằng gram)" %>
 
 <!-- 
 <%= f.input :trangthai, label: "Trạng thái", default: "Chờ duyệt" %>  -->
@@ -28,7 +28,7 @@ li {
 </div>
 
 
-<%= f.button :submit ,"Tạo", class: "btn-primary" %>
+<%= f.button :submit , class: "btn-primary" %>
 <%= link_to "Hủy", root_path, class: "cancel" %>
 
 

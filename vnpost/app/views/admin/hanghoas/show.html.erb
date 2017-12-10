@@ -1,21 +1,23 @@
 
 <div id="hanghoa">
-<div>
-<h1 style="margin: 0px; padding-top: 20px">Mã vận đơn:   <%= @vandon.id %></h1>
+<div class="row">
+	<div class="col-md-5">
+	<h1 style="margin: 0px; padding-top: 20px">Mã vận đơn:   <%= @vandon.id %></h1>
+	</div>
+<div class="col-md-6" style="padding-top: 20px">
+<%= link_to "Edit", [:edit,:admin, @vandon, @hanghoa],
+class: "edit" %>
 
-<ul class="actions">
-<li><%= link_to "Edit", [:edit,:admin, @vandon, @hanghoa],
-class: "edit" %></li>
-
-<li><%= link_to "Delete", [:admin,@vandon, @hanghoa], method: :delete,
+<%= link_to "Delete", [:admin,@vandon, @hanghoa], method: :delete,
 data: { confirm: "Bạn có chắc chắn xóa không"},
-class: "delete" %></li>
-<li> <%= cancel_link %> </li>
-</ul>
+class: "delete" %>
+ <%= cancel_link %> 
 </div>
+</div >
+ <div style="padding-top: 30px">
 
       <% @vandon.hanghoas.each do |hanghoa| %>
-      <div><label> Id: </label><%= link_to hanghoa.id, [@vandon, hanghoa] %></div>
+      <div><label> Id: </label><%= link_to hanghoa.id, [:admin,@vandon, hanghoa] %></div>
 	    <% if @hanghoa.state_id.present? %>
 
 		<div><label>Trạng thái: </label>

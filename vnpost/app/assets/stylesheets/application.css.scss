@@ -10,7 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
-
+ *= require bootstrap-datepicker
  *= require_tree .
  *= require_self
  */
@@ -23,7 +23,6 @@
 @import "loaihangs";
 @import "admin/application";
 @import "responsive";
-
 
 
 .page-header {
@@ -62,7 +61,7 @@ padding-right: 0.5em;
 
 a.edit {
 @extend .btn;
-@extend .btn-primary;
+@extend .btn-warning;
 &:before {
 font-family: "FontAwesome";
 @extend .fa-pencil;
@@ -80,13 +79,23 @@ padding-right: 0.5em;
 }
 a.show {
 @extend .btn;
-@extend .btn-primary;
+@extend .btn-info;
 &:before {
 font-family: "FontAwesome";
 @extend .fa-eye;
 padding-right: 0.5em;
 }
 }
+a.xem {
+@extend .btn;
+@extend .btn-info;
+&:before {
+font-family: "FontAwesome";
+@extend .fa-eye;
+padding-right: 0.5em;
+}
+}
+
 a.cancel {
 @extend .btn;
 @extend .btn-danger;
@@ -94,8 +103,6 @@ a.cancel {
 padding-right: 0.5em;
 }
 }
-
-
 
 
 header {

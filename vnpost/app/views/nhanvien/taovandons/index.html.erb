@@ -28,7 +28,7 @@
   <table id="mytable" class="table table-bordred table-striped" style="width: 800px">
   <thead>
     <tr>
-      <th><input type="checkbox" id="checkall" /></th>
+     <!--  <th><input type="checkbox" id="checkall" /></th> -->
       <th>Vận đơn</th>
       <th>Ngày tạo</th>
       <th> Trạng thái</th>
@@ -37,9 +37,9 @@
   <tbody>
    <% @taovandons.each do |taovandon| %>
     <tr>
-      <td><input type="checkbox" class="checkthis" ></td>
+      <!-- <td><input type="checkbox" class="checkthis" ></td> -->
       <td><%= link_to taovandon.id, taovandon %></td>
-      <td><%= taovandon.created_at %></td>
+      <td><%= taovandon.created_at.strftime(' %d/%m/%Y %H:%M:%S') %></td>
       <td><%= taovandon.trangthai %></td>
       <td><%= link_to "Xem",  nhanvien_taovandon_path(taovandon), class: "show" %></td>
       <td><%= link_to "Sửa", edit_nhanvien_taovandon_path(taovandon), class: "edit" %></td>

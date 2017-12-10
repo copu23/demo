@@ -20,7 +20,7 @@
     <div class="panel-heading">1. Thông tin hàng hóa</div>
     <div class="panel-body">
     	<div>
- 			<%= f.input :trongluongtinh,label:"Trọng lượng tịnh" %>
+ 			<%= f.input :trongluongtinh,label:"Trọng lượng tịnh (gram)" %>
 		</div>
 	
 				<%= f.label :thêm_thể_tích_hàng %>
@@ -98,14 +98,14 @@
 
 		<div class="col-md-12 m-t-md m-b-md">
 
-			<%= f.input :cuocchinh, label: "Cước chính",:input_html => { :value => 0}  %>
+			<%= f.input :cuocchinh, label: "Cước chính",:input_html => { :value => 0}   %>
 		</div>
 		<div class="col-md-12 m-t-md m-b-md">
-			<%= f.input :cuocphu, label: "Cước phụ ",:input_html => { :value => 0}  %></div>
+			<%= f.input :cuocphu, label: "Cước phụ ",:input_html => { :value => 0} %></div>
 		<div class="col-md-12 m-t-md m-b-md">
 			<%= f.input :cuocthuho, label: "Cước thu hộ ",:input_html => { :value => 0} %></div>
 		<div class="col-md-12 m-t-md m-b-md">
-			<%= f.input :tongcuoc, label: "Tổng cước" %></div>
+			<%= f.input :tongcuoc, label: "Tổng cước"  %></div>
 </div>
 		<div class="col-md-12 m-t-md m-b-md"><%= f.button :submit, class: "btn-primary" %></div>
 				
@@ -234,7 +234,7 @@
 	    
 	    });
 	$("#hanghoa_chieurong").on('change', function(){
-		$('#hanghoa_trongluongtinh').val( parseInt($("#hanghoa_chieurong").val()) * parseInt($("#hanghoa_chieucao").val())* parseInt($("#hanghoa_chieudai").val()) *1000/ 600 )
+		$('#hanghoa_trongluongtinh').val( parseInt($("#hanghoa_chieurong").val()) * parseInt($("#hanghoa_chieucao").val())* parseInt($("#hanghoa_chieudai").val()) / 6 )
 	    
 	    });
 	$("#hanghoa_cuocthuho").on('change', function(){

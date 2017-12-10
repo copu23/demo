@@ -18,7 +18,7 @@ class: "delete" %></div>
 
 
       <% @vandon.hanghoas.each do |hanghoa| %>
-      <div><label> Id: </label><%= link_to hanghoa.id, [@vandon, hanghoa] %></div>
+      <div><label> Id: </label><%= link_to hanghoa.id, [:nhanvien,@vandon, hanghoa] %></div>
 	    <% if @hanghoa.state_id.present? %>
 
 		<div><label>Trạng thái: </label>

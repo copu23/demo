@@ -38,10 +38,10 @@
     <tr>
       <td><input type="checkbox" class="checkthis" ></td>
       <td><%= link_to taovandon.id, taovandon %></td>
-      <td><%= taovandon.created_at %></td>
+      <td><%= taovandon.created_at.strftime(' %d/%m/%Y %H:%M:%S')  %></td>
       <td><%= taovandon.trangthai %></td>
       <td><%= link_to t('.show', :default => t("helpers.links.show")),
-                            taovandon_path(taovandon), class: "show" %></td>
+                            taovandon_path(taovandon), class: "xem" %></td>
       <td><%= link_to t('.edit', :default => t("helpers.links.edit")),
                             edit_taovandon_path(taovandon), class: "edit" %></td>
       

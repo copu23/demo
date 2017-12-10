@@ -32,6 +32,7 @@ get 'home/guiSMS'
 # get 'vandons/print'
 get 'bccps/index'
 get 'search/search'
+
 root 'application#index'
     namespace :admin do
                       resources :dashboards
@@ -86,16 +87,16 @@ root 'application#index'
   resources :cuoccpns, only: [:index, :show, :edit, :update]
   resources :states  
   resources :mucphithuhos
-  resources :vandons do
+  # resources :vandons do
 
-    resources :hanghoas
-    resources :khachhangs
-    resources :nguoinhans
-    member do
-      get :print
-    end
+  #   resources :hanghoas
+  #   resources :khachhangs
+  #   resources :nguoinhans
+  #   member do
+  #     get :print
+  #   end
 
-    end
+  #   end
 resources :taovandons
   resources :hanghoas, only: [] do
     resources :comments, only: [:create]

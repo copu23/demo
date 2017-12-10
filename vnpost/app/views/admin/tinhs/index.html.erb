@@ -14,31 +14,36 @@
   <table  class="table table-striped">
   <thead>
     <tr>
-      <th>Tỉnh</th>
-       <th>Vùng</th>
-        <th> </th>
-      <th></th>
-      <th></th>
+      <th style="width: 20%">Tỉnh</th>
+       <th style="width: 10%">Vùng</th>
+      <th  style="width: 30%"><center>  Tác vụ </center> </th>
+       
     </tr>
   </thead>
   <tbody>
+
 <% @tinhs.each do |tinh| %>
 <tr>
-<td><%= link_to tinh.tentinh, tinh %></td>
-<td><%=  tinh.vung_id %></td>
 
-<td>
-<%= link_to  "Xem",
-                      admin_tinh_path(tinh), class: "show" %></td>
-<td><%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_admin_tinh_path(tinh), class: "edit" %></td>
+  <td><%= link_to tinh.tentinh, tinh %></td>
 
-<td>
-<% admins_only do %>
+  <td><%=  tinh.vung_id %></td>
 
-<%= link_to "Xóa", admin_tinh_path(tinh),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %><% end %>
-</td>
+ <td><center>
+  <%= link_to  "Xem", admin_tinh_path(tinh), class: "xem" %>
+
+
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        edit_admin_tinh_path(tinh), class: "edit" %>
+
+   <%= link_to "Xóa", admin_tinh_path(tinh),method: :delete,data: { confirm: "Bạn có chắc chắn muốn xóa không?" },class: "delete" %>
+     
+   </center>
+  </td>
+
+
 </tr>
+
 <% end %>
 </tbody>
 </table>

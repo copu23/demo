@@ -98,14 +98,14 @@
 
 		<div class="col-md-12 m-t-md m-b-md">
 
-			<%= f.input :cuocchinh, label: "Cước chính",:input_html => { :value => 0}  %>
+			<%= f.input :cuocchinh, label: "Cước chính",:input_html => { :value => 0}  %> đồng
 		</div>
 		<div class="col-md-12 m-t-md m-b-md">
-			<%= f.input :cuocphu, label: "Cước phụ ",:input_html => { :value => 0}  %></div>
+			<%= f.input :cuocphu, label: "Cước phụ ",:input_html => { :value => 0}  %> đồng</div>
 		<div class="col-md-12 m-t-md m-b-md">
-			<%= f.input :cuocthuho, label: "Cước thu hộ ",:input_html => { :value => 0} %></div>
+			<%= f.input :cuocthuho, label: "Cước thu hộ ",:input_html => { :value => 0} %> đồng</div>
 		<div class="col-md-12 m-t-md m-b-md">
-			<%= f.input :tongcuoc, label: "Tổng cước" %></div>
+			<%= f.input :tongcuoc, label: "Tổng cước" %> đồng</div>
 </div>
 		<div class="col-md-12 m-t-md m-b-md" style="padding-top: 20px"><%= f.button :submit, class: "btn-primary" %>
 			<%= link_to "Hủy bỏ", [:admin,@vandon], method: :delete,

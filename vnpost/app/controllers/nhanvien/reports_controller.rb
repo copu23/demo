@@ -72,7 +72,7 @@ class Nhanvien::ReportsController < Nhanvien::ApplicationController
 
         @chart = Fusioncharts::Chart.new({
             :height => 300,
-            :width => 500,
+            :width => 600,
             :type => "msline",
             :renderAt => 'chartContainer1',
          

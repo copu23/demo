@@ -21,7 +21,7 @@ class Nhanvien::VandonsController <  Nhanvien::ApplicationController
 
 	def print
 
-		 @vandon = Vandon.find(params[:id])
+		 @vandon = Vandon.find(params[:id, :mota])
 		 
 		 render :layout => "print"
 	end

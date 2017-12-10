@@ -7,7 +7,7 @@ class Nhanvien::NguoinhansController < Nhanvien::ApplicationController
 		@nguoinhan = @vandon.nguoinhans.build(nguoinhan_params)
 		if @nguoinhan.save
 		flash[:notice] = "Tạo thành công."
-		redirect_to [@vandon,@nhanvien]
+		redirect_to   new_nhanvien_vandon_khachhang_path
 		else
 		flash.now[:alert] = "Tạo không thành công."
 		render "new"
@@ -32,7 +32,7 @@ class Nhanvien::NguoinhansController < Nhanvien::ApplicationController
 	def update
 		if @nguoinhan.update(nguoinhan_params)
 		flash[:notice] = "Cập nhật thành công."
-		redirect_to [@vandon, @nguoinhan]
+		redirect_to [:nhanvien, @vandon]
 		else
 		flash.now[:alert] = "Cập nhật không thành công."
 		render "edit"

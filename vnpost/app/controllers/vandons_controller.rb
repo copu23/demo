@@ -75,7 +75,7 @@ class VandonsController < ApplicationController
 
 	private
 		def vandon_params
-			params.require(:vandon).permit(:mota, :hanghoa_id, :term)
+			params.require(:vandon).permit(:mota, :hanghoa_id, :term, :tim)
 		end
 
 		def set_vandon

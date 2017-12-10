@@ -24,6 +24,17 @@ class Vandon < ApplicationRecord
 	  @results = Vandon.where(conditions).paginate(:page => page, :per_page => 5)
 	end
 
+	def self.tim(tim, page)
+		# created_at = Vandon.select(created_at)
+		conditions ="created_at  <= ?","%#{tim}%"
+	  # paginate :per_page => 5, :page => page,
+	  #          :conditions
+	  #          :order => 'created_at DESC'
+
+	  @results = Vandon.where("DATE(created_at)  = ?","%#{tim}%").paginate(:page => page, :per_page => 5)
+
+	end
+
 
 
 

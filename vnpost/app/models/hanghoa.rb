@@ -7,7 +7,7 @@ class Hanghoa < ApplicationRecord
 	
 	 belongs_to :state
 	     
- 	 
+ 	validates_numericality_of :trongluongtinh, :greater_than=> 0 , message: "khối lượng phải lớn hơn 0"
 	
 
 

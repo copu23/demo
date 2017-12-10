@@ -14,8 +14,8 @@ class Scope < Scope
 	# user.try(:admin?) || record.roles.exists?(user_id: user)
 	# end
 
-	def update?
-	user.try(:admin?) ||user.try(:nhanvien?) || record.roles.exists?(user_id: user,
-	role: 'manager')
-	end
+	# def update?
+	# user.try(:admin?) ||user.try(:nhanvien?) || record.roles.exists?(user_id: user,
+	# role: 'manager')
+	# end
 end

@@ -29,7 +29,7 @@
   <table id="mytable" class="table table-bordred table-striped" style="width: 800px">
   <thead>
     <tr>
-      <th><input type="checkbox" id="checkall" /></th>
+     <!--  <th><input type="checkbox" id="checkall" /></th> -->
       <th>Vận đơn</th>
       <th>Ngày tạo</th>
       <th> Ngày cập nhật</th>
@@ -38,14 +38,13 @@
   <tbody>
    <% @vandons.each do |vandon| %>
     <tr>
-      <td><input type="checkbox" class="checkthis" ></td>
+      <!-- <td><input type="checkbox" class="checkthis" ></td> -->
       <td><%= link_to vandon.id %></td>
-      <td><%= vandon.created_at %></td>
-      <td><%= vandon.updated_at %></td>
-      <td><%= link_to t('.show', :default => t("helpers.links.show")),
-                            nhanvien_vandon_path(vandon), class: "show" %></td>
-      <td><%= link_to t('.edit', :default => t("helpers.links.edit")),
-                             edit_nhanvien_vandon_path(vandon), class: "edit" %></td>
+      <td><%= vandon.created_at.strftime(' %d/%m/%Y %H:%M:%S') %></td>
+      <td><%= vandon.updated_at.strftime(' %d/%m/%Y %H:%M:%S') %></td>
+      
+      <td><%= link_to "Xem",  nhanvien_vandon_path(vandon), class: "show" %></td>
+      <td><%= link_to "Sửa", edit_nhanvien_vandon_path(vandon), class: "edit" %></td>
       
     </tr>
    
